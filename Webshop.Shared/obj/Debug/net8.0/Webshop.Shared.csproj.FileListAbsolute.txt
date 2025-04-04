@@ -1,0 +1,11 @@
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Shared\bin\Debug\net8.0\Webshop.Shared.deps.json
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Shared\bin\Debug\net8.0\Webshop.Shared.dll
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Shared\bin\Debug\net8.0\Webshop.Shared.pdb
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Shared\obj\Debug\net8.0\Webshop.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Shared\obj\Debug\net8.0\Webshop.Shared.AssemblyInfoInputs.cache
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Shared\obj\Debug\net8.0\Webshop.Shared.AssemblyInfo.cs
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Shared\obj\Debug\net8.0\Webshop.Shared.csproj.CoreCompileInputs.cache
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Shared\obj\Debug\net8.0\Webshop.Shared.dll
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Shared\obj\Debug\net8.0\refint\Webshop.Shared.dll
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Shared\obj\Debug\net8.0\Webshop.Shared.pdb
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Shared\obj\Debug\net8.0\ref\Webshop.Shared.dll

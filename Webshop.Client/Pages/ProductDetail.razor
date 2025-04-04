@@ -1,0 +1,31 @@
+﻿@using Webshop.Shared.Models
+@using Webshop.Client.Services
+
+@page "/product/{id:int}"
+
+@inject ProductRestService RestService
+
+<div class="container mt-5">
+    <h2 class="mb-4">Productdetails</h2>
+
+    @if (product == null)
+    {
+        <div class="alert alert-info">Bezig met laden...</div>
+    }
+    else
+    {
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h4 class="card-title">@product.Name</h4>
+                <p class="card-text text-muted">@product.Description</p>
+                <p class="card-text">
+                    <strong>Voorraad:</strong> @product.InStock
+                </p>
+                <a href="/" class="btn btn-outline-primary">← Terug naar overzicht</a>
+            </div>
+        </div>
+    }
+</div>
+
+
+
