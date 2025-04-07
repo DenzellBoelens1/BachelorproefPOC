@@ -18,12 +18,12 @@ namespace Webshop.Backend.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProducts(int page = 1, int pageSize = 10)
+        public async Task<ActionResult<IEnumerable<ProductDTO.Index>>> GetProducts(int page = 1, int pageSize = 10)
         {
             var products = await _context.Products
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
-                .Select(p => new ProductDTO
+                .Select(p => new ProductDTO.Index
                 {
                     ProductID = p.ProductID,
                     Name = p.Name,
@@ -34,7 +34,7 @@ namespace Webshop.Backend.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public async Task<ActionResult<ProductDTO.Index>> GetProduct(int id)
         {
             var product = await _context.Products.FindAsync(id);
             if (product == null) return NotFound();

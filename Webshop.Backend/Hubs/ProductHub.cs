@@ -19,7 +19,7 @@ namespace Webshop.Backend.Hubs
             var products = await _context.Products
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
-                .Select(p => new ProductDTO
+                .Select(p => new ProductDTO.Index
                 {
                     ProductID = p.ProductID,
                     Name = p.Name,

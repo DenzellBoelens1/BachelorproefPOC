@@ -43,7 +43,7 @@ namespace Webshop.Backend.Middleware
                     var products = await dbContext.Products
                         .Skip(skip)
                         .Take(pageSize)
-                        .Select(p => new ProductDTO
+                        .Select(p => new ProductDTO.Index
                         {
                             ProductID = p.ProductID,
                             Name = p.Name,

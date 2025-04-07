@@ -126,3 +126,4 @@ C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Back
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.pdb
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.genruntimeconfig.cache
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\ref\Webshop.Backend.dll
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.sourcelink.json

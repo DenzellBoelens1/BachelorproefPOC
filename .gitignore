@@ -1,0 +1,4 @@
+# Ignore VS and build files
+.vs/
+bin/
+obj/

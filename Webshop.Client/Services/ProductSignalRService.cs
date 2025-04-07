@@ -10,7 +10,7 @@ namespace Webshop.Client.Services
         private HubConnection? _connection;
         private readonly NavigationManager _nav;
 
-        public event Action<List<ProductDTO>>? OnProductsReceived;
+        public event Action<List<ProductDTO.Index>>? OnProductsReceived;
 
         public ProductSignalRService(NavigationManager nav)
         {
@@ -27,7 +27,7 @@ namespace Webshop.Client.Services
             .WithAutomaticReconnect()
             .Build();
 
-            _connection.On<List<ProductDTO>>("ReceiveProducts", (products) =>
+            _connection.On<List<ProductDTO.Index>>("ReceiveProducts", (products) =>
             {
                 OnProductsReceived?.Invoke(products);
             });

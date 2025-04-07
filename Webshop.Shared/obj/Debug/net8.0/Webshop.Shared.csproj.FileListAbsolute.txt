@@ -9,3 +9,4 @@ C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Shar
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Shared\obj\Debug\net8.0\refint\Webshop.Shared.dll
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Shared\obj\Debug\net8.0\Webshop.Shared.pdb
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Shared\obj\Debug\net8.0\ref\Webshop.Shared.dll
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Shared\obj\Debug\net8.0\Webshop.Shared.sourcelink.json

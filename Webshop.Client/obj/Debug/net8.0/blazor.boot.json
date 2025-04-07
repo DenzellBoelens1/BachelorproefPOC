@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Webshop.Client",
   "resources": {
-    "hash": "sha256-sjupiNtq02ty6GUr+vQvTh/NFF6o1S9jYsjEA8B2I7w=",
+    "hash": "sha256-tFnVyw6kpAJtKCszTcZdCFvXg+op10kdVOdt+E0XEZw=",
     "jsModuleNative": {
       "dotnet.native.8.0.8.rg2daal0u8.js": "sha256-juC5sA7gHTLXFEhAKgdM2/RavswpwCtDfjYGsAz2FXg="
     },
@@ -219,12 +219,12 @@
       "mscorlib.wasm": "sha256-Gz8PyW2/fwihe5ul81OwmRUrU71r+KtbyRw6xlOGD+Q=",
       "netstandard.wasm": "sha256-jMTqIQzoDS810lyhZpMO5eEC36EzntXqSVn+2qwkOMQ=",
       "System.Private.CoreLib.wasm": "sha256-NFj5WE5VLP2LptZIRJCUIc1AMk06FmxpsSILfPISwAw=",
-      "Webshop.Shared.wasm": "sha256-vkYWeMxxuLzM2ey5zRlO2mfv/6CR1LCBdycXEidgmsM=",
-      "Webshop.Client.wasm": "sha256-qkYaha4LMKV8P8nAgkg/kIddI/7evsTzA8X+ozAWplE="
+      "Webshop.Shared.wasm": "sha256-rk12u2yQwYrikzENp+mcj286CryCrFsJvnkKCs1Azwc=",
+      "Webshop.Client.wasm": "sha256-cvOQB28Dtw2zs5qTlLqWrw8uZcpvKtc6wIrpwrsPIaQ="
     },
     "pdb": {
-      "Webshop.Shared.pdb": "sha256-leqHqOyZ0pWfnBa41ii3zUNAAv8ouPsYzevq+ZiMngY=",
-      "Webshop.Client.pdb": "sha256-rybFgBpgdQmBi1LoXJRAcym+3M681Fb+q3tXvnDBX3o="
+      "Webshop.Shared.pdb": "sha256-3p2sO4n1PqU1zKaPYl3X0HKaJNGvEUZ36Gbc6TCbSoE=",
+      "Webshop.Client.pdb": "sha256-yPJrAw1KvUkd567b2J4N2c6nrpbGfrqWwLFl5C7NjEc="
     }
   },
   "cacheBootResources": true,

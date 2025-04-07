@@ -1090,3 +1090,4 @@ C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Clie
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Client\obj\Debug\net8.0\refint\Webshop.Client.dll
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Client\obj\Debug\net8.0\Webshop.Client.pdb
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Client\obj\Debug\net8.0\ref\Webshop.Client.dll
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Client\obj\Debug\net8.0\Webshop.Client.sourcelink.json

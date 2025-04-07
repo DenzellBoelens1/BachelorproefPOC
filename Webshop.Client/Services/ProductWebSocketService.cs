@@ -12,7 +12,7 @@ namespace Webshop.Client.Services
 
         public ProductWebSocketService(NavigationManager nav) => _nav = nav;
 
-        public async Task<List<ProductDTO>> GetProducts(int page = 1, int pageSize = 10)
+        public async Task<List<ProductDTO.Index>> GetProducts(int page = 1, int pageSize = 10)
         {
             var wsUri = new Uri("ws://localhost:5139/ws");
 
@@ -38,7 +38,7 @@ namespace Webshop.Client.Services
             while (!result.EndOfMessage);
 
             var json = fullMessage.ToString();
-            return JsonSerializer.Deserialize<List<ProductDTO>>(json) ?? new();
+            return JsonSerializer.Deserialize<List<ProductDTO.Index>>(json) ?? new();
         }
 
     }

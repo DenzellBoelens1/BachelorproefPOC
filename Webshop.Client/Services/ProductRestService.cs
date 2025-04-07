@@ -10,14 +10,14 @@ namespace Webshop.Client.Services
         private readonly HttpClient _http;
         public ProductRestService(HttpClient http) => _http = http;
 
-        public async Task<List<ProductDTO>?> GetProducts(int page, int pageSize)
+        public async Task<List<ProductDTO.Index>?> GetProducts(int page, int pageSize)
         {
-            return await _http.GetFromJsonAsync<List<ProductDTO>>($"api/products?page={page}&pageSize={pageSize}");
+            return await _http.GetFromJsonAsync<List<ProductDTO.Index>>($"api/products?page={page}&pageSize={pageSize}");
         }
 
-        public async Task<Product?> GetProduct(int id)
+        public async Task<ProductDTO.Index> GetProduct(int id)
         {
-            return await _http.GetFromJsonAsync<Product>($"api/products/{id}");
+            return await _http.GetFromJsonAsync<ProductDTO.Index>($"api/products/{id}");
         }
     }
 

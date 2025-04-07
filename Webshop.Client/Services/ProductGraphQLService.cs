@@ -16,7 +16,7 @@ namespace Webshop.Client.Services
         public string? LastCursor { get; private set; } // reden voor cursor is omdat ik met usepaging werk van hotchocolate
         public bool HasNextPage { get; private set; }
 
-        public async Task<List<ProductDTO>> GetProductsGraphQL(int pageSize, string? cursor = null)
+        public async Task<List<ProductDTO.Index>> GetProductsGraphQL(int pageSize, string? cursor = null)
         {
             var afterPart = cursor != null ? $"after: \"{cursor}\"" : "";
             var query = $@"
@@ -51,11 +51,11 @@ namespace Webshop.Client.Services
             HasNextPage = pageInfo.GetProperty("hasNextPage").GetBoolean();
 
             var items = data.GetProperty("nodes");
-            var result = new List<ProductDTO>();
+            var result = new List<ProductDTO.Index>();
 
             foreach (var item in items.EnumerateArray())
             {
-                result.Add(new ProductDTO
+                result.Add(new ProductDTO.Index
                 {
                     ProductID = item.GetProperty("productID").GetInt32(),
                     Name = item.GetProperty("name").GetString()!,

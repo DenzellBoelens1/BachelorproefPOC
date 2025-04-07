@@ -13,7 +13,7 @@ namespace Webshop.Client.Pages
         [Inject] public ProductSignalRService SignalRService { get; set; } = default!;
         [Inject] public ProductWebSocketService WebSocketService { get; set; } = default!;
 
-        List<ProductDTO>? products;
+        List<ProductDTO.Index>? products;
         int currentPage = 1;
         int _pageSize = 10;
         public int pageSize
@@ -97,6 +97,7 @@ namespace Webshop.Client.Pages
         {
             if (selectedMethod == "graphql")
             {
+                currentPage++;
                 await LoadProducts();
             }
             else
