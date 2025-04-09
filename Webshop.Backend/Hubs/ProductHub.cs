@@ -1,33 +1,50 @@
 ﻿using Microsoft.AspNetCore.SignalR;
-using Microsoft.EntityFrameworkCore;
-using Webshop.Backend.Data;
+using Webshop.Backend.Services;
 using Webshop.Shared.DTOs;
 
 namespace Webshop.Backend.Hubs
 {
     public class ProductHub : Hub
     {
-        private readonly AppDbContext _context;
+        private readonly ProductService _productService;
 
-        public ProductHub(AppDbContext context)
+        public ProductHub(ProductService productService)
         {
-            _context = context;
+            _productService = productService;
         }
 
-        public async Task GetProducts(int page = 1, int pageSize = 10)
+        public async Task GetProducts(int page, int pageSize, string? search)
         {
-            var products = await _context.Products
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .Select(p => new ProductDTO.Index
-                {
-                    ProductID = p.ProductID,
-                    Name = p.Name,
-                    InStock = p.InStock
-                }).ToListAsync();
+            var products = await _productService.GetProductsAsync(page, pageSize, search);
 
             await Clients.Caller.SendAsync("ReceiveProducts", products);
         }
-    }
 
+        public async Task GetProductById(int id)
+        {
+            var product = await _productService.GetProductIndexAsync(id);
+            if (product == null)
+                await Clients.Caller.SendAsync("ProductNotFound", id);
+            else
+                await Clients.Caller.SendAsync("ReceiveProduct", product);
+        }
+
+        public async Task GetProductDetails(int id)
+        {
+            var product = await _productService.GetProductDetailsAsync(id);
+            if (product == null)
+                await Clients.Caller.SendAsync("ProductNotFound", id);
+            else
+                await Clients.Caller.SendAsync("ReceiveProductDetails", product);
+        }
+
+        public async Task UpdateStock(int productId, int inStock)
+        {
+            var updated = await _productService.UpdateStockAsync(productId, inStock);
+            if (updated == null)
+                await Clients.Caller.SendAsync("ProductNotFound", productId);
+            else
+                await Clients.Caller.SendAsync("ReceiveStockUpdated", updated);
+        }
+    }
 }

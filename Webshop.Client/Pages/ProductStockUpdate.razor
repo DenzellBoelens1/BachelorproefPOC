@@ -1,0 +1,24 @@
+﻿@page "/products/{id:int}/update-stock"
+
+<h3>Voorraad aanpassen</h3>
+
+@if (isLoading)
+{
+    <p>Laden...</p>
+}
+else if (product != null)
+{
+    <div>
+        <p><strong>@product.Name</strong> (ID: @product.ProductID)</p>
+        <p>Huidige voorraad: @product.InStock</p>
+
+        <label>Nieuwe voorraad:</label>
+        <input type="number" @bind="newStock" class="form-control" />
+
+        <button @onclick="SubmitUpdate" class="btn btn-primary mt-2">Opslaan</button>
+    </div>
+}
+else
+{
+    <p class="text-danger">Product niet gevonden.</p>
+}

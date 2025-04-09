@@ -1,0 +1,72 @@
+﻿@page "/cart"
+@inject NavigationManager Navigation
+
+<h3 class="mb-4">🛒 Mijn winkelmandje</h3>
+
+@if (cartItems.Count == 0)
+{
+    <div class="alert alert-info">Je hebt nog geen producten toegevoegd aan je winkelmandje.</div>
+}
+else if (isLoading)
+{
+    <div class="alert alert-secondary">Producten worden geladen...</div>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Product</th>
+                <th>Aantal</th>
+                <th>Prijs</th>
+                <th>Totaal</th>
+                <th>Voorraad (na bestelling)</th>
+                <th>Acties</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in cartItems)
+            {
+                <tr>
+                    <td>
+                        <div>@item.Name</div>
+                        @if (!string.IsNullOrWhiteSpace(item.Description))
+                        {
+                            <ul class="text-muted small mb-0 ps-3">
+                                @foreach (var part in item.Description.Split(','))
+                                {
+                                    var trimmed = part.Trim();
+                                    if (!string.IsNullOrWhiteSpace(trimmed) && trimmed.Contains(':'))
+                                    {
+                                        var keyValue = trimmed.Split(':');
+                                        var value = keyValue.Length > 1 ? keyValue[1].Trim() : string.Empty;
+                                        if (!string.IsNullOrWhiteSpace(value))
+                                        {
+                                            <li>@trimmed</li>
+                                        }
+                                    }
+                                }
+                            </ul>
+                        }
+                    </td>
+                    <td>@item.Quantity</td>
+                    <td>€ @item.UnitPrice</td>
+                    <td>€ @item.TotalPrice</td>
+                    <td>@item.InStock</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger" @onclick="() => RemoveFromCart(item.Key)">Verwijder</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr class="fw-bold">
+                <td colspan="3">Totaal</td>
+                <td colspan="3">€ @cartItems.Sum(i => i.TotalPrice)</td>
+            </tr>
+        </tfoot>
+    </table>
+
+
+    <button class="btn btn-outline-primary mt-3" @onclick="GoBack">← Terug naar overzicht</button>
+}

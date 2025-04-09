@@ -3,18 +3,36 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
     <div class="container-fluid">
         <span class="navbar-brand">Productenlijst (Vergelijking)</span>
-        <div class="d-flex">
-            <select class="form-select" @onchange="OnMethodChange" style="min-width: 150px;">
+        <div class="d-flex align-items-center">
+            <select class="form-select me-3" @onchange="OnMethodChange" style="min-width: 150px;">
                 <option value="rest">REST</option>
                 <option value="graphql">GraphQL</option>
                 <option value="signalr">SignalR</option>
                 <option value="websocket">WebSocket</option>
             </select>
+
+            <div class="position-relative">
+                <a href="/cart" class="btn btn-outline-light">
+                    🛒 <span class="badge bg-danger">@CartCount</span>
+                </a>
+            </div>
         </div>
     </div>
 </nav>
 
 @code {
+    private int CartCount => AppState.GetTotalCartItems();
+
+    protected override void OnInitialized()
+    {
+        AppState.OnCartChanged += OnCartUpdated;
+    }
+
+    private void OnCartUpdated()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
     private void OnMethodChange(ChangeEventArgs e)
     {
         var selected = e.Value?.ToString();
@@ -22,5 +40,10 @@
         {
             AppState.SetMethod(selected);
         }
+    }
+
+    public void Dispose()
+    {
+        AppState.OnCartChanged -= OnCartUpdated;
     }
 }

@@ -16,6 +16,9 @@ namespace Webshop.Client.Pages
         List<ProductDTO.Index>? products;
         int currentPage = 1;
         int _pageSize = 10;
+        string searchTerm = string.Empty;
+
+
         public int pageSize
         {
             get => _pageSize;
@@ -25,39 +28,35 @@ namespace Webshop.Client.Pages
                 {
                     _pageSize = value;
                     currentPage = 1;
-                    lastGraphQLCursor = null;
-                    previousCursors.Clear();
-                    _ = LoadProducts(); // "fire and forget" async call
+                    ResetGraphQLPaging();
+                    _ = LoadProducts(); // Fire and forget
                 }
             }
         }
-        string selectedMethod = "rest";
-        bool isLoading = false;
 
+        bool isLoading = false;
         string? lastGraphQLCursor = null;
         Stack<string?> previousCursors = new();
 
         protected override async Task OnInitializedAsync()
         {
             AppState.OnMethodChanged += HandleMethodChanged;
-            selectedMethod = AppState.SelectedMethod;
-
-            SignalRService.OnProductsReceived += result =>
-            {
-                products = result;
-                isLoading = false;
-                StateHasChanged();
-            };
+            SignalRService.OnProductsReceived += OnSignalRProductsReceived;
 
             await LoadProducts();
         }
 
+        private void OnSignalRProductsReceived(List<ProductDTO.Index> result)
+        {
+            products = result;
+            isLoading = false;
+            InvokeAsync(StateHasChanged);
+        }
+
         private async void HandleMethodChanged()
         {
-            selectedMethod = AppState.SelectedMethod;
             currentPage = 1;
-            lastGraphQLCursor = null;
-            previousCursors.Clear();
+            ResetGraphQLPaging();
             await LoadProducts();
         }
 
@@ -66,27 +65,31 @@ namespace Webshop.Client.Pages
             isLoading = true;
             StateHasChanged();
 
-            if (selectedMethod == "rest")
+            var method = AppState.SelectedMethod;
+
+            switch (method)
             {
-                products = await RestService.GetProducts(currentPage, pageSize);
-            }
-            else if (selectedMethod == "graphql")
-            {
-                products = await GraphQLService.GetProductsGraphQL(pageSize, lastGraphQLCursor);
-                if (GraphQLService.HasNextPage)
-                {
-                    previousCursors.Push(lastGraphQLCursor);
-                    lastGraphQLCursor = GraphQLService.LastCursor;
-                }
-            }
-            else if (selectedMethod == "signalr")
-            {
-                await SignalRService.StartConnectionAsync();
-                await SignalRService.RequestProducts(currentPage, pageSize);
-            }
-            else if (selectedMethod == "websocket")
-            {
-                products = await WebSocketService.GetProducts(currentPage, pageSize);
+                case "rest":
+                    products = await RestService.GetProducts(currentPage, pageSize, searchTerm);
+                    break;
+
+                case "graphql":
+                    products = await GraphQLService.GetProductsGraphQL(pageSize, lastGraphQLCursor, searchTerm);
+                    if (GraphQLService.HasNextPage)
+                    {
+                        previousCursors.Push(lastGraphQLCursor);
+                        lastGraphQLCursor = GraphQLService.LastCursor;
+                    }
+                    break;
+
+                case "signalr":
+                    await SignalRService.StartConnectionAsync();
+                    await SignalRService.RequestProducts(currentPage, pageSize, searchTerm);
+                    return;
+
+                case "websocket":
+                    products = await WebSocketService.GetProducts(currentPage, pageSize, searchTerm);
+                    break;
             }
 
             isLoading = false;
@@ -95,21 +98,13 @@ namespace Webshop.Client.Pages
 
         async Task NextPage()
         {
-            if (selectedMethod == "graphql")
-            {
-                currentPage++;
-                await LoadProducts();
-            }
-            else
-            {
-                currentPage++;
-                await LoadProducts();
-            }
+            currentPage++;
+            await LoadProducts();
         }
 
         async Task PreviousPage()
         {
-            if (selectedMethod == "graphql")
+            if (AppState.SelectedMethod == "graphql")
             {
                 if (previousCursors.Count > 1)
                 {
@@ -125,9 +120,31 @@ namespace Webshop.Client.Pages
             }
         }
 
+        async Task OnSearch()
+        {
+            currentPage = 1;
+            ResetGraphQLPaging();
+            await LoadProducts();
+        }
+
+        async Task ClearSearch()
+        {
+            searchTerm = string.Empty;
+            currentPage = 1;
+            ResetGraphQLPaging();
+            await LoadProducts();
+        }
+
+        void ResetGraphQLPaging()
+        {
+            lastGraphQLCursor = null;
+            previousCursors.Clear();
+        }
+
         public void Dispose()
         {
             AppState.OnMethodChanged -= HandleMethodChanged;
+            SignalRService.OnProductsReceived -= OnSignalRProductsReceived;
         }
     }
 }

@@ -8,6 +8,8 @@
         public int InStock { get; set; }
         public int MinStock { get; set; }
         public decimal BasePrice { get; set; }
+
+        public List<ProductOption> Options { get; set; } = new();
     }
 
 }

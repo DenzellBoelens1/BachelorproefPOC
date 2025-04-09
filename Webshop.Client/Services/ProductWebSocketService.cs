@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System.Net.WebSockets;
-using System.Text.Json;
 using System.Text;
+using System.Text.Json;
 using Webshop.Shared.DTOs;
 
 namespace Webshop.Client.Services
@@ -10,36 +10,85 @@ namespace Webshop.Client.Services
     {
         private readonly NavigationManager _nav;
 
-        public ProductWebSocketService(NavigationManager nav) => _nav = nav;
-
-        public async Task<List<ProductDTO.Index>> GetProducts(int page = 1, int pageSize = 10)
+        public ProductWebSocketService(NavigationManager nav)
         {
-            var wsUri = new Uri("ws://localhost:5139/ws");
+            _nav = nav;
+        }
+
+        private Uri GetWebSocketUri() => new Uri("ws://localhost:5139/ws");
+
+
+
+        private async Task<string> SendWebSocketMessageAsync(string message)
+        {
+            var uri = GetWebSocketUri();
 
             using var client = new ClientWebSocket();
-            await client.ConnectAsync(wsUri, CancellationToken.None);
+            await client.ConnectAsync(uri, CancellationToken.None);
 
-            // 👇 Simpele string met paginatie
-            var message = $"getProducts:{page}:{pageSize}";
-            var sendBuffer = Encoding.UTF8.GetBytes(message);
+            var buffer = Encoding.UTF8.GetBytes(message);
+            await client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
 
-            await client.SendAsync(new ArraySegment<byte>(sendBuffer), WebSocketMessageType.Text, true, CancellationToken.None);
-
-            // ✅ Volledig bericht opvangen
-            var buffer = new byte[4096];
+            var receiveBuffer = new byte[4096];
             var fullMessage = new StringBuilder();
-
             WebSocketReceiveResult result;
+
             do
             {
-                result = await client.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
-                fullMessage.Append(Encoding.UTF8.GetString(buffer, 0, result.Count));
+                result = await client.ReceiveAsync(new ArraySegment<byte>(receiveBuffer), CancellationToken.None);
+                fullMessage.Append(Encoding.UTF8.GetString(receiveBuffer, 0, result.Count));
             }
             while (!result.EndOfMessage);
 
-            var json = fullMessage.ToString();
+            return fullMessage.ToString();
+        }
+
+        public async Task<List<ProductDTO.Index>> GetProducts(int page = 1, int pageSize = 10, string? search = null)
+        {
+            // Gebruik lege string als er geen zoekterm is
+            var safeSearch = string.IsNullOrWhiteSpace(search) ? "" : search;
+            var message = $"getProducts:{page}:{pageSize}:{safeSearch}";
+            var json = await SendWebSocketMessageAsync(message);
+
             return JsonSerializer.Deserialize<List<ProductDTO.Index>>(json) ?? new();
         }
 
+        public async Task<ProductDTO.Index?> GetProductById(int id)
+        {
+            var message = $"getProductById:{id}";
+            var json = await SendWebSocketMessageAsync(message);
+
+            using var doc = JsonDocument.Parse(json);
+            if (doc.RootElement.TryGetProperty("error", out var errorProp))
+            {
+                Console.WriteLine($"WebSocket error: {errorProp.GetString()}");
+                return null;
+            }
+
+            return JsonSerializer.Deserialize<ProductDTO.Index>(json);
+        }
+
+        public async Task<ProductDTO.Details?> GetProductDetailsById(int id)
+        {
+            var message = $"getProductDetailsById:{id}";
+            var json = await SendWebSocketMessageAsync(message);
+
+            using var doc = JsonDocument.Parse(json);
+            if (doc.RootElement.TryGetProperty("error", out var errorProp))
+            {
+                Console.WriteLine($"WebSocket error: {errorProp.GetString()}");
+                return null;
+            }
+
+            return JsonSerializer.Deserialize<ProductDTO.Details>(json);
+        }
+
+        public async Task<ProductDTO.Index?> UpdateStock(ProductDTO.UpdateStock update)
+        {
+            var message = $"updateStock:{update.ProductID}:{update.InStock}";
+            var json = await SendWebSocketMessageAsync(message);
+
+            return JsonSerializer.Deserialize<ProductDTO.Index>(json);
+        }
     }
 }

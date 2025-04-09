@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webshop.Backend", "Webshop.Backend\Webshop.Backend.csproj", "{16814927-9121-4670-914D-305DFFB62EED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webshop.Backend", "Webshop.Backend\Webshop.Backend.csproj", "{16814927-9121-4670-914D-305DFFB62EED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webshop.Client", "Webshop.Client\Webshop.Client.csproj", "{BF714561-A456-4684-828D-9316F8F9E83F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webshop.Client", "Webshop.Client\Webshop.Client.csproj", "{BF714561-A456-4684-828D-9316F8F9E83F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webshop.Shared", "Webshop.Shared\Webshop.Shared.csproj", "{C7340218-8B84-4F43-A306-1FF3DDF08FD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webshop.Shared", "Webshop.Shared\Webshop.Shared.csproj", "{C7340218-8B84-4F43-A306-1FF3DDF08FD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

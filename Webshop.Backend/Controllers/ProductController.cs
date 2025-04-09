@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Webshop.Backend.Data;
 using Webshop.Shared.DTOs;
-using Webshop.Shared.Models;
+using Webshop.Backend.Services;
 
 namespace Webshop.Backend.Controllers
 {
@@ -10,36 +8,42 @@ namespace Webshop.Backend.Controllers
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly ProductService _productService;
 
-        public ProductsController(AppDbContext context)
+        public ProductsController(ProductService productService)
         {
-            _context = context;
+            _productService = productService;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductDTO.Index>>> GetProducts(int page = 1, int pageSize = 10)
+        public async Task<ActionResult<IEnumerable<ProductDTO.Index>>> GetProducts(int page = 1, int pageSize = 10, string? search = null)
         {
-            var products = await _context.Products
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .Select(p => new ProductDTO.Index
-                {
-                    ProductID = p.ProductID,
-                    Name = p.Name,
-                    InStock = p.InStock
-                }).ToListAsync();
-
+            var products = await _productService.GetProductsAsync(page, pageSize, search);
             return Ok(products);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductDTO.Index>> GetProduct(int id)
         {
-            var product = await _context.Products.FindAsync(id);
+            var product = await _productService.GetProductIndexAsync(id);
             if (product == null) return NotFound();
             return Ok(product);
         }
-    }
 
+        [HttpGet("details/{id}")]
+        public async Task<ActionResult<ProductDTO.Details>> GetProductDetails(int id)
+        {
+            var product = await _productService.GetProductDetailsAsync(id);
+            if (product == null) return NotFound();
+            return Ok(product);
+        }
+
+        [HttpPut("{id}/stock")]
+        public async Task<ActionResult<ProductDTO.Index>> UpdateStock(int id, [FromBody] ProductDTO.UpdateStock dto)
+        {
+            var updated = await _productService.UpdateStockAsync(id, dto.InStock);
+            if (updated == null) return NotFound();
+            return Ok(updated);
+        }
+    }
 }

@@ -34,12 +34,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/HoGent24-25/Bachelorproef/PoC/Bachelorproef/WebshopBachelorproef/Webshop.Client/Pages/Cart.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FydC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/HoGent24-25/Bachelorproef/PoC/Bachelorproef/WebshopBachelorproef/Webshop.Client/Pages/ProductDetail.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdERldGFpbC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/HoGent24-25/Bachelorproef/PoC/Bachelorproef/WebshopBachelorproef/Webshop.Client/Pages/ProductList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdExpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/HoGent24-25/Bachelorproef/PoC/Bachelorproef/WebshopBachelorproef/Webshop.Client/Pages/ProductStockUpdate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdFN0b2NrVXBkYXRlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/HoGent24-25/Bachelorproef/PoC/Bachelorproef/WebshopBachelorproef/Webshop.Client/_Imports.razor]

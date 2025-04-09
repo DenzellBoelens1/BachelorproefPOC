@@ -1,74 +1,95 @@
 ﻿using System.Net.WebSockets;
-using System.Text.Json;
 using System.Text;
-using Webshop.Backend.Data;
+using System.Text.Json;
+using Webshop.Backend.Services;
 using Webshop.Shared.DTOs;
-using Microsoft.EntityFrameworkCore;
 
-namespace Webshop.Backend.Middleware
+public class ProductWebSocketMiddleware
 {
-    public class ProductWebSocketMiddleware
+    private readonly RequestDelegate _next;
+
+    public ProductWebSocketMiddleware(RequestDelegate next)
     {
-        private readonly RequestDelegate _next;
+        _next = next;
+    }
 
-        public ProductWebSocketMiddleware(RequestDelegate next)
+    public async Task InvokeAsync(HttpContext context, ProductService productService)
+    {
+        if (context.Request.Path.StartsWithSegments("/productHub"))
         {
-            _next = next;
+            await _next(context);
+            return;
         }
 
-        public async Task InvokeAsync(HttpContext context, AppDbContext dbContext)
+        if (context.WebSockets.IsWebSocketRequest)
         {
-            if (context.Request.Path.StartsWithSegments("/productHub"))
+            using var webSocket = await context.WebSockets.AcceptWebSocketAsync();
+            var buffer = new byte[1024 * 4];
+            var result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+            var message = Encoding.UTF8.GetString(buffer, 0, result.Count);
+
+            string response = "";
+
+            if (message.StartsWith("getProducts"))
             {
-                await _next(context);
-                return;
+                var parts = message.Split(':');
+                int page = parts.Length > 1 && int.TryParse(parts[1], out var p) ? p : 1;
+                int pageSize = parts.Length > 2 && int.TryParse(parts[2], out var ps) ? ps : 10;
+                string? search = parts.Length > 3 ? parts[3] : null;
+
+                var products = await productService.GetProductsAsync(page, pageSize, search);
+                response = JsonSerializer.Serialize(products);
             }
-
-            if (context.WebSockets.IsWebSocketRequest)
+            else if (message.StartsWith("getProductById"))
             {
-                using var webSocket = await context.WebSockets.AcceptWebSocketAsync();
-                var buffer = new byte[1024 * 4];
-                var result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
-                var message = Encoding.UTF8.GetString(buffer, 0, result.Count);
-
-                // 👇 Parsing: "getProducts:2:10"
-                if (message.StartsWith("getProducts"))
+                var parts = message.Split(':');
+                if (parts.Length > 1 && int.TryParse(parts[1], out var id))
                 {
-                    var parts = message.Split(':');
-                    int page = parts.Length > 1 && int.TryParse(parts[1], out var p) ? p : 1;
-                    int pageSize = parts.Length > 2 && int.TryParse(parts[2], out var ps) ? ps : 10;
-
-                    int skip = (page - 1) * pageSize;
-
-                    var products = await dbContext.Products
-                        .Skip(skip)
-                        .Take(pageSize)
-                        .Select(p => new ProductDTO.Index
-                        {
-                            ProductID = p.ProductID,
-                            Name = p.Name,
-                            InStock = p.InStock
-                        }).ToListAsync();
-
-                    var response = JsonSerializer.Serialize(products);
-                    var responseBytes = Encoding.UTF8.GetBytes(response);
-                    await webSocket.SendAsync(new ArraySegment<byte>(responseBytes), WebSocketMessageType.Text, true, CancellationToken.None);
+                    var product = await productService.GetProductIndexAsync(id);
+                    response = product == null
+                        ? JsonSerializer.Serialize(new { error = $"Product with ID {id} not found." })
+                        : JsonSerializer.Serialize(product);
                 }
-
-                await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Done", CancellationToken.None);
             }
-            else
+            else if (message.StartsWith("updateStock"))
             {
-                await _next(context);
+                var parts = message.Split(':');
+                if (parts.Length == 3 &&
+                    int.TryParse(parts[1], out var id) &&
+                    int.TryParse(parts[2], out var inStock))
+                {
+                    var updated = await productService.UpdateStockAsync(id, inStock);
+                    response = updated == null
+                        ? JsonSerializer.Serialize(new { error = $"Product with ID {id} not found." })
+                        : JsonSerializer.Serialize(updated);
+                }
             }
-        }
+            else if (message.StartsWith("getProductDetailsById"))
+            {
+                var parts = message.Split(':');
+                if (parts.Length > 1 && int.TryParse(parts[1], out var id))
+                {
+                    var product = await productService.GetProductDetailsAsync(id);
+                    response = product == null
+                        ? JsonSerializer.Serialize(new { error = $"Product with ID {id} not found." })
+                        : JsonSerializer.Serialize(product);
+                }
+            }
 
-        // 👇 Voeg een klein model toe binnenin dezelfde file of apart bestand
-        public class WebSocketRequest
+            if (!string.IsNullOrEmpty(response))
+            {
+                await webSocket.SendAsync(
+                    new ArraySegment<byte>(Encoding.UTF8.GetBytes(response)),
+                    WebSocketMessageType.Text,
+                    true,
+                    CancellationToken.None);
+            }
+
+            await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Done", CancellationToken.None);
+        }
+        else
         {
-            public string Action { get; set; } = "";
-            public int Page { get; set; } = 1;
-            public int PageSize { get; set; } = 10;
+            await _next(context);
         }
     }
 }

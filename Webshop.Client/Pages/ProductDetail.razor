@@ -3,28 +3,87 @@
 
 @page "/product/{id:int}"
 
-@inject ProductRestService RestService
-
 <div class="container mt-5">
     <h2 class="mb-4">Productdetails</h2>
 
-    @if (product == null)
+    @if (isLoading)
     {
         <div class="alert alert-info">Bezig met laden...</div>
+    }
+    else if (product == null)
+    {
+        <div class="alert alert-warning">Product niet gevonden.</div>
     }
     else
     {
         <div class="card shadow-sm">
             <div class="card-body">
                 <h4 class="card-title">@product.Name</h4>
-                <p class="card-text">
-                    <strong>Voorraad:</strong> @product.InStock
-                </p>
-                <a href="/" class="btn btn-outline-primary">← Terug naar overzicht</a>
+                <p class="card-text"><strong>Beschrijving:</strong> @product.Description</p>
+                <p class="card-text"><strong>Basisprijs:</strong> @product.BasePrice.ToString("C")</p>
+                <p class="card-text"><strong>Voorraad:</strong> @product.InStock</p>
+
+                @foreach (var option in product.Options.OrderBy(o => o.OptionType))
+                {
+                    if (option.OptionType == "CustomText")
+                    {
+                        var enabled = option.Values.FirstOrDefault(v => v.StartsWith("Enabled="))?.Split('=')[1] == "true";
+                        var maxLengthStr = option.Values.FirstOrDefault(v => v.StartsWith("MaxLength="))?.Split('=')[1];
+                        var priceStr = option.Values.FirstOrDefault(v => v.StartsWith("PricePerCharacter="))?.Split('=')[1];
+
+                        int.TryParse(maxLengthStr, out var maxLength);
+                        decimal.TryParse(priceStr, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var pricePerChar);
+
+                        @if (enabled)
+                        {
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" type="checkbox" id="enableCustomText" @bind="isCustomTextEnabled" />
+                                <label class="form-check-label" for="enableCustomText">Voeg eigen tekst toe</label>
+                            </div>
+                        }
+
+                        @if (enabled && isCustomTextEnabled)
+                        {
+                            <div class="mb-3">
+                                <label class="form-label">Eigen tekst (max @maxLength tekens):</label>
+                                <input class="form-control" @bind="customText" maxlength="@maxLength" />
+                                @if (pricePerChar > 0)
+                                {
+                                    <small class="text-muted">
+                                        @($"+ {(customText.Length * pricePerChar):C} extra")
+                                    </small>
+                                }
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        if (!selectedOptions.ContainsKey(option.OptionType))
+                        {
+                            selectedOptions[option.OptionType] = string.Empty;
+                        }
+
+                        <div class="mb-3">
+                            <label class="form-label">@option.OptionType</label>
+                            <select class="form-select" @bind="selectedOptions[option.OptionType]">
+                                <option value="">-- Selecteer --</option>
+                                @foreach (var val in option.Values)
+                                {
+                                    <option value="@val">@val</option>
+                                }
+                            </select>
+                        </div>
+                    }
+                }
+
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Aantal:</label>
+                    <input type="number" class="form-control" id="quantity" @bind="quantity" min="1" max="@product!.InStock" />
+                </div>
+
+                <button class="btn btn-success" @onclick="AddToCart" disabled="@(!CanAddToCart)">Voeg toe aan winkelmandje</button>
+                <a href="/" class="btn btn-outline-primary ms-2">← Terug naar overzicht</a>
             </div>
         </div>
     }
 </div>
-
-
-
