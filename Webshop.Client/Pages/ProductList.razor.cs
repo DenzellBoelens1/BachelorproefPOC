@@ -12,6 +12,7 @@ namespace Webshop.Client.Pages
         [Inject] public ProductGraphQLService GraphQLService { get; set; } = default!;
         [Inject] public ProductSignalRService SignalRService { get; set; } = default!;
         [Inject] public ProductWebSocketService WebSocketService { get; set; } = default!;
+        [Inject] public NavigationManager NavigationManager { get; set; } = default!;
 
         List<ProductDTO.Index>? products;
         int currentPage = 1;
@@ -19,7 +20,7 @@ namespace Webshop.Client.Pages
         string searchTerm = string.Empty;
 
 
-        public int pageSize
+        public int pageSizeProp
         {
             get => _pageSize;
             set
@@ -27,7 +28,9 @@ namespace Webshop.Client.Pages
                 if (_pageSize != value)
                 {
                     _pageSize = value;
+                    AppState.PageSize = _pageSize;
                     currentPage = 1;
+                    AppState.CurrentPage = currentPage;
                     ResetGraphQLPaging();
                     _ = LoadProducts(); // Fire and forget
                 }
@@ -43,6 +46,14 @@ namespace Webshop.Client.Pages
             AppState.OnMethodChanged += HandleMethodChanged;
             SignalRService.OnProductsReceived += OnSignalRProductsReceived;
 
+            currentPage = AppState.CurrentPage;
+            _pageSize = AppState.PageSize;
+
+            if (AppState.SelectedMethod == "graphql")
+            {
+                lastGraphQLCursor = AppState.LastGraphQLCursor;
+            }
+
             await LoadProducts();
         }
 
@@ -57,6 +68,7 @@ namespace Webshop.Client.Pages
         {
             currentPage = 1;
             ResetGraphQLPaging();
+            AppState.LastGraphQLCursor = null;
             await LoadProducts();
         }
 
@@ -70,25 +82,30 @@ namespace Webshop.Client.Pages
             switch (method)
             {
                 case "rest":
-                    products = await RestService.GetProducts(currentPage, pageSize, searchTerm);
+                    products = await RestService.GetProducts(currentPage, pageSizeProp, searchTerm);
                     break;
 
                 case "graphql":
-                    products = await GraphQLService.GetProductsGraphQL(pageSize, lastGraphQLCursor, searchTerm);
+                    products = await GraphQLService.GetProductsGraphQL(pageSizeProp, lastGraphQLCursor, searchTerm);
                     if (GraphQLService.HasNextPage)
                     {
-                        previousCursors.Push(lastGraphQLCursor);
-                        lastGraphQLCursor = GraphQLService.LastCursor;
+                        AppState.LastGraphQLCursor = lastGraphQLCursor; // sla de cursor op van de huidige pagina
+
+                        if (GraphQLService.HasNextPage)
+                        {
+                            previousCursors.Push(lastGraphQLCursor);
+                            lastGraphQLCursor = GraphQLService.LastCursor;
+                        }
                     }
                     break;
 
                 case "signalr":
                     await SignalRService.StartConnectionAsync();
-                    await SignalRService.RequestProducts(currentPage, pageSize, searchTerm);
+                    await SignalRService.RequestProducts(currentPage, pageSizeProp, searchTerm);
                     return;
 
                 case "websocket":
-                    products = await WebSocketService.GetProducts(currentPage, pageSize, searchTerm);
+                    products = await WebSocketService.GetProducts(currentPage, pageSizeProp, searchTerm);
                     break;
             }
 
@@ -99,6 +116,7 @@ namespace Webshop.Client.Pages
         async Task NextPage()
         {
             currentPage++;
+            AppState.CurrentPage = currentPage;
             await LoadProducts();
         }
 
@@ -110,12 +128,17 @@ namespace Webshop.Client.Pages
                 {
                     previousCursors.Pop();
                     lastGraphQLCursor = previousCursors.Peek();
+                    if (currentPage > 1)
+                        currentPage--;
+
+                    AppState.CurrentPage = currentPage;
                     await LoadProducts();
                 }
             }
             else if (currentPage > 1)
             {
                 currentPage--;
+                AppState.CurrentPage = currentPage;
                 await LoadProducts();
             }
         }
@@ -124,6 +147,7 @@ namespace Webshop.Client.Pages
         {
             currentPage = 1;
             ResetGraphQLPaging();
+            AppState.CurrentPage = currentPage;
             await LoadProducts();
         }
 
@@ -132,6 +156,8 @@ namespace Webshop.Client.Pages
             searchTerm = string.Empty;
             currentPage = 1;
             ResetGraphQLPaging();
+            AppState.LastGraphQLCursor = null;
+            AppState.CurrentPage = currentPage;
             await LoadProducts();
         }
 

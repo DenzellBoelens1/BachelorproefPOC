@@ -1,33 +1,69 @@
-﻿@inject AppState AppState
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@using Webshop.Client.Auth
+@inject AppState AppState
+@inject AuthenticationStateProvider AuthProvider
+@inject TokenService TokenService
+@inject NavigationManager Navigation
+
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
     <div class="container-fluid">
         <span class="navbar-brand">Productenlijst (Vergelijking)</span>
-        <div class="d-flex align-items-center">
-            <select class="form-select me-3" @onchange="OnMethodChange" style="min-width: 150px;">
+        <div class="d-flex align-items-center gap-2">
+            <select class="form-select" @onchange="OnMethodChange" style="min-width: 150px;">
                 <option value="rest">REST</option>
                 <option value="graphql">GraphQL</option>
                 <option value="signalr">SignalR</option>
                 <option value="websocket">WebSocket</option>
             </select>
 
-            <div class="position-relative">
-                <a href="/cart" class="btn btn-outline-light">
-                    🛒 <span class="badge bg-danger">@CartCount</span>
-                </a>
-            </div>
+            <a href="/cart" class="btn btn-outline-light position-relative">
+                🛒 <span class="badge bg-danger">@CartCount</span>
+            </a>
+
+
+            @if (currentAuthState == null)
+            {
+                <span class="text-light">Laden...</span> <!-- of spinner -->
+            }
+            else if (currentAuthState.User.Identity?.IsAuthenticated == true)
+            {
+                <span class="text-light me-2">Welkom, @currentAuthState.User.Identity.Name!</span>
+                <a href="/profile" class="btn btn-outline-light">Profiel</a>
+                <button class="btn btn-outline-light" @onclick="Logout">Logout</button>
+            }
+            else
+            {
+                <a href="/profile" class="btn btn-outline-light">Profiel</a>
+                <a href="/login" class="btn btn-outline-light">Login</a>
+            }
         </div>
+
     </div>
 </nav>
 
 @code {
     private int CartCount => AppState.GetTotalCartItems();
 
-    protected override void OnInitialized()
+
+    private AuthenticationState? currentAuthState;
+
+    protected override async Task OnInitializedAsync()
     {
         AppState.OnCartChanged += OnCartUpdated;
-    }
 
+        AuthProvider.AuthenticationStateChanged += OnAuthenticationStateChanged;
+
+        currentAuthState = await AuthProvider.GetAuthenticationStateAsync();
+
+        StateHasChanged(); 
+    }
+    private async void OnAuthenticationStateChanged(Task<AuthenticationState> task)
+    {
+        currentAuthState = await task;
+
+        await InvokeAsync(StateHasChanged);
+    }
     private void OnCartUpdated()
     {
         InvokeAsync(StateHasChanged);
@@ -42,8 +78,24 @@
         }
     }
 
+    private async Task Logout()
+    {
+        await TokenService.RemoveToken();
+
+        // Trigger nieuwe auth state
+        if (AuthProvider is JwtAuthStateProvider jwtAuth)
+        {
+            jwtAuth.NotifyAuthenticationStateChanged();
+        }
+
+        Navigation.NavigateTo("/login", forceLoad: true);
+    }
+
     public void Dispose()
     {
         AppState.OnCartChanged -= OnCartUpdated;
+
+        if (AuthProvider != null)
+            AuthProvider.AuthenticationStateChanged -= OnAuthenticationStateChanged;
     }
 }

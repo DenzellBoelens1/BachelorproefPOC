@@ -3,48 +3,20 @@
   "WorkspaceRootPath": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{16814927-9121-4670-914D-305DFFB62EED}|Webshop.Backend\\Webshop.Backend.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.backend\\middleware\\productwebsocketmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{16814927-9121-4670-914D-305DFFB62EED}|Webshop.Backend\\Webshop.Backend.csproj|solutionrelative:webshop.backend\\middleware\\productwebsocketmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{16814927-9121-4670-914D-305DFFB62EED}|Webshop.Backend\\Webshop.Backend.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16814927-9121-4670-914D-305DFFB62EED}|Webshop.Backend\\Webshop.Backend.csproj|solutionrelative:webshop.backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.client\\services\\productwebsocketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|solutionrelative:webshop.client\\services\\productwebsocketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{16814927-9121-4670-914D-305DFFB62EED}|Webshop.Backend\\Webshop.Backend.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.backend\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16814927-9121-4670-914D-305DFFB62EED}|Webshop.Backend\\Webshop.Backend.csproj|solutionrelative:webshop.backend\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.client\\pages\\productlist.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|solutionrelative:webshop.client\\pages\\productlist.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{16814927-9121-4670-914D-305DFFB62EED}|Webshop.Backend\\Webshop.Backend.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.backend\\hubs\\producthub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{16814927-9121-4670-914D-305DFFB62EED}|Webshop.Backend\\Webshop.Backend.csproj|solutionrelative:webshop.backend\\hubs\\producthub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.client\\services\\productsignalrservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|solutionrelative:webshop.client\\services\\productsignalrservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{16814927-9121-4670-914D-305DFFB62EED}|Webshop.Backend\\Webshop.Backend.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.backend\\graphql\\query.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{16814927-9121-4670-914D-305DFFB62EED}|Webshop.Backend\\Webshop.Backend.csproj|solutionrelative:webshop.backend\\graphql\\query.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.client\\services\\productgraphqlservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|solutionrelative:webshop.client\\services\\productgraphqlservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{16814927-9121-4670-914D-305DFFB62EED}|Webshop.Backend\\Webshop.Backend.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.backend\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16814927-9121-4670-914D-305DFFB62EED}|Webshop.Backend\\Webshop.Backend.csproj|solutionrelative:webshop.backend\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{16814927-9121-4670-914D-305DFFB62EED}|Webshop.Backend\\Webshop.Backend.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.backend\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{16814927-9121-4670-914D-305DFFB62EED}|Webshop.Backend\\Webshop.Backend.csproj|solutionrelative:webshop.backend\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{16814927-9121-4670-914D-305DFFB62EED}|Webshop.Backend\\Webshop.Backend.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.backend\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{16814927-9121-4670-914D-305DFFB62EED}|Webshop.Backend\\Webshop.Backend.csproj|solutionrelative:webshop.backend\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.client\\services\\productrestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|solutionrelative:webshop.client\\services\\productrestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.client\\pages\\productlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|solutionrelative:webshop.client\\pages\\productlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -59,144 +31,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ProductWebSocketMiddleware.cs",
-              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Backend\\Middleware\\ProductWebSocketMiddleware.cs",
-              "RelativeDocumentMoniker": "Webshop.Backend\\Middleware\\ProductWebSocketMiddleware.cs",
-              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Backend\\Middleware\\ProductWebSocketMiddleware.cs",
-              "RelativeToolTip": "Webshop.Backend\\Middleware\\ProductWebSocketMiddleware.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAzwCkAAAANAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Backend\\Program.cs",
+              "RelativeDocumentMoniker": "Webshop.Backend\\Program.cs",
+              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Backend\\Program.cs",
+              "RelativeToolTip": "Webshop.Backend\\Program.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T15:31:02.924Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProductWebSocketService.cs",
-              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Services\\ProductWebSocketService.cs",
-              "RelativeDocumentMoniker": "Webshop.Client\\Services\\ProductWebSocketService.cs",
-              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Services\\ProductWebSocketService.cs",
-              "RelativeToolTip": "Webshop.Client\\Services\\ProductWebSocketService.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAYwDUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T15:30:00.932Z",
+              "WhenOpened": "2025-04-15T13:12:23.433Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ProductHub.cs",
-              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Backend\\Hubs\\ProductHub.cs",
-              "RelativeDocumentMoniker": "Webshop.Backend\\Hubs\\ProductHub.cs",
-              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Backend\\Hubs\\ProductHub.cs",
-              "RelativeToolTip": "Webshop.Backend\\Hubs\\ProductHub.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBAAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T15:29:35.364Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ProductSignalRService.cs",
-              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Services\\ProductSignalRService.cs",
-              "RelativeDocumentMoniker": "Webshop.Client\\Services\\ProductSignalRService.cs",
-              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Services\\ProductSignalRService.cs",
-              "RelativeToolTip": "Webshop.Client\\Services\\ProductSignalRService.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAgwGUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T15:28:26.57Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Query.cs",
-              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Backend\\GraphQL\\Query.cs",
-              "RelativeDocumentMoniker": "Webshop.Backend\\GraphQL\\Query.cs",
-              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Backend\\GraphQL\\Query.cs",
-              "RelativeToolTip": "Webshop.Backend\\GraphQL\\Query.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T15:27:08.254Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ProductGraphQLService.cs",
-              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Services\\ProductGraphQLService.cs",
-              "RelativeDocumentMoniker": "Webshop.Client\\Services\\ProductGraphQLService.cs",
-              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Services\\ProductGraphQLService.cs",
-              "RelativeToolTip": "Webshop.Client\\Services\\ProductGraphQLService.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAwwDcAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T15:24:39.457Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "ProductService.cs",
               "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Backend\\Services\\ProductService.cs",
               "RelativeDocumentMoniker": "Webshop.Backend\\Services\\ProductService.cs",
               "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Backend\\Services\\ProductService.cs",
               "RelativeToolTip": "Webshop.Backend\\Services\\ProductService.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAuwB8AAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T15:23:44.673Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Backend\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "Webshop.Backend\\Controllers\\ProductController.cs",
-              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Backend\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "Webshop.Backend\\Controllers\\ProductController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T15:23:21.25Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ProductRestService.cs",
-              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Services\\ProductRestService.cs",
-              "RelativeDocumentMoniker": "Webshop.Client\\Services\\ProductRestService.cs",
-              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Services\\ProductRestService.cs",
-              "RelativeToolTip": "Webshop.Client\\Services\\ProductRestService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T15:22:22.978Z",
+              "WhenOpened": "2025-04-15T13:11:26.101Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ProductList.razor.cs",
-              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\ProductList.razor.cs",
-              "RelativeDocumentMoniker": "Webshop.Client\\Pages\\ProductList.razor.cs",
-              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\ProductList.razor.cs",
-              "RelativeToolTip": "Webshop.Client\\Pages\\ProductList.razor.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAIAwwFoAAABBAAAAAAAAAA==",
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Backend\\Services\\OrderService.cs",
+              "RelativeDocumentMoniker": "Webshop.Backend\\Services\\OrderService.cs",
+              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Backend\\Services\\OrderService.cs",
+              "RelativeToolTip": "Webshop.Backend\\Services\\OrderService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T15:18:14.669Z",
+              "WhenOpened": "2025-04-15T13:11:23.054Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ProductList.razor",
-              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\ProductList.razor",
-              "RelativeDocumentMoniker": "Webshop.Client\\Pages\\ProductList.razor",
-              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\ProductList.razor",
-              "RelativeToolTip": "Webshop.Client\\Pages\\ProductList.razor",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAswCIAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-09T15:18:06.477Z",
+              "DocumentIndex": 1,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Backend\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "Webshop.Backend\\Controllers\\OrdersController.cs",
+              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Backend\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "Webshop.Backend\\Controllers\\OrdersController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAUwBEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-15T13:10:31.903Z",
               "EditorCaption": ""
             }
           ]

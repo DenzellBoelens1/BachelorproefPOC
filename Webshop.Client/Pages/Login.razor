@@ -1,0 +1,81 @@
+﻿@page "/login"
+@using Webshop.Client.Auth
+@inject HttpClient Http
+@inject TokenService TokenService
+@inject JwtAuthStateProvider AuthStateProvider
+@inject NavigationManager Nav
+
+<h3>Login</h3>
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger">@errorMessage</div>
+}
+
+<div class="mb-3">
+    <input @bind="username" class="form-control" placeholder="Gebruikersnaam" />
+</div>
+
+<div class="mb-3 input-group">
+    <input @bind="password" class="form-control" placeholder="Wachtwoord" type="@passwordInputType" />
+    <button type="button" class="btn btn-outline-secondary" @onclick="TogglePasswordVisibility">
+        @(showPassword ? "👁️" : "🙈")
+    </button>
+</div>
+
+<button class="btn btn-primary" @onclick="HandleLogin" disabled="@isSubmitting">Inloggen</button>
+
+@if (isSubmitting)
+{
+    <div class="text-muted mt-2">Inloggen...</div>
+}
+
+@code {
+    string username = "";
+    string password = "";
+    string errorMessage = "";
+    bool isSubmitting = false;
+
+    bool showPassword = false;
+    string passwordInputType => showPassword ? "text" : "password";
+
+    void TogglePasswordVisibility()
+    {
+        showPassword = !showPassword;
+    }
+
+    async Task HandleLogin()
+    {
+        errorMessage = "";
+        isSubmitting = true;
+
+        try
+        {
+            var result = await Http.PostAsJsonAsync("api/auth/login", new { Username = username, Password = password });
+
+            if (result.IsSuccessStatusCode)
+            {
+                var content = await result.Content.ReadFromJsonAsync<Dictionary<string, string>>();
+                var token = content["token"];
+
+                await TokenService.SetToken(token);
+
+                AuthStateProvider.NotifyAuthenticationStateChanged();
+
+                Nav.NavigateTo("/", forceLoad: true);
+            }
+            else
+            {
+                errorMessage = "Ongeldige gebruikersnaam of wachtwoord.";
+            }
+        }
+        catch
+        {
+            errorMessage = "Er ging iets mis tijdens het inloggen.";
+        }
+
+        isSubmitting = false;
+    }
+
+
+}

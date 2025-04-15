@@ -2,6 +2,8 @@
 @using Webshop.Client.Services
 
 @page "/"
+@* @page "/?page={page:int}&pageSize={pageSize:int}" *@
+
 
 <div class="container mt-4">
     @if (isLoading)
@@ -19,7 +21,7 @@
             <div class="form-group d-flex align-items-center">
                 <label for="pageSizeSelect" class="me-2 mb-0">Aantal per pagina:</label>
                 <select id="pageSizeSelect" class="form-select form-select-sm"
-                        @bind="pageSize" style="width: auto;">
+                            @bind="pageSizeProp" style="width: auto;">
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="25">25</option>
@@ -51,7 +53,7 @@
                         <td>@product.Name</td>
                         <td>@product.InStock</td>
                         <td>
-                            <a href="/product/@product.ProductID" class="btn btn-sm btn-outline-primary">Details</a>
+                                    <a href="/product/@product.ProductID" class="btn btn-sm btn-outline-primary">Details</a>
                             <a href="/products/@product.ProductID/update-stock" class="btn btn-sm btn-outline-warning">Voorraad</a>
                         </td>
                     </tr>

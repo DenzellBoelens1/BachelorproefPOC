@@ -1,0 +1,63 @@
+﻿@page "/profile"
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using System.Security.Claims
+
+@inject AuthenticationStateProvider AuthProvider
+@inject NavigationManager Navigation
+@attribute [Authorize]
+
+<h3>Mijn Profiel</h3>
+
+@if (isLoading)
+{
+    <p>Even geduld...</p>
+}
+else if (!isAuthenticated)
+{
+    <p>Je wordt doorgestuurd naar de loginpagina...</p>
+}
+else
+{
+    <div class="card p-3">
+        <p><strong>Gebruikersnaam:</strong> @userName</p>
+        <p><strong>Emailadres:</strong> @email</p>
+        <p><strong>Gebruikers-ID:</strong> @userId</p>
+        <button class="btn btn-outline-primary mt-3" @onclick="GaNaarBestellingen">
+            📦 Bekijk mijn bestellingen
+        </button>
+    </div>
+
+}
+
+@code {
+    private string? userName;
+    private string? email;
+    private string? userId;
+    private bool isAuthenticated = false;
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity?.IsAuthenticated != true)
+        {
+            isAuthenticated = false;
+            Navigation.NavigateTo("/login", true);
+            return;
+        }
+
+        isAuthenticated = true;
+        userName = user.Identity?.Name;
+        email = user.FindFirst(c => c.Type == ClaimTypes.Email)?.Value;
+        userId = user.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+        isLoading = false;
+    }
+
+    private void GaNaarBestellingen()
+    {
+        Navigation.NavigateTo("/orders");
+    }
+}

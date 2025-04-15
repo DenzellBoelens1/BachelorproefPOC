@@ -38,6 +38,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FydC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/HoGent24-25/Bachelorproef/PoC/Bachelorproef/WebshopBachelorproef/Webshop.Client/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/HoGent24-25/Bachelorproef/PoC/Bachelorproef/WebshopBachelorproef/Webshop.Client/Pages/Orders.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3JkZXJzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/HoGent24-25/Bachelorproef/PoC/Bachelorproef/WebshopBachelorproef/Webshop.Client/Pages/ProductDetail.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdERldGFpbC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -48,6 +56,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/HoGent24-25/Bachelorproef/PoC/Bachelorproef/WebshopBachelorproef/Webshop.Client/Pages/ProductStockUpdate.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdFN0b2NrVXBkYXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/HoGent24-25/Bachelorproef/PoC/Bachelorproef/WebshopBachelorproef/Webshop.Client/Pages/Profile.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZmlsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/HoGent24-25/Bachelorproef/PoC/Bachelorproef/WebshopBachelorproef/Webshop.Client/_Imports.razor]

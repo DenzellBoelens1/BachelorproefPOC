@@ -1,0 +1,88 @@
+﻿@page "/orders"
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Components.Authorization
+@using Webshop.Shared.DTOs
+
+@inject HttpClient Http
+@inject AuthenticationStateProvider AuthProvider
+
+<h3 class="mb-4">📦 Mijn bestellingen</h3>
+
+@if (isLoading)
+{
+    <div class="alert alert-secondary">Bestellingen worden geladen...</div>
+}
+else if (!orders.Any())
+{
+    <div class="alert alert-info">Je hebt nog geen bestellingen geplaatst.</div>
+}
+else
+{
+    @foreach (var order in orders)
+    {
+        <div class="mb-4">
+            <h5>Bestelling @order.OrderID - @order.OrderDate.ToString("dd/MM/yyyy HH:mm")</h5>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Aantal</th>
+                        <th>Prijs</th>
+                        <th>Opties</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in order.Items)
+                    {
+                        <tr>
+                            <td>@item.ProductID</td>
+                            <td>@item.Quantity</td>
+                            <td>€ @item.Price</td>
+                            <td>
+                                @if (item.Options.Any())
+                                {
+                                    <ul class="mb-0">
+                                        @foreach (var option in item.Options)
+                                        {
+                                            <li><strong>@option.OptionType</strong>: @option.OptionValue</li>
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">Geen opties</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr class="fw-bold">
+                        <td colspan="2">Totaal</td>
+                        <td colspan="2">€ @order.TotalPrice</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    }
+}
+
+@code {
+    private List<OrderDTO> orders = new();
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthProvider.GetAuthenticationStateAsync();
+        var userIdClaim = authState.User.FindFirst(ClaimTypes.NameIdentifier);
+        if (userIdClaim == null)
+        {
+            isLoading = false;
+            return;
+        }
+
+        var userId = userIdClaim.Value;
+        orders = await Http.GetFromJsonAsync<List<OrderDTO>>($"api/orders/user/{userId}") ?? new();
+        isLoading = false;
+    }
+}

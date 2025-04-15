@@ -15,7 +15,7 @@ namespace Webshop.Client.Services
 
         public async Task<List<ProductDTO.Index>> GetProducts(int page, int pageSize, string? search = null)
         {
-            var query = $"products?page={page}&pageSize={pageSize}";
+            var query = $"api/products?page={page}&pageSize={pageSize}";
             if (!string.IsNullOrWhiteSpace(search))
                 query += $"&search={Uri.EscapeDataString(search)}";
 

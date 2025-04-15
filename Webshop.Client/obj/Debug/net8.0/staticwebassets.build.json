@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "w9/MkiWxN28gAADf3LU+Xaz39+t3aI7wf8/L04K2lao=",
+  "Hash": "wEsVMSOnP7ed8hFtD1izWG7cjF/T/UU2oxi14wO2ei4=",
   "Source": "Webshop.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -243,6 +243,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\obj\\Debug\\net8.0\\webcil\\Microsoft.AspNetCore.Authorization.wasm"
+    },
+    {
+      "Identity": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.wasm",
+      "SourceId": "Webshop.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Authorization.wasm",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "WasmResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\obj\\Debug\\net8.0\\webcil\\Microsoft.AspNetCore.Components.Authorization.wasm"
     },
     {
       "Identity": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Forms.wasm",
@@ -6741,6 +6760,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.Extensions.FileProviders.Physical.wasm"
+    },
+    {
+      "Identity": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\obj\\Debug\\net8.0\\compressed\\o9ox9k8hjt.gz",
+      "SourceId": "Webshop.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Authorization.wasm.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.wasm",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.wasm"
     },
     {
       "Identity": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\obj\\Debug\\net8.0\\compressed\\oh6z1cvfu9.gz",

@@ -8,11 +8,13 @@ namespace Webshop.Client.Layout
         public event Action? OnMethodChanged;
         public event Action? OnCartChanged;
 
-        
-
         public Dictionary<CartKey, int> Cart { get; private set; } = new(); // unieke key -> aantal
         public Dictionary<CartKey, decimal> CartPrices { get; private set; } = new();
         public Dictionary<CartKey, string> CartDescriptions { get; private set; } = new(); // tekstuele beschrijving
+        //veiliger hier dan in url als parameter voor de paginatie te onthouden.
+        public string? LastGraphQLCursor { get; set; }
+        public int CurrentPage { get; set; } = 1;
+        public int PageSize { get; set; } = 10;
 
         public void SetMethod(string method)
         {

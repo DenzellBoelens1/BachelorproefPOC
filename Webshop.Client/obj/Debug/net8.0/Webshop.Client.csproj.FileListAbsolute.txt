@@ -1091,3 +1091,8 @@ C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Clie
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Client\obj\Debug\net8.0\Webshop.Client.pdb
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Client\obj\Debug\net8.0\ref\Webshop.Client.dll
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Client\obj\Debug\net8.0\Webshop.Client.sourcelink.json
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Client\bin\Debug\net8.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Authorization.wasm
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Client\bin\Debug\net8.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Authorization.wasm.gz
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Client\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Authorization.dll
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Client\obj\Debug\net8.0\webcil\Microsoft.AspNetCore.Components.Authorization.wasm
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Client\obj\Debug\net8.0\compressed\o9ox9k8hjt.gz
