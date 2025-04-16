@@ -10,6 +10,7 @@
     <div class="container-fluid">
         <span class="navbar-brand">Productenlijst (Vergelijking)</span>
         <div class="d-flex align-items-center gap-2">
+            <a href="/" class="btn btn-outline-light">Producten</a>
             <select class="form-select" @onchange="OnMethodChange" style="min-width: 150px;">
                 <option value="rest">REST</option>
                 <option value="graphql">GraphQL</option>
@@ -24,7 +25,7 @@
 
             @if (currentAuthState == null)
             {
-                <span class="text-light">Laden...</span> <!-- of spinner -->
+                <span class="text-light">Laden...</span> 
             }
             else if (currentAuthState.User.Identity?.IsAuthenticated == true)
             {

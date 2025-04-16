@@ -4,7 +4,7 @@ using System.Text;
 using System.Text.Json;
 using Webshop.Shared.DTOs;
 
-namespace Webshop.Client.Services
+namespace Webshop.Client.Services.Websockets
 {
     public class ProductWebSocketService
     {
@@ -15,7 +15,7 @@ namespace Webshop.Client.Services
             _nav = nav;
         }
 
-        private Uri GetWebSocketUri() => new Uri("ws://localhost:5139/ws");
+        private Uri GetWebSocketUri() => new Uri("ws://localhost:5139/ws/product");
 
 
 

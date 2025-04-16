@@ -2,7 +2,7 @@
 using System.Text.Json;
 using Webshop.Shared.DTOs;
 
-namespace Webshop.Client.Services
+namespace Webshop.Client.Services.GraphQL
 {
     public class ProductGraphQLService
     {

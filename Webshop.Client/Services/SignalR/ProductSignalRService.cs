@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http.Connections;
 using Microsoft.AspNetCore.SignalR.Client;
 using Webshop.Shared.DTOs;
 
-namespace Webshop.Client.Services
+namespace Webshop.Client.Services.SignalR
 {
     public class ProductSignalRService
     {
@@ -27,7 +27,7 @@ namespace Webshop.Client.Services
                 return;
 
             _connection = new HubConnectionBuilder()
-                .WithUrl("http://localhost:5139/productHub", options =>
+                .WithUrl("http://localhost:5139/signalr/product", options =>
                 {
                     options.Transports = HttpTransportType.WebSockets;
                 })

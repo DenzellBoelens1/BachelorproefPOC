@@ -8,6 +8,7 @@ using Webshop.Backend.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Webshop.Backend.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -69,17 +70,29 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseWebSockets();
 app.UseCors(); // ✅ Middleware activeren vóór endpoints
-app.MapHub<ProductHub>("/productHub");
-app.UseWhen(context => !context.Request.Path.StartsWithSegments("/productHub"), appBuilder =>
+
+// SignalR
+app.MapHub<ProductHub>("/signalr/product");
+app.MapHub<OrderHub>("/signalr/order");
+
+// WebSocket middleware
+app.UseWhen(context => context.Request.Path.StartsWithSegments("/ws/product"), appBuilder =>
 {
     appBuilder.UseMiddleware<ProductWebSocketMiddleware>();
+});
+app.UseWhen(context => context.Request.Path.StartsWithSegments("/ws/order"), appBuilder =>
+{
+    appBuilder.UseMiddleware<OrderWebSocketMiddleware>();
 });
 
 app.MapControllers();
 app.MapGraphQL();
 
-app.UseAuthentication();
+
 
 app.Run();

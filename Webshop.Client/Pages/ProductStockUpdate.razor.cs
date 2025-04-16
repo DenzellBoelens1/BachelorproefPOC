@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Components;
 using Webshop.Client.Layout;
-using Webshop.Client.Services;
+using Webshop.Client.Services.GraphQL;
+using Webshop.Client.Services.REST;
+using Webshop.Client.Services.SignalR;
+using Webshop.Client.Services.Websockets;
 using Webshop.Shared.DTOs;
 
 namespace Webshop.Client.Pages

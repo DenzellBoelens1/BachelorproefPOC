@@ -2,7 +2,7 @@
 using System.Net.Http.Json;
 using Webshop.Shared.DTOs;
 
-namespace Webshop.Client.Services
+namespace Webshop.Client.Services.REST
 {
     public class ProductRestService
     {

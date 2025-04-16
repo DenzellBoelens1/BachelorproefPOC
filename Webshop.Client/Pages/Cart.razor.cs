@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Components;
 using Webshop.Client.Layout;
-using Webshop.Client.Services;
+using Webshop.Client.Services.GraphQL;
+using Webshop.Client.Services.REST;
+using Webshop.Client.Services.SignalR;
+using Webshop.Client.Services.Websockets;
 using Webshop.Shared.DTOs;
 using Webshop.Shared.Models;
 
@@ -108,10 +111,49 @@ namespace Webshop.Client.Pages
             Navigation.NavigateTo("/");
         }
 
-        private void RemoveFromCart(CartKey key)
+        private async void RemoveFromCart(CartKey key)
         {
+            var item = cartItems.FirstOrDefault(p => p.Key == key);
+            if (item == null)
+                return;
+
+            // Verhoog de stock terug met het aantal in de cart
+            var updatedStock = item.InStock + item.Quantity;
+
+            var updateDto = new ProductDTO.UpdateStock
+            {
+                ProductID = item.ProductID,
+                InStock = updatedStock
+            };
+
+            var method = AppState.SelectedMethod;
+            try
+            {
+                switch (method)
+                {
+                    case "rest":
+                        await RestService.UpdateStock(updateDto);
+                        break;
+                    case "graphql":
+                        await GraphQLService.UpdateStock(updateDto);
+                        break;
+                    case "signalr":
+                        await SignalRService.UpdateStock(updateDto);
+                        break;
+                    case "websocket":
+                        await WebSocketService.UpdateStock(updateDto);
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Stock update failed: {ex.Message}");
+            }
+
             AppState.RemoveFromCart(key);
             cartItems.RemoveAll(p => p.Key == key);
+
+            StateHasChanged();
         }
 
 

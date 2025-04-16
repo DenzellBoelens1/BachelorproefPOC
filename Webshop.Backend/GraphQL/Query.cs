@@ -32,6 +32,10 @@ namespace Webshop.Backend.GraphQL
 
         public Task<ProductDTO.Details?> GetProductDetails(int id, [Service] ProductService service)
             => service.GetProductDetailsAsync(id);
+
+        [GraphQLName("getOrdersByUser")]
+        public Task<List<OrderDTO>> GetOrdersByUser(int userId, [Service] OrderService service)
+        => service.GetOrdersByUserAsync(userId);
     }
 
     public class Mutation
