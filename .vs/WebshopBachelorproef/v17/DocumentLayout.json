@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.client\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|solutionrelative:webshop.client\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.client\\pages\\profile.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|solutionrelative:webshop.client\\pages\\profile.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.client\\pages\\cart.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|solutionrelative:webshop.client\\pages\\cart.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.client\\pages\\profile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|solutionrelative:webshop.client\\pages\\profile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.client\\pages\\cart.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|solutionrelative:webshop.client\\pages\\cart.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.client\\pages\\orders.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|solutionrelative:webshop.client\\pages\\orders.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.client\\pages\\productdetail.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|solutionrelative:webshop.client\\pages\\productdetail.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.client\\pages\\orders.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|solutionrelative:webshop.client\\pages\\orders.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.client\\pages\\login.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|solutionrelative:webshop.client\\pages\\login.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|c:\\hogent24-25\\bachelorproef\\poc\\bachelorproef\\webshopbachelorproef\\webshop.client\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BF714561-A456-4684-828D-9316F8F9E83F}|Webshop.Client\\Webshop.Client.csproj|solutionrelative:webshop.client\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,53 +39,79 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "NavMenu.razor",
-              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Layout\\NavMenu.razor",
-              "RelativeDocumentMoniker": "Webshop.Client\\Layout\\NavMenu.razor",
-              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Layout\\NavMenu.razor",
-              "RelativeToolTip": "Webshop.Client\\Layout\\NavMenu.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-16T13:19:42.279Z",
+              "Title": "Profile.razor.cs",
+              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\Profile.razor.cs",
+              "RelativeDocumentMoniker": "Webshop.Client\\Pages\\Profile.razor.cs",
+              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\Profile.razor.cs",
+              "RelativeToolTip": "Webshop.Client\\Pages\\Profile.razor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T13:37:01.85Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Cart.razor.cs",
-              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\Cart.razor.cs",
-              "RelativeDocumentMoniker": "Webshop.Client\\Pages\\Cart.razor.cs",
-              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\Cart.razor.cs",
-              "RelativeToolTip": "Webshop.Client\\Pages\\Cart.razor.cs",
-              "ViewState": "AgIAAHEAAAAAAAAAAAAcwHQAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T13:13:49.596Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ProductDetail.razor.cs",
-              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\ProductDetail.razor.cs",
-              "RelativeDocumentMoniker": "Webshop.Client\\Pages\\ProductDetail.razor.cs",
-              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\ProductDetail.razor.cs",
-              "RelativeToolTip": "Webshop.Client\\Pages\\ProductDetail.razor.cs",
-              "ViewState": "AgIAAHAAAAAAAAAAAAAUwJQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T13:11:50.913Z",
+              "Title": "Profile.razor",
+              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\Profile.razor",
+              "RelativeDocumentMoniker": "Webshop.Client\\Pages\\Profile.razor",
+              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\Profile.razor",
+              "RelativeToolTip": "Webshop.Client\\Pages\\Profile.razor",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-23T13:36:56.104Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Cart.razor",
-              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\Cart.razor",
-              "RelativeDocumentMoniker": "Webshop.Client\\Pages\\Cart.razor",
-              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\Cart.razor",
-              "RelativeToolTip": "Webshop.Client\\Pages\\Cart.razor",
-              "ViewState": "AgIAACIAAAAAAAAAAAAcwEgAAAAAAAAAAAAAAA==",
+              "Title": "Orders.razor.cs",
+              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\Orders.razor.cs",
+              "RelativeDocumentMoniker": "Webshop.Client\\Pages\\Orders.razor.cs",
+              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\Orders.razor.cs",
+              "RelativeToolTip": "Webshop.Client\\Pages\\Orders.razor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T13:36:53.567Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Orders.razor",
+              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\Orders.razor",
+              "RelativeDocumentMoniker": "Webshop.Client\\Pages\\Orders.razor",
+              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\Orders.razor",
+              "RelativeToolTip": "Webshop.Client\\Pages\\Orders.razor",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-16T13:11:45.886Z",
+              "WhenOpened": "2025-04-23T13:36:42.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Login.razor.cs",
+              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\Login.razor.cs",
+              "RelativeDocumentMoniker": "Webshop.Client\\Pages\\Login.razor.cs",
+              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\Login.razor.cs",
+              "RelativeToolTip": "Webshop.Client\\Pages\\Login.razor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T13:36:39.324Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Login.razor",
+              "DocumentMoniker": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\Login.razor",
+              "RelativeDocumentMoniker": "Webshop.Client\\Pages\\Login.razor",
+              "ToolTip": "C:\\HoGent24-25\\Bachelorproef\\PoC\\Bachelorproef\\WebshopBachelorproef\\Webshop.Client\\Pages\\Login.razor",
+              "RelativeToolTip": "Webshop.Client\\Pages\\Login.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-23T13:36:33.022Z",
               "EditorCaption": ""
             }
           ]

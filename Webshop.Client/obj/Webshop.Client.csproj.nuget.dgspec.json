@@ -154,6 +154,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "HotChocolate.Abstractions": {
+              "target": "Package",
+              "version": "[15.1.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

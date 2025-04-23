@@ -10,5 +10,7 @@ namespace Webshop.Shared.DTOs
     {
         public int ProductId { get; set; }
         public int Quantity { get; set; }
+
+        public List<OrderItemOptionDTO.Index> Options { get; set; } = new();
     }
 }

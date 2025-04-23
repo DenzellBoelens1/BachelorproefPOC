@@ -1,3 +1,4 @@
+﻿using System.Globalization;
 using Microsoft.AspNetCore.Components;
 using Webshop.Shared.DTOs;
 using Webshop.Client.Layout;
@@ -18,28 +19,32 @@ namespace Webshop.Client.Pages
 
         [Parameter] public int id { get; set; }
 
-        ProductDTO.Details? product;
-        bool isLoading = true;
-        int quantity = 1;
-        string customText = string.Empty;
-        Dictionary<string, string> selectedOptions = new();
-        private bool isCustomTextEnabled = true;
+        protected ProductDTO.Details? product;
+        protected bool isLoading = true;
+        protected int quantity = 1;
+        protected string customText = string.Empty;
+        protected Dictionary<string, string> selectedOptions = new();
+        protected bool isCustomTextEnabled = false;
 
+        // CustomText‐velden
+        protected bool customEnabled;
+        protected int maxLength;
+        protected decimal pricePerChar;
 
-        bool CanAddToCart => product != null && product.InStock >= quantity;
+        // Button‐enable property
+        protected bool CanAddToCart =>
+            product != null
+            && quantity >= 1
+            && quantity <= product.InStock;
 
         protected override async Task OnInitializedAsync()
         {
             AppState.OnMethodChanged += HandleMethodChanged;
             SignalRService.OnProductDetailsReceived += OnSignalRProductReceived;
-
             await LoadProduct();
         }
 
-        private async void HandleMethodChanged()
-        {
-            await LoadProduct();
-        }
+        private async void HandleMethodChanged() => await LoadProduct();
 
         async Task LoadProduct()
         {
@@ -48,95 +53,118 @@ namespace Webshop.Client.Pages
             StateHasChanged();
 
             var method = AppState.SelectedMethod;
-
             switch (method)
             {
                 case "rest":
                     product = await RestService.GetProductDetails(id);
                     break;
-
                 case "graphql":
                     product = await GraphQLService.GetProductDetailsById(id);
                     break;
-
                 case "websocket":
                     product = await WebSocketService.GetProductDetailsById(id);
                     break;
-
                 case "signalr":
                     await SignalRService.StartConnectionAsync();
                     await SignalRService.RequestProductDetailsById(id);
-                    break;
+                    return; // wacht op signalR callback
             }
 
-            // Voor alles behalve signalr: we hebben direct een antwoord
-            if (method != "signalr")
-            {
-                isLoading = false;
-                StateHasChanged();
-            }
+            InitializeCustomTextSettings();
+            isLoading = false;
+            StateHasChanged();
         }
 
         void OnSignalRProductReceived(ProductDTO.Details p)
         {
             product = p;
+            InitializeCustomTextSettings();
             isLoading = false;
             InvokeAsync(StateHasChanged);
         }
 
+        private void InitializeCustomTextSettings()
+        {
+            if (product == null) return;
+            var customGroup = product.Options
+                                    .Where(o => o.OptionType == "CustomText")
+                                    .ToList();
+
+            customEnabled = customGroup.Any(o => o.OptionValue.StartsWith("Enabled="));
+
+            maxLength = customGroup
+                .Where(o => o.OptionValue.StartsWith("MaxLength="))
+                .Select(o => int.TryParse(o.OptionValue.Split('=')[1], out var m) ? m : 0)
+                .FirstOrDefault();
+
+            pricePerChar = customGroup
+                .Where(o => o.OptionValue.StartsWith("PricePerCharacter="))
+                .Select(o => decimal.TryParse(
+                        o.OptionValue.Split('=')[1],
+                        NumberStyles.Any,
+                        CultureInfo.InvariantCulture,
+                        out var c) ? c : 0m)
+                .FirstOrDefault();
+        }
+
         async Task AddToCart()
         {
-            if (product is null || quantity <= 0 || quantity > product.InStock)
+            if (!CanAddToCart || product == null)
                 return;
 
+            // Basisprijs + custom-tekst
             decimal totalUnitPrice = product.BasePrice;
-
-            var customTextOption = product.Options.FirstOrDefault(o => o.OptionType == "CustomText");
-            if (customTextOption != null)
+            if (isCustomTextEnabled && !string.IsNullOrWhiteSpace(customText))
             {
-                var enabled = customTextOption.Values.FirstOrDefault(v => v.StartsWith("Enabled="))?.Split('=')[1] == "true";
-                var priceStr = customTextOption.Values.FirstOrDefault(v => v.StartsWith("PricePerCharacter="))?.Split('=')[1];
+                totalUnitPrice += customText.Length * pricePerChar;
+            }
 
-                if (enabled && isCustomTextEnabled && decimal.TryParse(priceStr, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var pricePerChar))
+            // Optie-ID’s en values
+            var selectedOptionIds = new List<int>();
+            var optionValuesMap = new Dictionary<int, string>();
+
+            // CustomText koppelen: probeer “Input”, anders “Enabled=true”
+            if (isCustomTextEnabled && !string.IsNullOrWhiteSpace(customText))
+            {
+                var textOpt = product.Options
+                    .FirstOrDefault(o => o.OptionType == "CustomText" && o.OptionValue == "Input")
+                    // geen Input? val terug op Enabled=true
+                    ?? product.Options
+                       .FirstOrDefault(o => o.OptionType == "CustomText" && o.OptionValue.StartsWith("Enabled="));
+
+                if (textOpt != null)
                 {
-                    totalUnitPrice += pricePerChar * customText.Length;
+                    selectedOptionIds.Add(textOpt.OptionID);
+                    optionValuesMap[textOpt.OptionID] = customText;
+                }
+                else
+                {
+                    Console.Error.WriteLine("Geen CustomText-optie (Input of Enabled) gevonden.");
                 }
             }
 
-            AppState.AddToCart(product.ProductID, quantity, totalUnitPrice, new Dictionary<string, string>(selectedOptions), customText);
+            // Overige drop-downs
+            foreach (var grp in product.Options
+                                      .Where(o => o.OptionType != "CustomText")
+                                      .GroupBy(o => o.OptionType))
+            {
+                if (selectedOptions.TryGetValue(grp.Key, out var sel)
+                    && int.TryParse(sel, out var optId))
+                {
+                    var chosen = grp.First(o => o.OptionID == optId);
+                    selectedOptionIds.Add(chosen.OptionID);
+                    optionValuesMap[chosen.OptionID] = chosen.OptionValue;
+                }
+            }
 
-            product.InStock -= quantity;
-
-            await UpdateProductStock(product.ProductID, product.InStock);
+            AppState.AddToCart(
+                product.ProductID,
+                quantity,
+                totalUnitPrice,
+                selectedOptionIds,
+                optionValuesMap);
 
             StateHasChanged();
-        }
-
-        private async Task UpdateProductStock(int productId, int newStock)
-        {
-            var updateDto = new ProductDTO.UpdateStock
-            {
-                ProductID = productId,
-                InStock = newStock
-            };
-
-            var method = AppState.SelectedMethod;
-
-            switch (method)
-            {
-                case "rest":
-                    await RestService.UpdateStock(updateDto);
-                    break;
-                case "graphql":
-                    await GraphQLService.UpdateStock(updateDto);
-                    break;
-                case "signalr":
-                    await SignalRService.UpdateStock(updateDto);
-                    break;
-                case "websocket":
-                    await WebSocketService.UpdateStock(updateDto);
-                    break;
-            }
         }
 
         public void Dispose()

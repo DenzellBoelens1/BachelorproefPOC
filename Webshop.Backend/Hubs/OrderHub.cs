@@ -18,5 +18,16 @@ namespace Webshop.Backend.Hubs
             var orders = await _orderService.GetOrdersByUserAsync(userId);
             await Clients.Caller.SendAsync("ReceiveOrders", orders);
         }
+
+        public async Task<OrderDTO.Created> PlaceOrder(OrderDTO.Create dto)
+        {
+            Console.WriteLine(">> PlaceOrder binnengekomen");
+            var created = await _orderService.CreateOrderAsync(dto);
+            // dit persist in de DB
+            await Clients.Caller.SendAsync("OrderPlaced", created);
+            return created;
+
+
+        }
     }
 }

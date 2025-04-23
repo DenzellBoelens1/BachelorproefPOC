@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Webshop.Backend.Data;
 using Webshop.Shared.DTOs;
+using static Webshop.Shared.DTOs.ProductDTO;
+using Webshop.Shared.Models;
 
 namespace Webshop.Backend.Services
 {
@@ -48,27 +50,36 @@ namespace Webshop.Backend.Services
 
         public async Task<ProductDTO.Details?> GetProductDetailsAsync(int id)
         {
-            var product = await _context.Products
-                .Where(p => p.ProductID == id)
-                .Select(p => new ProductDTO.Details
-                {
-                    ProductID = p.ProductID,
-                    Name = p.Name,
-                    Description = p.Description,
-                    BasePrice = p.BasePrice,
-                    InStock = p.InStock,
-                    Options = _context.ProductOptions
-                        .Where(o => o.ProductID == p.ProductID)
-                        .GroupBy(o => o.OptionType)
-                        .Select(g => new ProductDTO.OptionGroup
-                        {
-                            OptionType = g.Key,
-                            Values = g.Select(o => o.OptionValue).ToList()
-                        }).ToList()
-                })
-                .FirstOrDefaultAsync();
+            // 1) Laad eerst het product
+            var productEntity = await _context.Products.FindAsync(id);
+            if (productEntity == null)
+                return null;
 
-            return product;
+            // 2) Maak de DTO aan
+            var dto = new ProductDTO.Details
+            {
+                ProductID = productEntity.ProductID,
+                Name = productEntity.Name,
+                InStock = productEntity.InStock,
+                BasePrice = productEntity.BasePrice,
+                Options = new List<ProductDTO.OptionDetail>()
+            };
+
+            // 3) Voeg alle opties toe
+            var options = await _context.ProductOptions
+                               .Where(po => po.ProductID == id)
+                               .ToListAsync();
+            foreach (var po in options)
+            {
+                dto.Options.Add(new ProductDTO.OptionDetail
+                {
+                    OptionID = po.OptionID,
+                    OptionType = po.OptionType,
+                    OptionValue = po.OptionValue
+                });
+            }
+
+            return dto;
         }
 
         public async Task<ProductDTO.Index?> UpdateStockAsync(int productId, int inStock)

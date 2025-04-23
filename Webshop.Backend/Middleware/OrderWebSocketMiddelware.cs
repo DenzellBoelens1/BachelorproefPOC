@@ -2,6 +2,7 @@
 using System.Text;
 using System.Text.Json;
 using Webshop.Backend.Services;
+using Webshop.Shared.DTOs;
 
 namespace Webshop.Backend.Middleware
 {
@@ -31,8 +32,8 @@ namespace Webshop.Backend.Middleware
 
             if (message.StartsWith("getOrdersByUser"))
             {
-                var parts = message.Split(':');
-                if (parts.Length > 1 && int.TryParse(parts[1], out var userId))
+                var rest = message.Substring("getOrdersByUser:".Length);
+                if (int.TryParse(rest, out var userId))
                 {
                     var orders = await orderService.GetOrdersByUserAsync(userId);
                     response = JsonSerializer.Serialize(orders);
@@ -40,6 +41,30 @@ namespace Webshop.Backend.Middleware
                 else
                 {
                     response = JsonSerializer.Serialize(new { error = "Invalid or missing userId." });
+                }
+            }
+            else if (message.StartsWith("placeOrder"))
+            {
+                // Verwerk het plaatsen van een bestelling
+                try
+                {
+                    // Haal alles ná de eerste "placeOrder:" er wél volledig af
+                    var jsonPayload = message.Substring("placeOrder:".Length);
+                    var orderDto = JsonSerializer.Deserialize<OrderDTO.Create>(jsonPayload);
+
+                    if (orderDto != null)
+                    {
+                        var createdOrder = await orderService.CreateOrderAsync(orderDto);
+                        response = JsonSerializer.Serialize(createdOrder);
+                    }
+                    else
+                    {
+                        response = JsonSerializer.Serialize(new { error = "Invalid order data." });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    response = JsonSerializer.Serialize(new { error = $"Error placing order: {ex.Message}" });
                 }
             }
             else

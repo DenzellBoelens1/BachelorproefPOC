@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Webshop.Shared.Models
 {
-    public record CartKey(int ProductId, string OptionSignature);
+    public record CartKey(int ProductId, IReadOnlyList<int> OptionIds);
 }

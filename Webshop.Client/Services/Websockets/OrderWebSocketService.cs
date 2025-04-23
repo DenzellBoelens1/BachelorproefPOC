@@ -41,20 +41,39 @@ namespace Webshop.Client.Services.Websockets
             return fullMessage.ToString();
         }
 
-        public async Task<List<OrderDTO>> GetOrdersByUser(int userId)
+        public async Task<List<OrderDTO.Index>> GetOrdersByUser(int userId)
         {
             var message = $"getOrdersByUser:{userId}";
             var json = await SendWebSocketMessageAsync(message);
 
             try
             {
-                var orders = JsonSerializer.Deserialize<List<OrderDTO>>(json);
-                return orders ?? new List<OrderDTO>();
+                var orders = JsonSerializer.Deserialize<List<OrderDTO.Index>>(json);
+                return orders ?? new List<OrderDTO.Index>();
             }
             catch (JsonException ex)
             {
                 Console.WriteLine($"JSON parse error: {ex.Message}");
-                return new List<OrderDTO>();
+                return new List<OrderDTO.Index>();
+            }
+        }
+
+        public async Task<OrderDTO.Created> PlaceOrder(OrderDTO.Create orderDto)
+        {
+            // Converteer de bestelling naar JSON
+            var message = JsonSerializer.Serialize(orderDto);
+            var response = await SendWebSocketMessageAsync($"placeOrder:{message}");
+
+            try
+            {
+                // Deserialiseer de reactie om de geplaatste bestelling te verkrijgen
+                var createdOrder = JsonSerializer.Deserialize<OrderDTO.Created>(response);
+                return createdOrder ?? throw new Exception("Er is een fout opgetreden bij het plaatsen van de bestelling.");
+            }
+            catch (JsonException ex)
+            {
+                Console.WriteLine($"JSON parse error: {ex.Message}");
+                throw new Exception("Er is een fout opgetreden bij het verwerken van de bestelling.");
             }
         }
     }

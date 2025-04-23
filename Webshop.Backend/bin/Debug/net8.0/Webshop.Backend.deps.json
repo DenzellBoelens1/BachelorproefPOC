@@ -1144,6 +1144,9 @@
         }
       },
       "Webshop.Shared/1.0.0": {
+        "dependencies": {
+          "HotChocolate.Abstractions": "15.1.3"
+        },
         "runtime": {
           "Webshop.Shared.dll": {
             "assemblyVersion": "1.0.0",

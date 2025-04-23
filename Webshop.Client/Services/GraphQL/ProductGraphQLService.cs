@@ -7,14 +7,13 @@ namespace Webshop.Client.Services.GraphQL
     public class ProductGraphQLService
     {
         private readonly HttpClient _http;
+        public string? LastCursor { get; private set; }
+        public bool HasNextPage { get; private set; }
 
         public ProductGraphQLService(HttpClient http)
         {
             _http = http;
         }
-
-        public string? LastCursor { get; private set; }
-        public bool HasNextPage { get; private set; }
 
         private async Task<JsonElement> SendGraphQLRequestAsync(string query, object? variables = null)
         {
@@ -28,11 +27,8 @@ namespace Webshop.Client.Services.GraphQL
             }
 
             var json = await response.Content.ReadFromJsonAsync<JsonElement>();
-
             if (!json.TryGetProperty("data", out var data))
-            {
                 throw new Exception("GraphQL response does not contain 'data'.");
-            }
 
             return data;
         }
@@ -40,147 +36,139 @@ namespace Webshop.Client.Services.GraphQL
         public async Task<List<ProductDTO.Index>> GetProductsGraphQL(int pageSize, string? cursor = null, string? searchTerm = null)
         {
             var query = @"
-                query ($first: Int!, $after: String, $search: String) {
-                    products(first: $first, after: $after, search: $search) {
-                        totalCount
-                        pageInfo {
-                            endCursor
-                            hasNextPage
-                        }
-                        nodes {
-                            productID
-                            name
-                            inStock
-                        }
+                query($first: Int!, $after: String, $search: String) {
+                  products(first: $first, after: $after, search: $search) {
+                    totalCount
+                    pageInfo {
+                      endCursor
+                      hasNextPage
                     }
-                }";
+                    nodes {
+                      productID
+                      name
+                      inStock
+                    }
+                  }
+                }
+            ";
 
-            var variables = new
+            var vars = new
             {
                 first = pageSize,
                 after = cursor,
                 search = string.IsNullOrWhiteSpace(searchTerm) ? null : searchTerm
             };
 
-            var data = await SendGraphQLRequestAsync(query, variables);
+            var data = await SendGraphQLRequestAsync(query, vars);
             var productsData = data.GetProperty("products");
 
-            // Bewaar paginatie-info
             var pageInfo = productsData.GetProperty("pageInfo");
             LastCursor = pageInfo.GetProperty("endCursor").GetString();
             HasNextPage = pageInfo.GetProperty("hasNextPage").GetBoolean();
 
-            var result = new List<ProductDTO.Index>();
-            foreach (var item in productsData.GetProperty("nodes").EnumerateArray())
-            {
-                result.Add(ParseProduct(item));
-            }
+            var list = new List<ProductDTO.Index>();
+            foreach (var node in productsData.GetProperty("nodes").EnumerateArray())
+                list.Add(ParseProduct(node));
 
-            return result;
+            return list;
         }
 
         public async Task<ProductDTO.Index?> GetProductById(int id)
         {
             var query = @"
-                query ($id: Int!) {
-                    productById(id: $id) {
-                        productID
-                        name
-                        inStock
-                    }
-                }";
+                query($id: Int!) {
+                  productById(id: $id) {
+                    productID
+                    name
+                    inStock
+                  }
+                }
+            ";
 
-            var variables = new { id };
-            var data = await SendGraphQLRequestAsync(query, variables);
-
-            var productElement = data.GetProperty("productById");
-            if (productElement.ValueKind == JsonValueKind.Null) return null;
-
-            return ParseProduct(productElement);
+            var data = await SendGraphQLRequestAsync(query, new { id });
+            var productEl = data.GetProperty("productById");
+            if (productEl.ValueKind == JsonValueKind.Null) return null;
+            return ParseProduct(productEl);
         }
 
         public async Task<ProductDTO.Details?> GetProductDetailsById(int id)
         {
             var query = @"
-        query ($id: Int!) {
-            productDetails(id: $id) {
-                productID
-                name
-                description
-                basePrice
-                inStock
-                options {
-                    optionType
-                    values
+                query($id: Int!) {
+                  productDetails(id: $id) {
+                    productID
+                    name
+                    description
+                    basePrice
+                    inStock
+                    options {
+                      optionID
+                      optionType
+                      optionValue
+                    }
+                  }
                 }
-            }
-        }";
+            ";
 
-            var variables = new { id };
-            var data = await SendGraphQLRequestAsync(query, variables);
-
-            var productElement = data.GetProperty("productDetails");
-            if (productElement.ValueKind == JsonValueKind.Null) return null;
-
-            return ParseDetailedProduct(productElement);
+            var data = await SendGraphQLRequestAsync(query, new { id });
+            var detailsEl = data.GetProperty("productDetails");
+            if (detailsEl.ValueKind == JsonValueKind.Null) return null;
+            return ParseDetailedProduct(detailsEl);
         }
 
         public async Task<ProductDTO.Index?> UpdateStock(ProductDTO.UpdateStock update)
         {
             var mutation = @"
-                mutation ($productID: Int!, $inStock: Int!) {
-                    updateProductStock(productID: $productID, inStock: $inStock) {
-                        productID
-                        name
-                        inStock
-                    }
-                }";
-
-            var variables = new { productID = update.ProductID, inStock = update.InStock };
-            var data = await SendGraphQLRequestAsync(mutation, variables);
-
-            var updatedProduct = data.GetProperty("updateProductStock");
-            return ParseProduct(updatedProduct);
-        }
-
-        private static ProductDTO.Index ParseProduct(JsonElement item)
-        {
-            return new ProductDTO.Index
-            {
-                ProductID = item.GetProperty("productID").GetInt32(),
-                Name = item.GetProperty("name").GetString() ?? string.Empty,
-                InStock = item.GetProperty("inStock").GetInt32()
-            };
-        }
-
-        private static ProductDTO.Details ParseDetailedProduct(JsonElement item)
-        {
-            var details = new ProductDTO.Details
-            {
-                ProductID = item.GetProperty("productID").GetInt32(),
-                Name = item.GetProperty("name").GetString() ?? string.Empty,
-                Description = item.TryGetProperty("description", out var desc) ? desc.GetString() : null,
-                BasePrice = item.TryGetProperty("basePrice", out var price) ? price.GetDecimal() : 0,
-                InStock = item.GetProperty("inStock").GetInt32(),
-                Options = new List<ProductDTO.OptionGroup>()
-            };
-
-            if (item.TryGetProperty("options", out var optionsElem) && optionsElem.ValueKind == JsonValueKind.Array)
-            {
-                foreach (var opt in optionsElem.EnumerateArray())
-                {
-                    var group = new ProductDTO.OptionGroup
-                    {
-                        OptionType = opt.GetProperty("optionType").GetString() ?? string.Empty,
-                        Values = opt.GetProperty("values").EnumerateArray()
-                                    .Select(v => v.GetString() ?? string.Empty)
-                                    .ToList()
-                    };
-                    details.Options.Add(group);
+                mutation($productID: Int!, $inStock: Int!) {
+                  updateProductStock(productID: $productID, inStock: $inStock) {
+                    productID
+                    name
+                    inStock
+                  }
                 }
+            ";
+
+            var data = await SendGraphQLRequestAsync(mutation, new
+            {
+                productID = update.ProductID,
+                inStock = update.InStock
+            });
+
+            var updatedEl = data.GetProperty("updateProductStock");
+            return ParseProduct(updatedEl);
+        }
+
+        private static ProductDTO.Index ParseProduct(JsonElement e) =>
+            new ProductDTO.Index
+            {
+                ProductID = e.GetProperty("productID").GetInt32(),
+                Name = e.GetProperty("name").GetString() ?? "",
+                InStock = e.GetProperty("inStock").GetInt32()
+            };
+
+        private static ProductDTO.Details ParseDetailedProduct(JsonElement e)
+        {
+            var d = new ProductDTO.Details
+            {
+                ProductID = e.GetProperty("productID").GetInt32(),
+                Name = e.GetProperty("name").GetString() ?? "",
+                Description = e.GetProperty("description").GetString() ?? "",
+                BasePrice = e.GetProperty("basePrice").GetDecimal(),
+                InStock = e.GetProperty("inStock").GetInt32(),
+                Options = new List<ProductDTO.OptionDetail>()
+            };
+
+            foreach (var opt in e.GetProperty("options").EnumerateArray())
+            {
+                d.Options.Add(new ProductDTO.OptionDetail
+                {
+                    OptionID = opt.GetProperty("optionID").GetInt32(),
+                    OptionType = opt.GetProperty("optionType").GetString() ?? "",
+                    OptionValue = opt.GetProperty("optionValue").GetString() ?? ""
+                });
             }
 
-            return details;
+            return d;
         }
     }
 }

@@ -2,16 +2,19 @@
 
 namespace Webshop.Client.Layout
 {
+    
+
     public class AppState
     {
         public string SelectedMethod { get; private set; } = "rest";
         public event Action? OnMethodChanged;
         public event Action? OnCartChanged;
 
-        public Dictionary<CartKey, int> Cart { get; private set; } = new(); // unieke key -> aantal
-        public Dictionary<CartKey, decimal> CartPrices { get; private set; } = new();
-        public Dictionary<CartKey, string> CartDescriptions { get; private set; } = new(); // tekstuele beschrijving
-        //veiliger hier dan in url als parameter voor de paginatie te onthouden.
+        public Dictionary<CartKey, int> Cart { get; } = new();
+        public Dictionary<CartKey, decimal> CartPrices { get; } = new();
+        public Dictionary<CartKey, Dictionary<int, string>> CartOptionValues { get; } = new();
+
+        // Veiliger hier dan in URL als parameter voor de paginatie te onthouden.
         public string? LastGraphQLCursor { get; set; }
         public int CurrentPage { get; set; } = 1;
         public int PageSize { get; set; } = 10;
@@ -22,38 +25,33 @@ namespace Webshop.Client.Layout
             OnMethodChanged?.Invoke();
         }
 
-        public void AddToCart(int productId, int quantity, decimal unitPrice, Dictionary<string, string> selectedOptions, string customText)
+        public void AddToCart(
+            int productId,
+            int quantity,
+            decimal price,
+            IReadOnlyList<int> optionIds,
+            Dictionary<int, string> optionValues)
         {
-            string signature = GenerateOptionSignature(selectedOptions, customText);
-            var key = new CartKey(productId, signature);
-
-            if (Cart.ContainsKey(key))
-                Cart[key] += quantity;
-            else
-                Cart[key] = quantity;
-
-            CartPrices[key] = unitPrice;
-
-            // Beschrijving voor UI
-            var descriptionParts = selectedOptions.Select(kvp => $"{kvp.Key}: {kvp.Value}").ToList();
-            if (!string.IsNullOrWhiteSpace(customText))
-                descriptionParts.Add($"Tekst: {customText}");
-
-            CartDescriptions[key] = string.Join(", ", descriptionParts);
-
+            var key = new CartKey(productId, optionIds);
+            Cart[key] = quantity;
+            CartPrices[key] = price;
+            CartOptionValues[key] = optionValues;
             OnCartChanged?.Invoke();
-        }
-        private string GenerateOptionSignature(Dictionary<string, string> selectedOptions, string customText)
-        {
-            var sorted = selectedOptions.OrderBy(kvp => kvp.Key).Select(kvp => $"{kvp.Key}={kvp.Value}");
-            return string.Join("|", sorted) + $"|text={customText}";
         }
 
         public void RemoveFromCart(CartKey key)
         {
-            Cart.Remove(key);
-            CartPrices.Remove(key);
-            CartDescriptions.Remove(key);
+            if (Cart.Remove(key) || CartPrices.Remove(key) || CartOptionValues.Remove(key))
+            {
+                OnCartChanged?.Invoke();
+            }
+        }
+
+        public void ClearCart()
+        {
+            Cart.Clear();
+            CartPrices.Clear();
+            CartOptionValues.Clear();
             OnCartChanged?.Invoke();
         }
 

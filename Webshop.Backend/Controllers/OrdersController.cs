@@ -19,11 +19,19 @@ namespace Webshop.Backend.Controllers
 
 
         [HttpGet("user/{userId}")]
-        public async Task<ActionResult<List<OrderDTO>>> GetOrdersByUser(int userId)
+        public async Task<ActionResult<List<OrderDTO.Index>>> GetOrdersByUser(int userId)
         {
             var orders = await _orderService.GetOrdersByUserAsync(userId);
             return Ok(orders);
         }
+
+        [HttpPost]
+        public async Task<ActionResult<OrderDTO.Created>> CreateOrder([FromBody] OrderDTO.Create dto)
+        {
+            var created = await _orderService.CreateOrderAsync(dto);
+            return Ok(created);
+        }
+
     }
 
 }

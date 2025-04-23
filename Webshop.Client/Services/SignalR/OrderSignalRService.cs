@@ -11,7 +11,8 @@ namespace Webshop.Client.Services.SignalR
         private readonly NavigationManager _nav;
         private bool _eventsRegistered = false;
 
-        public event Action<List<OrderDTO>>? OnOrdersReceived;
+        public event Action<List<OrderDTO.Index>>? OnOrdersReceived;
+        public event Action<OrderDTO.Created>? OnOrderPlaced;
 
         public OrderSignalRService(NavigationManager nav)
         {
@@ -31,11 +32,29 @@ namespace Webshop.Client.Services.SignalR
                 .WithAutomaticReconnect()
                 .Build();
 
-            if (!_eventsRegistered)
+            // **Extra logging en reconnect-events**
+            _connection.Closed += async (error) =>
             {
+                Console.WriteLine($"[SignalR] Connection closed: {error?.Message}");
+                // eventueel: try reconnect
+                await Task.Delay(2000);
+                await StartConnectionAsync();
+            };
+            _connection.Reconnecting += (error) =>
+            {
+                Console.WriteLine($"[SignalR] Reconnecting due to: {error?.Message}");
+                return Task.CompletedTask;
+            };
+            _connection.Reconnected += (connectionId) =>
+            {
+                Console.WriteLine($"[SignalR] Reconnected. New connectionId: {connectionId}");
+                return Task.CompletedTask;
+            };
+
+           
                 RegisterEvents();
-                _eventsRegistered = true;
-            }
+                
+            
 
             await _connection.StartAsync();
         }
@@ -44,9 +63,14 @@ namespace Webshop.Client.Services.SignalR
         {
             if (_connection == null) return;
 
-            _connection.On<List<OrderDTO>>("ReceiveOrders", orders =>
+            _connection.On<List<OrderDTO.Index>>("ReceiveOrders", orders =>
             {
                 OnOrdersReceived?.Invoke(orders);
+            });
+
+            _connection.On<OrderDTO.Created>("OrderPlaced", order =>
+            {
+                OnOrderPlaced?.Invoke(order);
             });
         }
 
@@ -76,6 +100,22 @@ namespace Webshop.Client.Services.SignalR
             {
                 await _connection!.InvokeAsync("GetOrdersByUser", userId);
             }
+        }
+
+        public async Task PlaceOrder(OrderDTO.Create orderDto)
+        {
+            await StartConnectionAsync();
+            if (await CheckConnectionAsync()) ;
+            {
+                // return-value ophalen
+                var created = await _connection!
+                    .InvokeAsync<OrderDTO.Created>("PlaceOrder", orderDto);
+
+                // event vuren zodat de pagina weet dat 'ie gelukt is
+                OnOrderPlaced?.Invoke(created);
+            }
+
+            
         }
 
         public async Task StopConnectionAsync()

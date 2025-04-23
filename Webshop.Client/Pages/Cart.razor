@@ -3,13 +3,13 @@
 
 <h3 class="mb-4">🛒 Mijn winkelmandje</h3>
 
-@if (cartItems.Count == 0)
-{
-    <div class="alert alert-info">Je hebt nog geen producten toegevoegd aan je winkelmandje.</div>
-}
-else if (isLoading)
+@if (isLoading)
 {
     <div class="alert alert-secondary">Producten worden geladen...</div>
+}
+else if (!cartItems.Any())
+{
+    <div class="alert alert-info">Je hebt nog geen producten in je winkelmandje.</div>
 }
 else
 {
@@ -20,7 +20,7 @@ else
                 <th>Aantal</th>
                 <th>Prijs</th>
                 <th>Totaal</th>
-                <th>Voorraad (na bestelling)</th>
+                <th>Voorraad</th>
                 <th>Acties</th>
             </tr>
         </thead>
@@ -29,22 +29,13 @@ else
             {
                 <tr>
                     <td>
-                        <div>@item.Name</div>
-                        @if (!string.IsNullOrWhiteSpace(item.Description))
+                        @item.Name
+                        @if (item.Options.Any())
                         {
-                            <ul class="text-muted small mb-0 ps-3">
-                                @foreach (var part in item.Description.Split(','))
+                            <ul class="small text-muted mb-0">
+                                @foreach (var opt in item.Options)
                                 {
-                                    var trimmed = part.Trim();
-                                    if (!string.IsNullOrWhiteSpace(trimmed) && trimmed.Contains(':'))
-                                    {
-                                        var keyValue = trimmed.Split(':');
-                                        var value = keyValue.Length > 1 ? keyValue[1].Trim() : string.Empty;
-                                        if (!string.IsNullOrWhiteSpace(value))
-                                        {
-                                            <li>@trimmed</li>
-                                        }
-                                    }
+                                    <li>@opt.OptionType: @opt.OptionValue</li>
                                 }
                             </ul>
                         }
@@ -54,7 +45,10 @@ else
                     <td>€ @item.TotalPrice</td>
                     <td>@item.InStock</td>
                     <td>
-                        <button class="btn btn-sm btn-danger" @onclick="() => RemoveFromCart(item.Key)">Verwijder</button>
+                        <button class="btn btn-sm btn-danger"
+                                @onclick="() => RemoveFromCart(item.Key)">
+                            Verwijder
+                        </button>
                     </td>
                 </tr>
             }
@@ -67,6 +61,6 @@ else
         </tfoot>
     </table>
 
-
     <button class="btn btn-outline-primary mt-3" @onclick="GoBack">← Terug naar overzicht</button>
+    <button class="btn btn-success mt-3 ms-2" @onclick="PlaceOrder">🛒 Plaats Bestelling</button>
 }

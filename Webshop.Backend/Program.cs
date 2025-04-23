@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Webshop.Backend.Middleware;
+using Webshop.Shared.DTOs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,6 +56,9 @@ builder.Services.AddScoped<OrderService>();
 builder.Services.AddGraphQLServer()
     .AddQueryType<Query>()
     .AddMutationType<Mutation>()
+    .AddType<InputObjectType<OrderDTO.Create>>()
+    .AddType<InputObjectType<OrderItemDTO.OrderItemCreate>>()
+    .AddType<InputObjectType<OrderItemOptionDTO.OrderItemOptionCreate>>()
     .AddFiltering()
     .AddSorting()
     .AddProjections();

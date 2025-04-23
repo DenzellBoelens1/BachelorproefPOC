@@ -34,7 +34,7 @@ namespace Webshop.Backend.GraphQL
             => service.GetProductDetailsAsync(id);
 
         [GraphQLName("getOrdersByUser")]
-        public Task<List<OrderDTO>> GetOrdersByUser(int userId, [Service] OrderService service)
+        public Task<List<OrderDTO.Index>> GetOrdersByUser(int userId, [Service] OrderService service)
         => service.GetOrdersByUserAsync(userId);
     }
 
@@ -42,5 +42,11 @@ namespace Webshop.Backend.GraphQL
     {
         public Task<ProductDTO.Index?> UpdateProductStock(int productID, int inStock, [Service] ProductService service)
             => service.UpdateStockAsync(productID, inStock);
+
+        [GraphQLName("placeOrder")]
+        public async Task<OrderDTO.Created> PlaceOrder(OrderDTO.Create orderDto, [Service] OrderService service)
+        {
+            return await service.CreateOrderAsync(orderDto);
+        }
     }
 }

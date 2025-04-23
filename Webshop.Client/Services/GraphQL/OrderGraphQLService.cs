@@ -26,78 +26,92 @@ namespace Webshop.Client.Services.GraphQL
 
             var json = await response.Content.ReadFromJsonAsync<JsonElement>();
             if (!json.TryGetProperty("data", out var data))
-            {
                 throw new Exception("GraphQL response does not contain 'data'.");
-            }
 
             return data;
         }
 
-        public async Task<List<OrderDTO>> GetOrdersByUser(int userId)
+        public async Task<List<OrderDTO.Index>> GetOrdersByUser(int userId)
         {
             var query = @"
                 query($userId: Int!) {
-                    getOrdersByUser(userId: $userId) {
-                        orderID
-                        orderDate
-                        totalPrice
-                        items {
-                            productID
-                            quantity
-                            price
-                            options {
-                                optionID
-                                optionType
-                                optionValue
-                            }
-                        }
+                  getOrdersByUser(userId: $userId) {
+                    orderID
+                    orderDate
+                    totalPrice
+                    items {
+                      productID
+                      quantity
+                      price
+                      options {
+                        optionID
+                        optionType
+                        optionValue
+                      }
                     }
-                }";
+                  }
+                }
+            ";
 
-            var variables = new { userId };
-            var data = await SendGraphQLRequestAsync(query, variables);
+            var data = await SendGraphQLRequestAsync(query, new { userId });
+            var ordersEl = data.GetProperty("getOrdersByUser");
 
-            var ordersElement = data.GetProperty("getOrdersByUser");
-
-            var orders = new List<OrderDTO>();
-
-            foreach (var orderEl in ordersElement.EnumerateArray())
+            var list = new List<OrderDTO.Index>();
+            foreach (var el in ordersEl.EnumerateArray())
             {
-                var order = new OrderDTO
+                var order = new OrderDTO.Index
                 {
-                    OrderID = orderEl.GetProperty("orderID").GetInt32(),
-                    OrderDate = orderEl.GetProperty("orderDate").GetDateTime(),
-                    TotalPrice = orderEl.GetProperty("totalPrice").GetDecimal(),
-                    Items = new List<OrderItemDTO>()
+                    OrderID = el.GetProperty("orderID").GetInt32(),
+                    OrderDate = el.GetProperty("orderDate").GetDateTime(),
+                    TotalPrice = el.GetProperty("totalPrice").GetDecimal(),
+                    Items = new List<OrderItemDTO.Index>()
                 };
 
-                foreach (var itemEl in orderEl.GetProperty("items").EnumerateArray())
+                foreach (var itemEl in el.GetProperty("items").EnumerateArray())
                 {
-                    var item = new OrderItemDTO
+                    var item = new OrderItemDTO.Index
                     {
                         ProductID = itemEl.GetProperty("productID").GetInt32(),
                         Quantity = itemEl.GetProperty("quantity").GetInt32(),
                         Price = itemEl.GetProperty("price").GetDecimal(),
-                        Options = new List<OrderItemOptionDTO>()
+                        Options = new List<OrderItemOptionDTO.Index>()
                     };
 
                     foreach (var opt in itemEl.GetProperty("options").EnumerateArray())
                     {
-                        item.Options.Add(new OrderItemOptionDTO
+                        item.Options.Add(new OrderItemOptionDTO.Index
                         {
                             OptionID = opt.GetProperty("optionID").GetInt32(),
-                            OptionType = opt.GetProperty("optionType").GetString() ?? string.Empty,
-                            OptionValue = opt.GetProperty("optionValue").GetString() ?? string.Empty
+                            OptionType = opt.GetProperty("optionType").GetString() ?? "",
+                            OptionValue = opt.GetProperty("optionValue").GetString() ?? ""
                         });
                     }
 
                     order.Items.Add(item);
                 }
 
-                orders.Add(order);
+                list.Add(order);
             }
 
-            return orders;
+            return list;
+        }
+
+        public async Task<OrderDTO.Created> PlaceOrder(OrderDTO.Create orderDto)
+        {
+            var mutation = @"
+                mutation($orderDto: OrderCreateInput!) {
+                  placeOrder(orderDto: $orderDto) {
+                    orderID
+                  }
+                }
+            ";
+
+            // Let op: de GraphQL‑typename van je input is nog steeds 'OrderCreateInput'
+            var data = await SendGraphQLRequestAsync(mutation, new { orderDto });
+            var createdEl = data.GetProperty("placeOrder");
+            var orderId = createdEl.GetProperty("orderID").GetInt32();
+
+            return new OrderDTO.Created { OrderID = orderId };
         }
     }
 }
