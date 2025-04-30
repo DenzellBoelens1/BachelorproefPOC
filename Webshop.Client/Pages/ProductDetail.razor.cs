@@ -1,9 +1,13 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Webshop.Shared.DTOs;
 using Webshop.Client.Layout;
-using Webshop.Client.Services.GraphQL;
 using Webshop.Client.Services.REST;
+using Webshop.Client.Services.GraphQL;
 using Webshop.Client.Services.SignalR;
 using Webshop.Client.Services.Websockets;
 
@@ -11,27 +15,27 @@ namespace Webshop.Client.Pages
 {
     public partial class ProductDetail : ComponentBase, IDisposable
     {
-        [Inject] public AppState AppState { get; set; } = default!;
-        [Inject] public ProductRestService RestService { get; set; } = default!;
-        [Inject] public ProductGraphQLService GraphQLService { get; set; } = default!;
-        [Inject] public ProductSignalRService SignalRService { get; set; } = default!;
-        [Inject] public ProductWebSocketService WebSocketService { get; set; } = default!;
+        [Inject] private ProductRestService RestService { get; set; } = default!;
+        [Inject] private ProductGraphQLService GraphQLService { get; set; } = default!;
+        [Inject] private ProductSignalRService SignalRService { get; set; } = default!;
+        [Inject] private ProductWebSocketService WebSocketService { get; set; } = default!;
+        [Inject] private AppState AppState { get; set; } = default!;
+        [Inject] private NavigationManager Navigation { get; set; } = default!;
 
         [Parameter] public int id { get; set; }
 
         protected ProductDTO.Details? product;
         protected bool isLoading = true;
+
         protected int quantity = 1;
         protected string customText = string.Empty;
         protected Dictionary<string, string> selectedOptions = new();
         protected bool isCustomTextEnabled = false;
 
-        // CustomText‐velden
         protected bool customEnabled;
         protected int maxLength;
         protected decimal pricePerChar;
 
-        // Button‐enable property
         protected bool CanAddToCart =>
             product != null
             && quantity >= 1
@@ -39,138 +43,119 @@ namespace Webshop.Client.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            AppState.OnMethodChanged += HandleMethodChanged;
-            SignalRService.OnProductDetailsReceived += OnSignalRProductReceived;
             await LoadProduct();
         }
 
-        private async void HandleMethodChanged() => await LoadProduct();
-
-        async Task LoadProduct()
+        private async Task LoadProduct()
         {
             isLoading = true;
-            product = null;
-            StateHasChanged();
+            product = await RestService.GetProductDetails(id);
 
-            var method = AppState.SelectedMethod;
-            switch (method)
+            if (product != null)
             {
-                case "rest":
-                    product = await RestService.GetProductDetails(id);
-                    break;
-                case "graphql":
-                    product = await GraphQLService.GetProductDetailsById(id);
-                    break;
-                case "websocket":
-                    product = await WebSocketService.GetProductDetailsById(id);
-                    break;
-                case "signalr":
-                    await SignalRService.StartConnectionAsync();
-                    await SignalRService.RequestProductDetailsById(id);
-                    return; // wacht op signalR callback
-            }
-
-            InitializeCustomTextSettings();
-            isLoading = false;
-            StateHasChanged();
-        }
-
-        void OnSignalRProductReceived(ProductDTO.Details p)
-        {
-            product = p;
-            InitializeCustomTextSettings();
-            isLoading = false;
-            InvokeAsync(StateHasChanged);
-        }
-
-        private void InitializeCustomTextSettings()
-        {
-            if (product == null) return;
-            var customGroup = product.Options
-                                    .Where(o => o.OptionType == "CustomText")
-                                    .ToList();
-
-            customEnabled = customGroup.Any(o => o.OptionValue.StartsWith("Enabled="));
-
-            maxLength = customGroup
-                .Where(o => o.OptionValue.StartsWith("MaxLength="))
-                .Select(o => int.TryParse(o.OptionValue.Split('=')[1], out var m) ? m : 0)
-                .FirstOrDefault();
-
-            pricePerChar = customGroup
-                .Where(o => o.OptionValue.StartsWith("PricePerCharacter="))
-                .Select(o => decimal.TryParse(
+                var cg = product.Options
+                                .Where(o => o.OptionType == "CustomText")
+                                .ToList();
+                customEnabled = cg.Any();
+                maxLength = cg
+                    .Where(o => o.OptionValue.StartsWith("MaxLength=", StringComparison.OrdinalIgnoreCase))
+                    .Select(o => int.TryParse(o.OptionValue.Split('=')[1], out var m) ? m : 0)
+                    .FirstOrDefault();
+                pricePerChar = cg
+                    .Where(o => o.OptionValue.StartsWith("PricePerCharacter=", StringComparison.OrdinalIgnoreCase))
+                    .Select(o => decimal.TryParse(
                         o.OptionValue.Split('=')[1],
                         NumberStyles.Any,
                         CultureInfo.InvariantCulture,
                         out var c) ? c : 0m)
-                .FirstOrDefault();
+                    .FirstOrDefault();
+
+                foreach (var grp in product.Options
+                                         .Where(o => o.OptionType != "CustomText")
+                                         .Select(o => o.OptionType)
+                                         .Distinct())
+                {
+                    selectedOptions[grp] = string.Empty;
+                }
+            }
+
+            isLoading = false;
         }
 
-        async Task AddToCart()
+        protected async Task AddToCart()
         {
             if (!CanAddToCart || product == null)
                 return;
 
-            // Basisprijs + custom-tekst
-            decimal totalUnitPrice = product.BasePrice;
+            // Bouw parameters voor prijsberekening
+            var ids = new List<int>();
+            var values = new Dictionary<int, string>();
+
             if (isCustomTextEnabled && !string.IsNullOrWhiteSpace(customText))
             {
-                totalUnitPrice += customText.Length * pricePerChar;
+                var textOpt = product.Options.First(o => o.OptionType == "CustomText");
+                ids.Add(textOpt.OptionID);
+                values[textOpt.OptionID] = customText;
             }
 
-            // Optie-ID’s en values
-            var selectedOptionIds = new List<int>();
-            var optionValuesMap = new Dictionary<int, string>();
-
-            // CustomText koppelen: probeer “Input”, anders “Enabled=true”
-            if (isCustomTextEnabled && !string.IsNullOrWhiteSpace(customText))
+            foreach (var kv in selectedOptions)
             {
-                var textOpt = product.Options
-                    .FirstOrDefault(o => o.OptionType == "CustomText" && o.OptionValue == "Input")
-                    // geen Input? val terug op Enabled=true
-                    ?? product.Options
-                       .FirstOrDefault(o => o.OptionType == "CustomText" && o.OptionValue.StartsWith("Enabled="));
-
-                if (textOpt != null)
+                if (int.TryParse(kv.Value, out var optId))
                 {
-                    selectedOptionIds.Add(textOpt.OptionID);
-                    optionValuesMap[textOpt.OptionID] = customText;
-                }
-                else
-                {
-                    Console.Error.WriteLine("Geen CustomText-optie (Input of Enabled) gevonden.");
+                    ids.Add(optId);
+                    values[optId] = product.Options.First(o => o.OptionID == optId).OptionValue;
                 }
             }
 
-            // Overige drop-downs
-            foreach (var grp in product.Options
-                                      .Where(o => o.OptionType != "CustomText")
-                                      .GroupBy(o => o.OptionType))
+            // Kies de juiste service op basis van AppState.SelectedMethod
+            PriceDTO priceDto;
+            switch (AppState.SelectedMethod)
             {
-                if (selectedOptions.TryGetValue(grp.Key, out var sel)
-                    && int.TryParse(sel, out var optId))
-                {
-                    var chosen = grp.First(o => o.OptionID == optId);
-                    selectedOptionIds.Add(chosen.OptionID);
-                    optionValuesMap[chosen.OptionID] = chosen.OptionValue;
-                }
+                case "rest":
+                    priceDto = await RestService.CalculatePrice(
+                        product.ProductID, quantity, ids, values,
+                        isCustomTextEnabled ? customText : null);
+                    break;
+
+                case "graphql":
+                    priceDto = await GraphQLService.CalculatePrice(
+                        product.ProductID, quantity, ids, values,
+                        isCustomTextEnabled ? customText : null);
+                    break;
+
+                case "signalr":
+                    await SignalRService.StartConnectionAsync();
+                    priceDto = await SignalRService.CalculatePrice(
+                        product.ProductID, quantity, ids, values,
+                        isCustomTextEnabled ? customText : null);
+                    await SignalRService.StopConnectionAsync();
+                    break;
+
+                case "websocket":
+                    priceDto = await WebSocketService.CalculatePrice(
+                        product.ProductID, quantity, ids, values,
+                        isCustomTextEnabled ? customText : null);
+                    break;
+
+                default:
+                    throw new InvalidOperationException("Ongeselecteerde technologie");
             }
 
+            // Voeg toe aan winkelmandje met door backend berekende totaalprijs
             AppState.AddToCart(
                 product.ProductID,
                 quantity,
-                totalUnitPrice,
-                selectedOptionIds,
-                optionValuesMap);
+                priceDto.TotalPrice,
+                ids,
+                values);
 
-            StateHasChanged();
+            Navigation.NavigateTo("/cart");
         }
 
         public void Dispose()
         {
-            AppState.OnMethodChanged -= HandleMethodChanged;
-            SignalRService.OnProductDetailsReceived -= OnSignalRProductReceived;
+            // eventueel SignalR-verbinding netjes afsluiten
+            _ = SignalRService.StopConnectionAsync();
         }
     }
 }

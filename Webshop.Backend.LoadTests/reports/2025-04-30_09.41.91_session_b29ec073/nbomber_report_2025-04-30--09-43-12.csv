@@ -1,0 +1,2 @@
+test_suite,test_name,scenario,duration,step_name,request_count,ok,failed,rps,min,mean,max,50_percent,75_percent,95_percent,99_percent,std_dev,data_transfer_min_kb,data_transfer_mean_kb,data_transfer_max_kb,data_transfer_all_mb
+nbomber_default_test_suite_name,nbomber_default_test_name,graphql_details_opts0_inclFalse,00:01:00,global information,2999,2999,0,50,4.31,8.4,22.58,7.66,9.84,12.42,13.36,2.09,0.091,0.093,0.095,0.3

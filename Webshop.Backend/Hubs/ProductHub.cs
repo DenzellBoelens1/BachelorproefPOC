@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR;
 using Webshop.Backend.Services;
 using Webshop.Shared.DTOs;
 
@@ -16,7 +19,6 @@ namespace Webshop.Backend.Hubs
         public async Task GetProducts(int page, int pageSize, string? search)
         {
             var products = await _productService.GetProductsAsync(page, pageSize, search);
-
             await Clients.Caller.SendAsync("ReceiveProducts", products);
         }
 
@@ -45,6 +47,26 @@ namespace Webshop.Backend.Hubs
                 await Clients.Caller.SendAsync("ProductNotFound", productId);
             else
                 await Clients.Caller.SendAsync("ReceiveStockUpdated", updated);
+        }
+
+        public async Task CalculatePrice(
+            int productId,
+            int quantity,
+            List<int> selectedOptionIds,
+            Dictionary<int, string> optionValues,
+            string? customText)
+        {
+            var (unit, total) = await _productService.CalculatePriceAsync(
+                productId,
+                quantity,
+                selectedOptionIds,
+                optionValues,
+                customText);
+
+            await Clients.Caller.SendAsync(
+                "ReceivePriceCalculation",
+                new PriceDTO { UnitPrice = unit, TotalPrice = total }
+            );
         }
     }
 }

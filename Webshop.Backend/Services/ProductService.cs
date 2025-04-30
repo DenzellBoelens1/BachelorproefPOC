@@ -3,6 +3,7 @@ using Webshop.Backend.Data;
 using Webshop.Shared.DTOs;
 using static Webshop.Shared.DTOs.ProductDTO;
 using Webshop.Shared.Models;
+using System.Globalization;
 
 namespace Webshop.Backend.Services
 {
@@ -97,6 +98,57 @@ namespace Webshop.Backend.Services
                 InStock = product.InStock
             };
         }
+
+        public async Task<(decimal UnitPrice, decimal TotalPrice)> CalculatePriceAsync(
+            int productId,
+            int quantity,
+            IReadOnlyList<int> optionIds,
+            IReadOnlyDictionary<int, string> optionValues,
+            string? customText)
+        {
+            var details = await GetProductDetailsAsync(productId);
+            if (details is null)
+                throw new ArgumentException("Product niet gevonden", nameof(productId));
+
+            // 1) Basisprijs
+            decimal unitPrice = details.BasePrice;
+
+            // 2) Extra kosten voor opties
+            foreach (var optId in optionIds)
+            {
+                var opt = details.Options.FirstOrDefault(o => o.OptionID == optId);
+                if (opt == null) continue;
+                if (decimal.TryParse(opt.OptionValue,
+                                     NumberStyles.Any,
+                                     CultureInfo.InvariantCulture,
+                                     out var extra))
+                {
+                    unitPrice += extra;
+                }
+            }
+
+            // 3) Extra kosten voor custom tekst
+            if (!string.IsNullOrWhiteSpace(customText))
+            {
+                var textOpt = details.Options
+                    .FirstOrDefault(o => o.OptionType == "CustomText" &&
+                                         o.OptionValue.StartsWith("PricePerCharacter=", StringComparison.OrdinalIgnoreCase));
+                if (textOpt != null)
+                {
+                    var parts = textOpt.OptionValue.Split('=');
+                    if (parts.Length == 2 &&
+                        decimal.TryParse(parts[1], NumberStyles.Any, CultureInfo.InvariantCulture, out var perChar))
+                    {
+                        unitPrice += perChar * customText.Length;
+                    }
+                }
+            }
+
+            // 4) Totale prijs
+            decimal totalPrice = unitPrice * quantity;
+            return (unitPrice, totalPrice);
+        }
+
     }
 }
 

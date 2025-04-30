@@ -1,0 +1,2 @@
+test_suite,test_name,scenario,duration,step_name,request_count,ok,failed,rps,min,mean,max,50_percent,75_percent,95_percent,99_percent,std_dev,data_transfer_min_kb,data_transfer_mean_kb,data_transfer_max_kb,data_transfer_all_mb
+nbomber_default_test_suite_name,nbomber_default_test_name,ws_details_simple_opts0_inclFalse,00:01:00,global information,3000,3000,0,50,6,9.26,21.38,9.01,9.72,11.88,16.04,1.5,0.743,0.764,0.776,2.2

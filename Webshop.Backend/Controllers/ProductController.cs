@@ -45,5 +45,20 @@ namespace Webshop.Backend.Controllers
             if (updated == null) return NotFound();
             return Ok(updated);
         }
+
+        [HttpPost("{productId}/pricing")]
+        public async Task<ActionResult<PriceDTO>> CalculatePrice(
+           int productId,
+           [FromBody] PriceCalculationRequestDTO req)
+        {
+            var (unit, total) = await _productService.CalculatePriceAsync(
+                productId,
+                req.Quantity,
+                req.SelectedOptionIds,
+                req.OptionValues,
+                req.CustomText);
+
+            return Ok(new PriceDTO { UnitPrice = unit, TotalPrice = total });
+        }
     }
 }

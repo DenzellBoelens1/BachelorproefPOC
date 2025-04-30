@@ -1,5 +1,10 @@
-﻿using System.Net.Http.Json;
+﻿// ProductGraphQLService.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Json;
 using System.Text.Json;
+using System.Threading.Tasks;
 using Webshop.Shared.DTOs;
 
 namespace Webshop.Client.Services.GraphQL
@@ -138,11 +143,65 @@ namespace Webshop.Client.Services.GraphQL
             return ParseProduct(updatedEl);
         }
 
+        /// <summary>
+        /// Bereken de prijs in de backend via GraphQL-mutation calculatePrice
+        /// </summary>
+        public async Task<PriceDTO> CalculatePrice(
+            int productId,
+            int quantity,
+            List<int> selectedOptionIds,
+            Dictionary<int, string> optionValues,
+            string? customText)
+        {
+            var mutation = @"
+                mutation CalculatePrice(
+                    $productId: Int!,
+                    $quantity: Int!,
+                    $selectedOptionIds: [Int!]!,
+                    $optionValues: [OptionValueInput!]!,
+                    $customText: String
+                ) {
+                  calculatePrice(
+                    productId: $productId,
+                    quantity: $quantity,
+                    selectedOptionIds: $selectedOptionIds,
+                    optionValues: $optionValues,
+                    customText: $customText
+                  ) {
+                    unitPrice
+                    totalPrice
+                  }
+                }
+            ";
+
+            var optionValuesInput = optionValues
+                .Select(kv => new { key = kv.Key, value = kv.Value })
+                .ToList();
+
+            var variables = new
+            {
+                productId,
+                quantity,
+                selectedOptionIds,
+                optionValues = optionValuesInput,
+                customText
+            };
+
+            var data = await SendGraphQLRequestAsync(mutation, variables);
+            var priceEl = data.GetProperty("calculatePrice");
+
+            return new PriceDTO
+            {
+                UnitPrice = priceEl.GetProperty("unitPrice").GetDecimal(),
+                TotalPrice = priceEl.GetProperty("totalPrice").GetDecimal()
+            };
+        }
+
         private static ProductDTO.Index ParseProduct(JsonElement e) =>
             new ProductDTO.Index
             {
                 ProductID = e.GetProperty("productID").GetInt32(),
-                Name = e.GetProperty("name").GetString() ?? "",
+                Name = e.GetProperty("name").GetString() ?? string.Empty,
                 InStock = e.GetProperty("inStock").GetInt32()
             };
 
@@ -151,8 +210,8 @@ namespace Webshop.Client.Services.GraphQL
             var d = new ProductDTO.Details
             {
                 ProductID = e.GetProperty("productID").GetInt32(),
-                Name = e.GetProperty("name").GetString() ?? "",
-                Description = e.GetProperty("description").GetString() ?? "",
+                Name = e.GetProperty("name").GetString() ?? string.Empty,
+                Description = e.GetProperty("description").GetString() ?? string.Empty,
                 BasePrice = e.GetProperty("basePrice").GetDecimal(),
                 InStock = e.GetProperty("inStock").GetInt32(),
                 Options = new List<ProductDTO.OptionDetail>()
@@ -163,8 +222,8 @@ namespace Webshop.Client.Services.GraphQL
                 d.Options.Add(new ProductDTO.OptionDetail
                 {
                     OptionID = opt.GetProperty("optionID").GetInt32(),
-                    OptionType = opt.GetProperty("optionType").GetString() ?? "",
-                    OptionValue = opt.GetProperty("optionValue").GetString() ?? ""
+                    OptionType = opt.GetProperty("optionType").GetString() ?? string.Empty,
+                    OptionValue = opt.GetProperty("optionValue").GetString() ?? string.Empty
                 });
             }
 

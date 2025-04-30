@@ -48,5 +48,19 @@ namespace Webshop.Backend.GraphQL
         {
             return await service.CreateOrderAsync(orderDto);
         }
+
+        [GraphQLName("calculatePrice")]
+        public async Task<PriceDTO> CalculatePrice(
+            int productId,
+            int quantity,
+            List<int> selectedOptionIds,
+            Dictionary<int, string> optionValues,
+            string? customText,
+            [Service] ProductService service)
+        {
+            var (unit, total) = await service.CalculatePriceAsync(
+                productId, quantity, selectedOptionIds, optionValues, customText);
+            return new PriceDTO { UnitPrice = unit, TotalPrice = total };
+        }
     }
 }

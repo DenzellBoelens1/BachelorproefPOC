@@ -1,19 +1,11 @@
 ﻿@page "/product/{id:int}"
-@using System.Globalization
-@using Webshop.Shared.DTOs
-@using Webshop.Client.Layout
-@using Webshop.Client.Services.GraphQL
-@using Webshop.Client.Services.REST
-@using Webshop.Client.Services.SignalR
-@using Webshop.Client.Services.Websockets
-@implements IDisposable
 
 <div class="container mt-5">
     <h2 class="mb-4">Productdetails</h2>
 
     @if (isLoading)
     {
-        <div class="alert alert-info">Bezig met laden...</div>
+        <div class="alert alert-info">Bezig met laden…</div>
     }
     else if (product == null)
     {
@@ -38,22 +30,14 @@
                         <label class="form-check-label">Voeg eigen tekst toe</label>
                     </div>
                 }
+
                 @if (customEnabled && isCustomTextEnabled)
                 {
                     <div class="mb-3">
-                        <label class="form-label">
-                            Eigen tekst (max @maxLength tekens):
-                        </label>
+                        <label class="form-label">Eigen tekst (max @maxLength tekens):</label>
                         <input class="form-control"
                                @bind="customText"
                                maxlength="@maxLength" />
-                        @if (pricePerChar > 0)
-                        {
-                            <small class="text-muted">
-                                + @(customText.Length * pricePerChar).ToString("C")
-                                extra
-                            </small>
-                        }
                     </div>
                 }
 
@@ -62,30 +46,22 @@
                .Where(o => o.OptionType != "CustomText")
                .GroupBy(o => o.OptionType))
                 {
-                    if (!selectedOptions.ContainsKey(grp.Key))
-                    {
-                        selectedOptions[grp.Key] = string.Empty;
-                    }
                     <div class="mb-3">
                         <label class="form-label">@grp.Key</label>
-                        <select class="form-select"
-                                @bind="selectedOptions[grp.Key]">
+                        <select class="form-select" @bind="selectedOptions[grp.Key]">
                             <option value="">-- Selecteer --</option>
-                            @foreach (var detail in grp)
+                            @foreach (var opt in grp)
                             {
-                                <option value="@detail.OptionID">
-                                    @detail.OptionValue
-                                </option>
+                                <option value="@opt.OptionID">@opt.OptionValue</option>
                             }
                         </select>
                     </div>
                 }
 
                 <div class="mb-3">
-                    <label for="quantity" class="form-label">Aantal:</label>
+                    <label class="form-label">Aantal:</label>
                     <input type="number"
                            class="form-control"
-                           id="quantity"
                            @bind="quantity"
                            min="1"
                            max="@product.InStock" />
@@ -93,11 +69,11 @@
 
                 <button class="btn btn-success"
                         @onclick="AddToCart"
-                        disabled="@(!CanAddToCart)">
+                        >
                     Voeg toe aan winkelmandje
                 </button>
-                <a href="/" class="btn btn-outline-primary ms-2">
-                    ← Terug naar overzicht
+                <a class="btn btn-outline-primary ms-2" href="/cart">
+                    Naar winkelmandje
                 </a>
             </div>
         </div>

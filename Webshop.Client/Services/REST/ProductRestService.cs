@@ -55,5 +55,21 @@ namespace Webshop.Client.Services.REST
 
             return await response.Content.ReadFromJsonAsync<ProductDTO.Index>();
         }
+
+        public async Task<PriceDTO> CalculatePrice(int productId,
+    int quantity, List<int> optionIds, Dictionary<int, string> optionValues, string? customText)
+        {
+            var req = new PriceCalculationRequestDTO
+            {
+                Quantity = quantity,
+                SelectedOptionIds = optionIds,
+                OptionValues = optionValues,
+                CustomText = customText
+            };
+            var res = await _http.PostAsJsonAsync(
+                $"/api/products/{productId}/pricing", req);
+            res.EnsureSuccessStatusCode();
+            return await res.Content.ReadFromJsonAsync<PriceDTO>()!;
+        }
     }
 }
