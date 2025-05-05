@@ -1,5 +1,4 @@
-﻿// WebSocketStockUpdate.cs
-using System;
+﻿using System;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
@@ -22,24 +21,22 @@ namespace Webshop.Backend.LoadTests
                 using var ws = new ClientWebSocket();
                 await ws.ConnectAsync(new Uri("ws://localhost:5139/ws/product"), CancellationToken.None);
 
-                // Verzenden van updateStock-verzoek
-                var msgBytes = Encoding.UTF8.GetBytes($"updateStock:{id}:{stock}");
+                var msg = $"updateStock:{id}:{stock}";
+                var sendBytes = Encoding.UTF8.GetByteCount(msg);
                 await ws.SendAsync(
-                    new ArraySegment<byte>(msgBytes),
+                    new ArraySegment<byte>(Encoding.UTF8.GetBytes(msg)),
                     WebSocketMessageType.Text,
-                    endOfMessage: true,
+                    true,
                     CancellationToken.None
                 );
 
-                // Ontvangen van antwoord
                 var buffer = new byte[4096];
                 var result = await ws.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
-                var receivedBytes = result.Count;
+                var recvBytes = result.Count;
 
                 await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "done", CancellationToken.None);
 
-                // Meet de payload-grootte
-                return Response.Ok(sizeBytes: receivedBytes);
+                return Response.Ok(sizeBytes: sendBytes + recvBytes);
             })
             .WithLoadSimulations(
                 Simulation.Inject(

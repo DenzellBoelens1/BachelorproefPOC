@@ -1,7 +1,8 @@
-﻿// GraphQLStockUpdate.cs
-using System;
+﻿using System;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using NBomber.CSharp;
 using NBomber.Contracts;
@@ -10,7 +11,6 @@ namespace Webshop.Backend.LoadTests
 {
     public static class GraphQLStockUpdate
     {
-        // Hergebruik een statische HttpClient voor connectie-efficiëntie
         private static readonly HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:5139") };
 
         public static ScenarioProps CreateScenario()
@@ -33,15 +33,17 @@ namespace Webshop.Backend.LoadTests
                     variables = new { id, stock }
                 };
 
+                var reqJson = JsonSerializer.Serialize(payload);
+                var reqBytes = Encoding.UTF8.GetByteCount(reqJson);
+
                 try
                 {
                     var res = await client.PostAsJsonAsync("/graphql", payload);
                     if (!res.IsSuccessStatusCode)
                         return Response.Fail();
 
-                    // Meet de grootte van de response body voor datatransfer
-                    var bytes = await res.Content.ReadAsByteArrayAsync();
-                    return Response.Ok(sizeBytes: bytes.Length);
+                    var resBytes = (await res.Content.ReadAsByteArrayAsync()).Length;
+                    return Response.Ok(sizeBytes: reqBytes + resBytes);
                 }
                 catch
                 {

@@ -1,0 +1,16 @@
+2025-05-02 14:02:18.434 +02:00 [INF] [ThreadId:1] NBomber 4.1.2 started a new session: 2025-05-02_12.02.23_session_fbea8474
+2025-05-02 14:02:18.498 +02:00 [INF] [ThreadId:1] NBomber started as single node
+2025-05-02 14:02:18.556 +02:00 [INF] [ThreadId:1] Reports folder: C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.LoadTests\bin\Debug\net8.0\reports/transport
+2025-05-02 14:02:18.562 +02:00 [INF] [ThreadId:1] Plugins: no plugins were loaded
+2025-05-02 14:02:18.566 +02:00 [INF] [ThreadId:1] Reporting sinks: no reporting sinks were loaded
+2025-05-02 14:02:18.567 +02:00 [INF] [ThreadId:1] Starting init...
+2025-05-02 14:02:18.605 +02:00 [INF] [ThreadId:1] Target scenarios: signalr_ws_transport, signalr_sse_transport
+2025-05-02 14:02:18.615 +02:00 [INF] [ThreadId:1] Init finished
+2025-05-02 14:02:18.673 +02:00 [INF] [ThreadId:1] Starting warm up...
+2025-05-02 14:02:18.674 +02:00 [INF] [ThreadId:1] Warm up for scenarios: signalr_ws_transport, signalr_sse_transport
+2025-05-02 14:02:37.755 +02:00 [INF] [ThreadId:18] Starting bombing...
+2025-05-02 14:04:40.887 +02:00 [INF] [ThreadId:17] Stopping scenarios...
+2025-05-02 14:04:40.897 +02:00 [INF] [ThreadId:17] Start cleaning scenario: signalr_ws_transport
+2025-05-02 14:04:40.915 +02:00 [INF] [ThreadId:16] Start cleaning scenario: signalr_sse_transport
+2025-05-02 14:04:40.923 +02:00 [INF] [ThreadId:11] Calculating final statistics...
+2025-05-02 14:04:41.230 +02:00 [INF] [ThreadId:11] Reports saved in folder: C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.LoadTests\reports\transport

@@ -1,7 +1,7 @@
 ﻿using System;
 using NBomber.CSharp;
 using NBomber.Contracts;
-using Webshop.Backend.LoadTests.priceTest;
+using Webshop.Backend.LoadTests.priceTest; // or wherever your scenarios live
 
 namespace Webshop.Backend.LoadTests
 {
@@ -9,49 +9,89 @@ namespace Webshop.Backend.LoadTests
     {
         static void Main(string[] args)
         {
-            // 1) Stock update scenarios
-            var restStock = RestStockUpdate.CreateScenario();
-            var gqlStock = GraphQLStockUpdate.CreateScenario();
-            var signalRStock = SignalRStockUpdate.CreateScenario();
-            var wsStock = WebSocketStockUpdate.CreateScenario();
+            //// --- 1) STOCK UPDATE SCENARIOS ---
+            //var restStock = RestStockUpdate.CreateScenario();
+            //var gqlStock = GraphQLStockUpdate.CreateScenario();
+            //var signalRStock = SignalRStockUpdate.CreateScenario();
+            //var wsStock = WebSocketStockUpdate.CreateScenario();
 
-            // 2) Complexity scenarios
-            var restSimple = RestConfigComplexity.CreateScenario(0, false);
-            var restMedium = RestConfigComplexity.CreateScenario(5, true);
-            var restComplex = RestConfigComplexity.CreateScenario(20, true);
+            //NBomberRunner
+            //    .RegisterScenarios(restStock, gqlStock, signalRStock, wsStock)
+            //    .WithReportFileName("stock_update_report")
+            //    .WithReportFolder("./reports/stock")
+            //    .Run();
 
-            var gqlSimple = GraphQLConfigComplexity.CreateScenario(0, false);
-            var gqlMedium = GraphQLConfigComplexity.CreateScenario(5, true);
-            var gqlComplex = GraphQLConfigComplexity.CreateScenario(20, true);
+            //// --- 2) PRICE CALCULATION SCENARIOS ---
+            //var restPrice = PriceLoadTestScenarios.RestPriceScenario();
+            //var gqlPrice = PriceLoadTestScenarios.GraphQLPriceScenario();
+            //var signalRPrice = PriceLoadTestScenarios.SignalRPriceScenario();
+            //var wsPrice = PriceLoadTestScenarios.WebSocketPriceScenario();
 
-            var wsScenario = WebSocketConfigComplexity.CreateScenario(0, false);
-            var signalrScenario = SignalRConfigComplexity.CreateScenario(0, false);
+            //NBomberRunner
+            //    .RegisterScenarios(restPrice, gqlPrice, signalRPrice, wsPrice)
+            //    .WithReportFileName("price_calculation_report")
+            //    .WithReportFolder("./reports/price")
+            //    .Run();
+
+            //// --- 3) CONFIGURATION COMPLEXITY SCENARIOS ---
+            //var restSimple = RestConfigComplexity.CreateScenario(0, false);
+            //var restMedium = RestConfigComplexity.CreateScenario(5, true);
+            //var restComplex = RestConfigComplexity.CreateScenario(20, true);
+
+            //var gqlSimple = GraphQLConfigComplexity.CreateScenario(0, false);
+            //var gqlMedium = GraphQLConfigComplexity.CreateScenario(5, true);
+            //var gqlComplex = GraphQLConfigComplexity.CreateScenario(20, true);
+
+            //var wsConfig = WebSocketConfigComplexity.CreateScenario(0, false);
+            //var signalRConfig = SignalRConfigComplexity.CreateScenario(0, false);
+
+            //NBomberRunner
+            //    .RegisterScenarios(
+            //        restSimple,
+            //        restMedium,
+            //        restComplex,
+            //        gqlSimple,
+            //        gqlMedium,
+            //        gqlComplex,
+            //        wsConfig,
+            //        signalRConfig
+            //    )
+            //    .WithReportFileName("config_complexity_report")
+            //    .WithReportFolder("./reports/config")
+            //    .Run();
 
 
-            // Run sequentially
-            //NBomberRunner.RegisterScenarios(restStock).Run();
-            //NBomberRunner.RegisterScenarios(gqlStock).Run();
-            //NBomberRunner.RegisterScenarios(signalRStock).Run();
-            //NBomberRunner.RegisterScenarios(wsStock).Run();
+            //// --- 4) TRANSPORT COMPARISON SCENARIOS ---
+            //var wsTransportScenario = SignalRTransportComparison.CreateWebSocketScenario();
+            //var sseTransportScenario = SignalRTransportComparison.CreateSseScenario();
 
-            //NBomberRunner.RegisterScenarios(restSimple).Run();
-            //NBomberRunner.RegisterScenarios(restMedium).Run();
-            //NBomberRunner.RegisterScenarios(restComplex).Run();
+            //NBomberRunner
+            //    .RegisterScenarios(wsTransportScenario, sseTransportScenario)
+            //    .WithReportFileName("transport_comparison_report")
+            //    .WithReportFolder("reports/transport")
+            //    .Run();
 
-            //NBomberRunner.RegisterScenarios(gqlSimple).Run();
-            //NBomberRunner.RegisterScenarios(gqlMedium).Run();
-            //NBomberRunner.RegisterScenarios(gqlComplex).Run();
+            //// --- 5) GRAPHQL INLINE vs PERSISTED QUERY SCENARIOS ---
+            //var inlineGqlScenario = GraphQLPersistedQueryScenario.CreateInlineQueryScenario();
 
-            //NBomberRunner.RegisterScenarios(wsScenario).Run();
-            //NBomberRunner.RegisterScenarios(signalrScenario).Run();
+            //NBomberRunner
+            //    .RegisterScenarios(
+            //        inlineGqlScenario
+
+            //    )
+            //    .WithReportFileName("graphql_query_report")
+            //    .WithReportFolder("reports/graphql")
+            //    .Run();
+
+
+            // --- 6) MIXED WORKLOAD SCENARIOS ---
+            var readScenario = MixedWorkloadScenario.CreateReadScenario();
+            var writeScenario = MixedWorkloadScenario.CreateWriteScenario();
 
             NBomberRunner
-                .RegisterScenarios(
-                    PriceLoadTestScenarios.RestPriceScenario(),
-                    PriceLoadTestScenarios.GraphQLPriceScenario(),
-                    PriceLoadTestScenarios.SignalRPriceScenario(),
-                    PriceLoadTestScenarios.WebSocketPriceScenario()
-                )
+                .RegisterScenarios(readScenario, writeScenario)
+                .WithReportFileName("mixed_workload_report")
+                .WithReportFolder("./reports/mixed")
                 .Run();
         }
     }

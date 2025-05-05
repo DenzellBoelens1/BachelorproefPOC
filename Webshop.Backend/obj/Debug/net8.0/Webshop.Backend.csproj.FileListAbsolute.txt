@@ -1,10 +1,3 @@
-C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.csproj.AssemblyReference.cache
-C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.GeneratedMSBuildEditorConfig.editorconfig
-C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.AssemblyInfoInputs.cache
-C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.AssemblyInfo.cs
-C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.csproj.CoreCompileInputs.cache
-C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.MvcApplicationPartsAssemblyInfo.cs
-C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.MvcApplicationPartsAssemblyInfo.cache
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\bin\Debug\net8.0\appsettings.Development.json
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\bin\Debug\net8.0\appsettings.json
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\bin\Debug\net8.0\Webshop.Backend.exe
@@ -51,6 +44,7 @@ C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Back
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\bin\Debug\net8.0\HotChocolate.Utilities.dll
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\bin\Debug\net8.0\HotChocolate.Utilities.DependencyInjection.dll
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\bin\Debug\net8.0\HotChocolate.Validation.dll
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
@@ -112,6 +106,14 @@ C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Back
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\bin\Debug\net8.0\Webshop.Shared.dll
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\bin\Debug\net8.0\Webshop.Shared.pdb
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.csproj.AssemblyReference.cache
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.GeneratedMSBuildEditorConfig.editorconfig
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.AssemblyInfoInputs.cache
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.AssemblyInfo.cs
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.csproj.CoreCompileInputs.cache
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.MvcApplicationPartsAssemblyInfo.cs
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.MvcApplicationPartsAssemblyInfo.cache
+C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.sourcelink.json
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\staticwebassets.build.json
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\staticwebassets.development.json
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\staticwebassets\msbuild.Webshop.Backend.Microsoft.AspNetCore.StaticWebAssets.props
@@ -126,5 +128,3 @@ C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Back
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.pdb
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.genruntimeconfig.cache
 C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\ref\Webshop.Backend.dll
-C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\obj\Debug\net8.0\Webshop.Backend.sourcelink.json
-C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

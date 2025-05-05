@@ -11,8 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- GraphQL runtime -->
+    <PackageReference Include="GreenDonut" Version="15.1.3" />
     <PackageReference Include="HotChocolate.AspNetCore" Version="15.1.3" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.3" />
+    
+
+    
+    <!-- GraphQL runtime -->
     <PackageReference Include="HotChocolate.Execution" Version="15.1.3" />
     <PackageReference Include="HotChocolate.Abstractions" Version="15.1.3" />
     <PackageReference Include="HotChocolate.Execution.Abstractions" Version="15.1.3" />
@@ -20,9 +25,12 @@
     <!-- Web and SignalR testing -->
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.0" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.3" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.3" />
 
     <!-- Test framework -->
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.3" />
+    <PackageReference Include="Moq" Version="4.20.72" />
     <PackageReference Include="xunit" Version="2.4.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -32,6 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Webshop.Backend\Webshop.Backend.csproj" />
     <ProjectReference Include="..\Webshop.Shared\Webshop.Shared.csproj" />
   </ItemGroup>
 

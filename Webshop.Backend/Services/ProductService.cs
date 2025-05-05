@@ -51,36 +51,22 @@ namespace Webshop.Backend.Services
 
         public async Task<ProductDTO.Details?> GetProductDetailsAsync(int id)
         {
-            // 1) Laad eerst het product
-            var productEntity = await _context.Products.FindAsync(id);
-            if (productEntity == null)
-                return null;
-
-            // 2) Maak de DTO aan
-            var dto = new ProductDTO.Details
-            {
-                ProductID = productEntity.ProductID,
-                Name = productEntity.Name,
-                InStock = productEntity.InStock,
-                BasePrice = productEntity.BasePrice,
-                Options = new List<ProductDTO.OptionDetail>()
-            };
-
-            // 3) Voeg alle opties toe
-            var options = await _context.ProductOptions
-                               .Where(po => po.ProductID == id)
-                               .ToListAsync();
-            foreach (var po in options)
-            {
-                dto.Options.Add(new ProductDTO.OptionDetail
+            return await _context.Products
+                .Where(p => p.ProductID == id)
+                .Select(p => new ProductDTO.Details
                 {
-                    OptionID = po.OptionID,
-                    OptionType = po.OptionType,
-                    OptionValue = po.OptionValue
-                });
-            }
-
-            return dto;
+                    ProductID = p.ProductID,
+                    Name = p.Name,
+                    InStock = p.InStock,
+                    BasePrice = p.BasePrice,
+                    Options = p.Options.Select(po => new ProductDTO.OptionDetail
+                    {
+                        OptionID = po.OptionID,
+                        OptionType = po.OptionType,
+                        OptionValue = po.OptionValue
+                    }).ToList()
+                })
+                .FirstOrDefaultAsync();
         }
 
         public async Task<ProductDTO.Index?> UpdateStockAsync(int productId, int inStock)

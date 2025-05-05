@@ -1,0 +1,76 @@
+> test info
+
+test suite: `nbomber_default_test_suite_name`
+
+test name: `nbomber_default_test_name`
+
+session id: `2025-05-05_12.08.14_session_3cc502cb`
+
+> scenario stats
+
+scenario: `mixed_reads`
+
+  - ok count: `6900`
+
+  - fail count: `0`
+
+  - all data: `3,2` MB
+
+  - duration: `00:01:30`
+
+load simulations:
+
+  - `inject`, rate: `70`, interval: `00:00:01`, during: `00:01:00`
+
+  - `inject`, rate: `90`, interval: `00:00:01`, during: `00:00:30`
+
+|step|ok stats|
+|---|---|
+|name|`global information`|
+|request count|all = `6900`, ok = `6900`, RPS = `76,7`|
+|latency|min = `1,17`, mean = `1,95`, max = `20,12`, StdDev = `0,52`|
+|latency percentile|p50 = `1,85`, p75 = `2,07`, p95 = `2,76`, p99 = `3,58`|
+|data transfer|min = `0,476` KB, mean = `0,479` KB, max = `0,481` KB, all = `3,2` MB|
+
+
+> status codes for scenario: `mixed_reads`
+
+|status code|count|message|
+|---|---|---|
+|no status|6900||
+
+
+> scenario stats
+
+scenario: `mixed_writes`
+
+  - ok count: `3000`
+
+  - fail count: `0`
+
+  - all data: `0,1` MB
+
+  - duration: `00:01:30`
+
+load simulations:
+
+  - `inject`, rate: `30`, interval: `00:00:01`, during: `00:01:00`
+
+  - `inject`, rate: `40`, interval: `00:00:01`, during: `00:00:30`
+
+|step|ok stats|
+|---|---|
+|name|`global information`|
+|request count|all = `3000`, ok = `3000`, RPS = `33,3`|
+|latency|min = `1,56`, mean = `3,33`, max = `16,53`, StdDev = `0,99`|
+|latency percentile|p50 = `3,01`, p75 = `3,64`, p95 = `5,08`, p99 = `6,28`|
+|data transfer|min = `0,045` KB, mean = `0,048` KB, max = `0,051` KB, all = `0,1` MB|
+
+
+> status codes for scenario: `mixed_writes`
+
+|status code|count|message|
+|---|---|---|
+|no status|3000||
+
+

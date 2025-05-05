@@ -1,0 +1,136 @@
+> test info
+
+test suite: `nbomber_default_test_suite_name`
+
+test name: `nbomber_default_test_name`
+
+session id: `2025-05-02_11.29.44_session_464e47b2`
+
+> scenario stats
+
+scenario: `rest_calculate_price`
+
+  - ok count: `3000`
+
+  - fail count: `0`
+
+  - all data: `0,1` MB
+
+  - duration: `00:01:00`
+
+load simulations:
+
+  - `inject`, rate: `50`, interval: `00:00:01`, during: `00:01:00`
+
+|step|ok stats|
+|---|---|
+|name|`global information`|
+|request count|all = `3000`, ok = `3000`, RPS = `50`|
+|latency|min = `5,74`, mean = `7,62`, max = `48,58`, StdDev = `2,3`|
+|latency percentile|p50 = `7,18`, p75 = `7,78`, p95 = `10`, p99 = `12,62`|
+|data transfer|min = `0,035` KB, mean = `0,037` KB, max = `0,038` KB, all = `0,1` MB|
+
+
+> status codes for scenario: `rest_calculate_price`
+
+|status code|count|message|
+|---|---|---|
+|no status|3000||
+
+
+> scenario stats
+
+scenario: `graphql_calculate_price`
+
+  - ok count: `3000`
+
+  - fail count: `0`
+
+  - all data: `0,2` MB
+
+  - duration: `00:01:00`
+
+load simulations:
+
+  - `inject`, rate: `50`, interval: `00:00:01`, during: `00:01:00`
+
+|step|ok stats|
+|---|---|
+|name|`global information`|
+|request count|all = `3000`, ok = `3000`, RPS = `50`|
+|latency|min = `5,65`, mean = `7,77`, max = `64,86`, StdDev = `2,59`|
+|latency percentile|p50 = `7,31`, p75 = `7,9`, p95 = `10,4`, p99 = `13,48`|
+|data transfer|min = `0,062` KB, mean = `0,064` KB, max = `0,065` KB, all = `0,2` MB|
+
+
+> status codes for scenario: `graphql_calculate_price`
+
+|status code|count|message|
+|---|---|---|
+|no status|3000||
+
+
+> scenario stats
+
+scenario: `signalr_calculate_price`
+
+  - ok count: `3000`
+
+  - fail count: `0`
+
+  - all data: `0,0` MB
+
+  - duration: `00:01:00`
+
+load simulations:
+
+  - `inject`, rate: `50`, interval: `00:00:01`, during: `00:01:00`
+
+|step|ok stats|
+|---|---|
+|name|`global information`|
+|request count|all = `3000`, ok = `3000`, RPS = `50`|
+|latency|min = `10,51`, mean = `14,69`, max = `71,16`, StdDev = `3,21`|
+|latency percentile|p50 = `14,23`, p75 = `15,46`, p95 = `18,66`, p99 = `22,35`|
+|data transfer|min = `0,004` KB, mean = `0,004` KB, max = `0,004` KB, all = `0,0` MB|
+
+
+> status codes for scenario: `signalr_calculate_price`
+
+|status code|count|message|
+|---|---|---|
+|no status|3000||
+
+
+> scenario stats
+
+scenario: `ws_calculate_price`
+
+  - ok count: `3000`
+
+  - fail count: `0`
+
+  - all data: `0,1` MB
+
+  - duration: `00:01:00`
+
+load simulations:
+
+  - `inject`, rate: `50`, interval: `00:00:01`, during: `00:01:00`
+
+|step|ok stats|
+|---|---|
+|name|`global information`|
+|request count|all = `3000`, ok = `3000`, RPS = `50`|
+|latency|min = `7,59`, mean = `11,51`, max = `58,3`, StdDev = `2,88`|
+|latency percentile|p50 = `11,05`, p75 = `12,1`, p95 = `14,55`, p99 = `19,06`|
+|data transfer|min = `0,035` KB, mean = `0,037` KB, max = `0,038` KB, all = `0,1` MB|
+
+
+> status codes for scenario: `ws_calculate_price`
+
+|status code|count|message|
+|---|---|---|
+|no status|3000||
+
+

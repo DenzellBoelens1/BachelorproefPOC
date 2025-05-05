@@ -1,0 +1,1333 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 12 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+// start dotnet  restore /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true /p:IntermediateOutputPath="C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\obj\Release\net8.0/" /p:OutDir="C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\bin\Release\net8.0/" /p:OutputPath="C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\bin\Release\net8.0/" in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2
+// command took 2.06 sec and exited with 0
+// start dotnet  build -c Release --no-restore /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true /p:IntermediateOutputPath="C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\obj\Release\net8.0/" /p:OutDir="C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\bin\Release\net8.0/" /p:OutputPath="C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\bin\Release\net8.0/" --output "C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\bin\Release\net8.0/" in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2
+// command took 13.68 sec and exited with 0
+// ***** Done, took 00:00:15 (15.87 sec)   *****
+// Found 12 benchmarks:
+//   PriceBenchmark.'REST CalculatePrice': DefaultJob [ConcurrentRequests=50]
+//   PriceBenchmark.'GraphQL CalculatePrice': DefaultJob [ConcurrentRequests=50]
+//   PriceBenchmark.'SignalR CalculatePrice': DefaultJob [ConcurrentRequests=50]
+//   PriceBenchmark.'WebSocket CalculatePrice': DefaultJob [ConcurrentRequests=50]
+//   PriceBenchmark.'REST CalculatePrice': DefaultJob [ConcurrentRequests=100]
+//   PriceBenchmark.'GraphQL CalculatePrice': DefaultJob [ConcurrentRequests=100]
+//   PriceBenchmark.'SignalR CalculatePrice': DefaultJob [ConcurrentRequests=100]
+//   PriceBenchmark.'WebSocket CalculatePrice': DefaultJob [ConcurrentRequests=100]
+//   PriceBenchmark.'REST CalculatePrice': DefaultJob [ConcurrentRequests=200]
+//   PriceBenchmark.'GraphQL CalculatePrice': DefaultJob [ConcurrentRequests=200]
+//   PriceBenchmark.'SignalR CalculatePrice': DefaultJob [ConcurrentRequests=200]
+//   PriceBenchmark.'WebSocket CalculatePrice': DefaultJob [ConcurrentRequests=200]
+
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Hoge prestaties)
+// **************************
+// Benchmark: PriceBenchmark.'REST CalculatePrice': DefaultJob [ConcurrentRequests=50]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet 009cfb65-9378-4f41-ad25-637724afbda2.dll --anonymousPipes 404 396 --benchmarkName "Webshop.Backend.Benchmarks.PriceBenchmark.Rest_CalculatePrice(ConcurrentRequests: 50)" --job Default --benchmarkId 0 in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+OverheadJitting  1: 1 op, 236900.00 ns, 236.9000 us/op
+WorkloadJitting  1: 1 op, 99284700.00 ns, 99.2847 ms/op
+
+WorkloadPilot    1: 2 op, 8327600.00 ns, 4.1638 ms/op
+WorkloadPilot    2: 3 op, 12578700.00 ns, 4.1929 ms/op
+WorkloadPilot    3: 4 op, 16417400.00 ns, 4.1044 ms/op
+WorkloadPilot    4: 5 op, 20235100.00 ns, 4.0470 ms/op
+WorkloadPilot    5: 6 op, 25823800.00 ns, 4.3040 ms/op
+WorkloadPilot    6: 7 op, 29835500.00 ns, 4.2622 ms/op
+WorkloadPilot    7: 8 op, 33027300.00 ns, 4.1284 ms/op
+WorkloadPilot    8: 9 op, 44392300.00 ns, 4.9325 ms/op
+WorkloadPilot    9: 10 op, 40577500.00 ns, 4.0578 ms/op
+WorkloadPilot   10: 11 op, 44544600.00 ns, 4.0495 ms/op
+WorkloadPilot   11: 12 op, 48235400.00 ns, 4.0196 ms/op
+WorkloadPilot   12: 13 op, 54206000.00 ns, 4.1697 ms/op
+WorkloadPilot   13: 14 op, 58470000.00 ns, 4.1764 ms/op
+WorkloadPilot   14: 15 op, 62315700.00 ns, 4.1544 ms/op
+WorkloadPilot   15: 16 op, 68223200.00 ns, 4.2640 ms/op
+WorkloadPilot   16: 32 op, 128898600.00 ns, 4.0281 ms/op
+WorkloadPilot   17: 64 op, 259063900.00 ns, 4.0479 ms/op
+WorkloadPilot   18: 128 op, 479142300.00 ns, 3.7433 ms/op
+WorkloadPilot   19: 256 op, 626961300.00 ns, 2.4491 ms/op
+
+WorkloadWarmup   1: 256 op, 508345400.00 ns, 1.9857 ms/op
+WorkloadWarmup   2: 256 op, 450538700.00 ns, 1.7599 ms/op
+WorkloadWarmup   3: 256 op, 454816600.00 ns, 1.7766 ms/op
+WorkloadWarmup   4: 256 op, 471672100.00 ns, 1.8425 ms/op
+WorkloadWarmup   5: 256 op, 449266500.00 ns, 1.7549 ms/op
+WorkloadWarmup   6: 256 op, 484437500.00 ns, 1.8923 ms/op
+WorkloadWarmup   7: 256 op, 449338000.00 ns, 1.7552 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 256 op, 453357200.00 ns, 1.7709 ms/op
+WorkloadActual   2: 256 op, 450861000.00 ns, 1.7612 ms/op
+WorkloadActual   3: 256 op, 451711000.00 ns, 1.7645 ms/op
+WorkloadActual   4: 256 op, 448871100.00 ns, 1.7534 ms/op
+WorkloadActual   5: 256 op, 451650900.00 ns, 1.7643 ms/op
+WorkloadActual   6: 256 op, 462201300.00 ns, 1.8055 ms/op
+WorkloadActual   7: 256 op, 453100000.00 ns, 1.7699 ms/op
+WorkloadActual   8: 256 op, 450097100.00 ns, 1.7582 ms/op
+WorkloadActual   9: 256 op, 456618200.00 ns, 1.7837 ms/op
+WorkloadActual  10: 256 op, 454486600.00 ns, 1.7753 ms/op
+WorkloadActual  11: 256 op, 451157600.00 ns, 1.7623 ms/op
+WorkloadActual  12: 256 op, 451392000.00 ns, 1.7633 ms/op
+WorkloadActual  13: 256 op, 449312900.00 ns, 1.7551 ms/op
+WorkloadActual  14: 256 op, 451531200.00 ns, 1.7638 ms/op
+WorkloadActual  15: 256 op, 474488100.00 ns, 1.8535 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 256 op, 453357200.00 ns, 1.7709 ms/op
+WorkloadResult   2: 256 op, 450861000.00 ns, 1.7612 ms/op
+WorkloadResult   3: 256 op, 451711000.00 ns, 1.7645 ms/op
+WorkloadResult   4: 256 op, 448871100.00 ns, 1.7534 ms/op
+WorkloadResult   5: 256 op, 451650900.00 ns, 1.7643 ms/op
+WorkloadResult   6: 256 op, 453100000.00 ns, 1.7699 ms/op
+WorkloadResult   7: 256 op, 450097100.00 ns, 1.7582 ms/op
+WorkloadResult   8: 256 op, 456618200.00 ns, 1.7837 ms/op
+WorkloadResult   9: 256 op, 454486600.00 ns, 1.7753 ms/op
+WorkloadResult  10: 256 op, 451157600.00 ns, 1.7623 ms/op
+WorkloadResult  11: 256 op, 451392000.00 ns, 1.7633 ms/op
+WorkloadResult  12: 256 op, 449312900.00 ns, 1.7551 ms/op
+WorkloadResult  13: 256 op, 451531200.00 ns, 1.7638 ms/op
+// GC:  3 0 0 44857704 256
+// Threading:  36455 1 256
+
+// AfterAll
+// Benchmark Process 42132 has exited with code 0.
+
+Mean = 1.765 ms, StdErr = 0.002 ms (0.13%), N = 13, StdDev = 0.008 ms
+Min = 1.753 ms, Q1 = 1.761 ms, Median = 1.764 ms, Q3 = 1.770 ms, Max = 1.784 ms
+IQR = 0.009 ms, LowerFence = 1.748 ms, UpperFence = 1.783 ms
+ConfidenceInterval = [1.755 ms; 1.775 ms] (CI 99.9%), Margin = 0.010 ms (0.56% of Mean)
+Skewness = 0.66, Kurtosis = 2.69, MValue = 2
+
+// ** Remained 11 (91,7%) benchmark(s) to run. Estimated finish 2025-05-02 12:04 (0h 2m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Hoge prestaties)
+// **************************
+// Benchmark: PriceBenchmark.'GraphQL CalculatePrice': DefaultJob [ConcurrentRequests=50]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet 009cfb65-9378-4f41-ad25-637724afbda2.dll --anonymousPipes 1504 2480 --benchmarkName "Webshop.Backend.Benchmarks.PriceBenchmark.GraphQL_CalculatePrice(ConcurrentRequests: 50)" --job Default --benchmarkId 1 in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+OverheadJitting  1: 1 op, 228200.00 ns, 228.2000 us/op
+WorkloadJitting  1: 1 op, 97151700.00 ns, 97.1517 ms/op
+
+WorkloadPilot    1: 2 op, 11949400.00 ns, 5.9747 ms/op
+WorkloadPilot    2: 3 op, 18082600.00 ns, 6.0275 ms/op
+WorkloadPilot    3: 4 op, 21477100.00 ns, 5.3693 ms/op
+WorkloadPilot    4: 5 op, 26274300.00 ns, 5.2549 ms/op
+WorkloadPilot    5: 6 op, 31314900.00 ns, 5.2192 ms/op
+WorkloadPilot    6: 7 op, 35401300.00 ns, 5.0573 ms/op
+WorkloadPilot    7: 8 op, 47346300.00 ns, 5.9183 ms/op
+WorkloadPilot    8: 9 op, 48077900.00 ns, 5.3420 ms/op
+WorkloadPilot    9: 10 op, 53410700.00 ns, 5.3411 ms/op
+WorkloadPilot   10: 11 op, 60056600.00 ns, 5.4597 ms/op
+WorkloadPilot   11: 12 op, 64912300.00 ns, 5.4094 ms/op
+WorkloadPilot   12: 13 op, 69146700.00 ns, 5.3190 ms/op
+WorkloadPilot   13: 14 op, 75142900.00 ns, 5.3674 ms/op
+WorkloadPilot   14: 15 op, 88630800.00 ns, 5.9087 ms/op
+WorkloadPilot   15: 16 op, 86319700.00 ns, 5.3950 ms/op
+WorkloadPilot   16: 32 op, 169416200.00 ns, 5.2943 ms/op
+WorkloadPilot   17: 64 op, 333658600.00 ns, 5.2134 ms/op
+WorkloadPilot   18: 128 op, 623748600.00 ns, 4.8730 ms/op
+
+WorkloadWarmup   1: 128 op, 347758800.00 ns, 2.7169 ms/op
+WorkloadWarmup   2: 128 op, 326744000.00 ns, 2.5527 ms/op
+WorkloadWarmup   3: 128 op, 320356800.00 ns, 2.5028 ms/op
+WorkloadWarmup   4: 128 op, 330703200.00 ns, 2.5836 ms/op
+WorkloadWarmup   5: 128 op, 318945700.00 ns, 2.4918 ms/op
+WorkloadWarmup   6: 128 op, 323781300.00 ns, 2.5295 ms/op
+WorkloadWarmup   7: 128 op, 327664200.00 ns, 2.5599 ms/op
+WorkloadWarmup   8: 128 op, 317813700.00 ns, 2.4829 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 128 op, 323987400.00 ns, 2.5312 ms/op
+WorkloadActual   2: 128 op, 325774300.00 ns, 2.5451 ms/op
+WorkloadActual   3: 128 op, 315793000.00 ns, 2.4671 ms/op
+WorkloadActual   4: 128 op, 324013100.00 ns, 2.5314 ms/op
+WorkloadActual   5: 128 op, 329515900.00 ns, 2.5743 ms/op
+WorkloadActual   6: 128 op, 318306800.00 ns, 2.4868 ms/op
+WorkloadActual   7: 128 op, 322302400.00 ns, 2.5180 ms/op
+WorkloadActual   8: 128 op, 325223500.00 ns, 2.5408 ms/op
+WorkloadActual   9: 128 op, 324632300.00 ns, 2.5362 ms/op
+WorkloadActual  10: 128 op, 324461300.00 ns, 2.5349 ms/op
+WorkloadActual  11: 128 op, 341070000.00 ns, 2.6646 ms/op
+WorkloadActual  12: 128 op, 339327100.00 ns, 2.6510 ms/op
+WorkloadActual  13: 128 op, 340719000.00 ns, 2.6619 ms/op
+WorkloadActual  14: 128 op, 378259700.00 ns, 2.9552 ms/op
+WorkloadActual  15: 128 op, 340239600.00 ns, 2.6581 ms/op
+WorkloadActual  16: 128 op, 342077300.00 ns, 2.6725 ms/op
+WorkloadActual  17: 128 op, 340691400.00 ns, 2.6617 ms/op
+WorkloadActual  18: 128 op, 337070600.00 ns, 2.6334 ms/op
+WorkloadActual  19: 128 op, 333344900.00 ns, 2.6043 ms/op
+WorkloadActual  20: 128 op, 323242900.00 ns, 2.5253 ms/op
+WorkloadActual  21: 128 op, 338297300.00 ns, 2.6429 ms/op
+WorkloadActual  22: 128 op, 325216200.00 ns, 2.5408 ms/op
+WorkloadActual  23: 128 op, 347473600.00 ns, 2.7146 ms/op
+WorkloadActual  24: 128 op, 339907200.00 ns, 2.6555 ms/op
+WorkloadActual  25: 128 op, 340641200.00 ns, 2.6613 ms/op
+WorkloadActual  26: 128 op, 347035700.00 ns, 2.7112 ms/op
+WorkloadActual  27: 128 op, 348102100.00 ns, 2.7195 ms/op
+WorkloadActual  28: 128 op, 329727800.00 ns, 2.5760 ms/op
+WorkloadActual  29: 128 op, 327720100.00 ns, 2.5603 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 128 op, 323987400.00 ns, 2.5312 ms/op
+WorkloadResult   2: 128 op, 325774300.00 ns, 2.5451 ms/op
+WorkloadResult   3: 128 op, 315793000.00 ns, 2.4671 ms/op
+WorkloadResult   4: 128 op, 324013100.00 ns, 2.5314 ms/op
+WorkloadResult   5: 128 op, 329515900.00 ns, 2.5743 ms/op
+WorkloadResult   6: 128 op, 318306800.00 ns, 2.4868 ms/op
+WorkloadResult   7: 128 op, 322302400.00 ns, 2.5180 ms/op
+WorkloadResult   8: 128 op, 325223500.00 ns, 2.5408 ms/op
+WorkloadResult   9: 128 op, 324632300.00 ns, 2.5362 ms/op
+WorkloadResult  10: 128 op, 324461300.00 ns, 2.5349 ms/op
+WorkloadResult  11: 128 op, 341070000.00 ns, 2.6646 ms/op
+WorkloadResult  12: 128 op, 339327100.00 ns, 2.6510 ms/op
+WorkloadResult  13: 128 op, 340719000.00 ns, 2.6619 ms/op
+WorkloadResult  14: 128 op, 340239600.00 ns, 2.6581 ms/op
+WorkloadResult  15: 128 op, 342077300.00 ns, 2.6725 ms/op
+WorkloadResult  16: 128 op, 340691400.00 ns, 2.6617 ms/op
+WorkloadResult  17: 128 op, 337070600.00 ns, 2.6334 ms/op
+WorkloadResult  18: 128 op, 333344900.00 ns, 2.6043 ms/op
+WorkloadResult  19: 128 op, 323242900.00 ns, 2.5253 ms/op
+WorkloadResult  20: 128 op, 338297300.00 ns, 2.6429 ms/op
+WorkloadResult  21: 128 op, 325216200.00 ns, 2.5408 ms/op
+WorkloadResult  22: 128 op, 347473600.00 ns, 2.7146 ms/op
+WorkloadResult  23: 128 op, 339907200.00 ns, 2.6555 ms/op
+WorkloadResult  24: 128 op, 340641200.00 ns, 2.6613 ms/op
+WorkloadResult  25: 128 op, 347035700.00 ns, 2.7112 ms/op
+WorkloadResult  26: 128 op, 348102100.00 ns, 2.7195 ms/op
+WorkloadResult  27: 128 op, 329727800.00 ns, 2.5760 ms/op
+WorkloadResult  28: 128 op, 327720100.00 ns, 2.5603 ms/op
+// GC:  2 0 0 25570144 128
+// Threading:  17732 1 128
+
+// AfterAll
+// Benchmark Process 37300 has exited with code 0.
+
+Mean = 2.599 ms, StdErr = 0.014 ms (0.53%), N = 28, StdDev = 0.074 ms
+Min = 2.467 ms, Q1 = 2.536 ms, Median = 2.590 ms, Q3 = 2.661 ms, Max = 2.720 ms
+IQR = 0.126 ms, LowerFence = 2.348 ms, UpperFence = 2.850 ms
+ConfidenceInterval = [2.548 ms; 2.651 ms] (CI 99.9%), Margin = 0.051 ms (1.97% of Mean)
+Skewness = 0.02, Kurtosis = 1.61, MValue = 2
+
+// ** Remained 10 (83,3%) benchmark(s) to run. Estimated finish 2025-05-02 12:04 (0h 2m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Hoge prestaties)
+// **************************
+// Benchmark: PriceBenchmark.'SignalR CalculatePrice': DefaultJob [ConcurrentRequests=50]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet 009cfb65-9378-4f41-ad25-637724afbda2.dll --anonymousPipes 2576 2564 --benchmarkName "Webshop.Backend.Benchmarks.PriceBenchmark.SignalR_CalculatePrice(ConcurrentRequests: 50)" --job Default --benchmarkId 2 in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+OverheadJitting  1: 1 op, 232300.00 ns, 232.3000 us/op
+WorkloadJitting  1: 1 op, 367440200.00 ns, 367.4402 ms/op
+
+OverheadJitting  2: 1 op, 700.00 ns, 700.0000 ns/op
+WorkloadJitting  2: 1 op, 298302000.00 ns, 298.3020 ms/op
+
+WorkloadPilot    1: 2 op, 574192400.00 ns, 287.0962 ms/op
+
+WorkloadWarmup   1: 2 op, 551519300.00 ns, 275.7597 ms/op
+WorkloadWarmup   2: 2 op, 560001200.00 ns, 280.0006 ms/op
+WorkloadWarmup   3: 2 op, 553416100.00 ns, 276.7081 ms/op
+WorkloadWarmup   4: 2 op, 550064800.00 ns, 275.0324 ms/op
+WorkloadWarmup   5: 2 op, 563235900.00 ns, 281.6180 ms/op
+WorkloadWarmup   6: 2 op, 541006200.00 ns, 270.5031 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 2 op, 555499300.00 ns, 277.7497 ms/op
+WorkloadActual   2: 2 op, 571672000.00 ns, 285.8360 ms/op
+WorkloadActual   3: 2 op, 566913600.00 ns, 283.4568 ms/op
+WorkloadActual   4: 2 op, 568678000.00 ns, 284.3390 ms/op
+WorkloadActual   5: 2 op, 568244200.00 ns, 284.1221 ms/op
+WorkloadActual   6: 2 op, 568909000.00 ns, 284.4545 ms/op
+WorkloadActual   7: 2 op, 578584600.00 ns, 289.2923 ms/op
+WorkloadActual   8: 2 op, 555007500.00 ns, 277.5038 ms/op
+WorkloadActual   9: 2 op, 552440700.00 ns, 276.2204 ms/op
+WorkloadActual  10: 2 op, 557806800.00 ns, 278.9034 ms/op
+WorkloadActual  11: 2 op, 569673400.00 ns, 284.8367 ms/op
+WorkloadActual  12: 2 op, 577246800.00 ns, 288.6234 ms/op
+WorkloadActual  13: 2 op, 557083500.00 ns, 278.5418 ms/op
+WorkloadActual  14: 2 op, 537818800.00 ns, 268.9094 ms/op
+WorkloadActual  15: 2 op, 548929900.00 ns, 274.4650 ms/op
+WorkloadActual  16: 2 op, 576539800.00 ns, 288.2699 ms/op
+WorkloadActual  17: 2 op, 537512400.00 ns, 268.7562 ms/op
+WorkloadActual  18: 2 op, 532265600.00 ns, 266.1328 ms/op
+WorkloadActual  19: 2 op, 562781700.00 ns, 281.3909 ms/op
+WorkloadActual  20: 2 op, 554646100.00 ns, 277.3231 ms/op
+WorkloadActual  21: 2 op, 532155500.00 ns, 266.0778 ms/op
+WorkloadActual  22: 2 op, 547662600.00 ns, 273.8313 ms/op
+WorkloadActual  23: 2 op, 540808400.00 ns, 270.4042 ms/op
+WorkloadActual  24: 2 op, 556589700.00 ns, 278.2949 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 2 op, 555499300.00 ns, 277.7497 ms/op
+WorkloadResult   2: 2 op, 571672000.00 ns, 285.8360 ms/op
+WorkloadResult   3: 2 op, 566913600.00 ns, 283.4568 ms/op
+WorkloadResult   4: 2 op, 568678000.00 ns, 284.3390 ms/op
+WorkloadResult   5: 2 op, 568244200.00 ns, 284.1221 ms/op
+WorkloadResult   6: 2 op, 568909000.00 ns, 284.4545 ms/op
+WorkloadResult   7: 2 op, 578584600.00 ns, 289.2923 ms/op
+WorkloadResult   8: 2 op, 555007500.00 ns, 277.5038 ms/op
+WorkloadResult   9: 2 op, 552440700.00 ns, 276.2204 ms/op
+WorkloadResult  10: 2 op, 557806800.00 ns, 278.9034 ms/op
+WorkloadResult  11: 2 op, 569673400.00 ns, 284.8367 ms/op
+WorkloadResult  12: 2 op, 577246800.00 ns, 288.6234 ms/op
+WorkloadResult  13: 2 op, 557083500.00 ns, 278.5418 ms/op
+WorkloadResult  14: 2 op, 537818800.00 ns, 268.9094 ms/op
+WorkloadResult  15: 2 op, 548929900.00 ns, 274.4650 ms/op
+WorkloadResult  16: 2 op, 576539800.00 ns, 288.2699 ms/op
+WorkloadResult  17: 2 op, 537512400.00 ns, 268.7562 ms/op
+WorkloadResult  18: 2 op, 532265600.00 ns, 266.1328 ms/op
+WorkloadResult  19: 2 op, 562781700.00 ns, 281.3909 ms/op
+WorkloadResult  20: 2 op, 554646100.00 ns, 277.3231 ms/op
+WorkloadResult  21: 2 op, 532155500.00 ns, 266.0778 ms/op
+WorkloadResult  22: 2 op, 547662600.00 ns, 273.8313 ms/op
+WorkloadResult  23: 2 op, 540808400.00 ns, 270.4042 ms/op
+WorkloadResult  24: 2 op, 556589700.00 ns, 278.2949 ms/op
+// GC:  0 0 0 359608 2
+// Threading:  502 0 2
+// Exceptions:  50
+
+// AfterAll
+// Benchmark Process 2364 has exited with code 0.
+
+Mean = 278.656 ms, StdErr = 1.442 ms (0.52%), N = 24, StdDev = 7.065 ms
+Min = 266.078 ms, Q1 = 274.307 ms, Median = 278.418 ms, Q3 = 284.368 ms, Max = 289.292 ms
+IQR = 10.061 ms, LowerFence = 259.215 ms, UpperFence = 299.460 ms
+ConfidenceInterval = [273.222 ms; 284.089 ms] (CI 99.9%), Margin = 5.433 ms (1.95% of Mean)
+Skewness = -0.27, Kurtosis = 1.89, MValue = 2
+
+// ** Remained 9 (75,0%) benchmark(s) to run. Estimated finish 2025-05-02 12:04 (0h 2m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Hoge prestaties)
+// **************************
+// Benchmark: PriceBenchmark.'WebSocket CalculatePrice': DefaultJob [ConcurrentRequests=50]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet 009cfb65-9378-4f41-ad25-637724afbda2.dll --anonymousPipes 1476 2568 --benchmarkName "Webshop.Backend.Benchmarks.PriceBenchmark.WebSocket_CalculatePrice(ConcurrentRequests: 50)" --job Default --benchmarkId 3 in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+OverheadJitting  1: 1 op, 305500.00 ns, 305.5000 us/op
+WorkloadJitting  1: 1 op, 195501400.00 ns, 195.5014 ms/op
+
+WorkloadPilot    1: 2 op, 139554200.00 ns, 69.7771 ms/op
+WorkloadPilot    2: 3 op, 212999500.00 ns, 70.9998 ms/op
+WorkloadPilot    3: 4 op, 551515600.00 ns, 137.8789 ms/op
+
+WorkloadWarmup   1: 4 op, 486379900.00 ns, 121.5950 ms/op
+WorkloadWarmup   2: 4 op, 906307200.00 ns, 226.5768 ms/op
+WorkloadWarmup   3: 4 op, 564582100.00 ns, 141.1455 ms/op
+WorkloadWarmup   4: 4 op, 576358600.00 ns, 144.0897 ms/op
+WorkloadWarmup   5: 4 op, 591256300.00 ns, 147.8141 ms/op
+WorkloadWarmup   6: 4 op, 568060400.00 ns, 142.0151 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 4 op, 615518900.00 ns, 153.8797 ms/op
+WorkloadActual   2: 4 op, 567749200.00 ns, 141.9373 ms/op
+WorkloadActual   3: 4 op, 588899000.00 ns, 147.2248 ms/op
+WorkloadActual   4: 4 op, 588496100.00 ns, 147.1240 ms/op
+WorkloadActual   5: 4 op, 543591900.00 ns, 135.8980 ms/op
+WorkloadActual   6: 4 op, 596455200.00 ns, 149.1138 ms/op
+WorkloadActual   7: 4 op, 573932000.00 ns, 143.4830 ms/op
+WorkloadActual   8: 4 op, 623063900.00 ns, 155.7660 ms/op
+WorkloadActual   9: 4 op, 607721200.00 ns, 151.9303 ms/op
+WorkloadActual  10: 4 op, 559355900.00 ns, 139.8390 ms/op
+WorkloadActual  11: 4 op, 637830700.00 ns, 159.4577 ms/op
+WorkloadActual  12: 4 op, 637807000.00 ns, 159.4518 ms/op
+WorkloadActual  13: 4 op, 591371400.00 ns, 147.8429 ms/op
+WorkloadActual  14: 4 op, 574621900.00 ns, 143.6555 ms/op
+WorkloadActual  15: 4 op, 581971000.00 ns, 145.4928 ms/op
+WorkloadActual  16: 4 op, 588667700.00 ns, 147.1669 ms/op
+WorkloadActual  17: 4 op, 614249600.00 ns, 153.5624 ms/op
+WorkloadActual  18: 4 op, 540028500.00 ns, 135.0071 ms/op
+WorkloadActual  19: 4 op, 583418500.00 ns, 145.8546 ms/op
+WorkloadActual  20: 4 op, 595654800.00 ns, 148.9137 ms/op
+WorkloadActual  21: 4 op, 574073200.00 ns, 143.5183 ms/op
+WorkloadActual  22: 4 op, 574997600.00 ns, 143.7494 ms/op
+WorkloadActual  23: 4 op, 586202000.00 ns, 146.5505 ms/op
+WorkloadActual  24: 4 op, 590693600.00 ns, 147.6734 ms/op
+WorkloadActual  25: 4 op, 619480500.00 ns, 154.8701 ms/op
+WorkloadActual  26: 4 op, 579600100.00 ns, 144.9000 ms/op
+WorkloadActual  27: 4 op, 585939700.00 ns, 146.4849 ms/op
+WorkloadActual  28: 4 op, 585858600.00 ns, 146.4647 ms/op
+WorkloadActual  29: 4 op, 575576400.00 ns, 143.8941 ms/op
+WorkloadActual  30: 4 op, 587371500.00 ns, 146.8429 ms/op
+WorkloadActual  31: 4 op, 594866000.00 ns, 148.7165 ms/op
+WorkloadActual  32: 4 op, 590460600.00 ns, 147.6152 ms/op
+WorkloadActual  33: 4 op, 585556600.00 ns, 146.3892 ms/op
+WorkloadActual  34: 4 op, 555838400.00 ns, 138.9596 ms/op
+WorkloadActual  35: 4 op, 599047000.00 ns, 149.7618 ms/op
+WorkloadActual  36: 4 op, 576337100.00 ns, 144.0843 ms/op
+WorkloadActual  37: 4 op, 613511500.00 ns, 153.3779 ms/op
+WorkloadActual  38: 4 op, 564211200.00 ns, 141.0528 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 4 op, 615518900.00 ns, 153.8797 ms/op
+WorkloadResult   2: 4 op, 567749200.00 ns, 141.9373 ms/op
+WorkloadResult   3: 4 op, 588899000.00 ns, 147.2248 ms/op
+WorkloadResult   4: 4 op, 588496100.00 ns, 147.1240 ms/op
+WorkloadResult   5: 4 op, 543591900.00 ns, 135.8980 ms/op
+WorkloadResult   6: 4 op, 596455200.00 ns, 149.1138 ms/op
+WorkloadResult   7: 4 op, 573932000.00 ns, 143.4830 ms/op
+WorkloadResult   8: 4 op, 623063900.00 ns, 155.7660 ms/op
+WorkloadResult   9: 4 op, 607721200.00 ns, 151.9303 ms/op
+WorkloadResult  10: 4 op, 559355900.00 ns, 139.8390 ms/op
+WorkloadResult  11: 4 op, 591371400.00 ns, 147.8429 ms/op
+WorkloadResult  12: 4 op, 574621900.00 ns, 143.6555 ms/op
+WorkloadResult  13: 4 op, 581971000.00 ns, 145.4928 ms/op
+WorkloadResult  14: 4 op, 588667700.00 ns, 147.1669 ms/op
+WorkloadResult  15: 4 op, 614249600.00 ns, 153.5624 ms/op
+WorkloadResult  16: 4 op, 540028500.00 ns, 135.0071 ms/op
+WorkloadResult  17: 4 op, 583418500.00 ns, 145.8546 ms/op
+WorkloadResult  18: 4 op, 595654800.00 ns, 148.9137 ms/op
+WorkloadResult  19: 4 op, 574073200.00 ns, 143.5183 ms/op
+WorkloadResult  20: 4 op, 574997600.00 ns, 143.7494 ms/op
+WorkloadResult  21: 4 op, 586202000.00 ns, 146.5505 ms/op
+WorkloadResult  22: 4 op, 590693600.00 ns, 147.6734 ms/op
+WorkloadResult  23: 4 op, 619480500.00 ns, 154.8701 ms/op
+WorkloadResult  24: 4 op, 579600100.00 ns, 144.9000 ms/op
+WorkloadResult  25: 4 op, 585939700.00 ns, 146.4849 ms/op
+WorkloadResult  26: 4 op, 585858600.00 ns, 146.4647 ms/op
+WorkloadResult  27: 4 op, 575576400.00 ns, 143.8941 ms/op
+WorkloadResult  28: 4 op, 587371500.00 ns, 146.8429 ms/op
+WorkloadResult  29: 4 op, 594866000.00 ns, 148.7165 ms/op
+WorkloadResult  30: 4 op, 590460600.00 ns, 147.6152 ms/op
+WorkloadResult  31: 4 op, 585556600.00 ns, 146.3892 ms/op
+WorkloadResult  32: 4 op, 555838400.00 ns, 138.9596 ms/op
+WorkloadResult  33: 4 op, 599047000.00 ns, 149.7618 ms/op
+WorkloadResult  34: 4 op, 576337100.00 ns, 144.0843 ms/op
+WorkloadResult  35: 4 op, 613511500.00 ns, 153.3779 ms/op
+WorkloadResult  36: 4 op, 564211200.00 ns, 141.0528 ms/op
+// GC:  0 0 0 4958112 4
+// Threading:  2356 0 4
+
+// AfterAll
+// Benchmark Process 25180 has exited with code 0.
+
+Mean = 146.350 ms, StdErr = 0.805 ms (0.55%), N = 36, StdDev = 4.831 ms
+Min = 135.007 ms, Q1 = 143.726 ms, Median = 146.518 ms, Q3 = 148.766 ms, Max = 155.766 ms
+IQR = 5.040 ms, LowerFence = 136.166 ms, UpperFence = 156.326 ms
+ConfidenceInterval = [143.458 ms; 149.241 ms] (CI 99.9%), Margin = 2.891 ms (1.98% of Mean)
+Skewness = -0.19, Kurtosis = 2.93, MValue = 2.4
+
+// ** Remained 8 (66,7%) benchmark(s) to run. Estimated finish 2025-05-02 12:05 (0h 2m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Hoge prestaties)
+// **************************
+// Benchmark: PriceBenchmark.'REST CalculatePrice': DefaultJob [ConcurrentRequests=100]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet 009cfb65-9378-4f41-ad25-637724afbda2.dll --anonymousPipes 2508 2608 --benchmarkName "Webshop.Backend.Benchmarks.PriceBenchmark.Rest_CalculatePrice(ConcurrentRequests: 100)" --job Default --benchmarkId 4 in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+OverheadJitting  1: 1 op, 258600.00 ns, 258.6000 us/op
+WorkloadJitting  1: 1 op, 158884000.00 ns, 158.8840 ms/op
+
+WorkloadPilot    1: 2 op, 18097200.00 ns, 9.0486 ms/op
+WorkloadPilot    2: 3 op, 26533000.00 ns, 8.8443 ms/op
+WorkloadPilot    3: 4 op, 33676700.00 ns, 8.4192 ms/op
+WorkloadPilot    4: 5 op, 43252700.00 ns, 8.6505 ms/op
+WorkloadPilot    5: 6 op, 48130500.00 ns, 8.0218 ms/op
+WorkloadPilot    6: 7 op, 56059200.00 ns, 8.0085 ms/op
+WorkloadPilot    7: 8 op, 62918000.00 ns, 7.8648 ms/op
+WorkloadPilot    8: 9 op, 79324400.00 ns, 8.8138 ms/op
+WorkloadPilot    9: 10 op, 84389300.00 ns, 8.4389 ms/op
+WorkloadPilot   10: 11 op, 92186600.00 ns, 8.3806 ms/op
+WorkloadPilot   11: 12 op, 98884100.00 ns, 8.2403 ms/op
+WorkloadPilot   12: 13 op, 104253000.00 ns, 8.0195 ms/op
+WorkloadPilot   13: 14 op, 106078400.00 ns, 7.5770 ms/op
+WorkloadPilot   14: 15 op, 117218600.00 ns, 7.8146 ms/op
+WorkloadPilot   15: 16 op, 123892700.00 ns, 7.7433 ms/op
+WorkloadPilot   16: 32 op, 469291700.00 ns, 14.6654 ms/op
+WorkloadPilot   17: 64 op, 253520100.00 ns, 3.9613 ms/op
+WorkloadPilot   18: 128 op, 426928700.00 ns, 3.3354 ms/op
+WorkloadPilot   19: 256 op, 846816700.00 ns, 3.3079 ms/op
+
+WorkloadWarmup   1: 256 op, 852877500.00 ns, 3.3316 ms/op
+WorkloadWarmup   2: 256 op, 856704900.00 ns, 3.3465 ms/op
+WorkloadWarmup   3: 256 op, 845102600.00 ns, 3.3012 ms/op
+WorkloadWarmup   4: 256 op, 850467400.00 ns, 3.3221 ms/op
+WorkloadWarmup   5: 256 op, 851427100.00 ns, 3.3259 ms/op
+WorkloadWarmup   6: 256 op, 890411800.00 ns, 3.4782 ms/op
+WorkloadWarmup   7: 256 op, 851102400.00 ns, 3.3246 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 256 op, 872596200.00 ns, 3.4086 ms/op
+WorkloadActual   2: 256 op, 849199000.00 ns, 3.3172 ms/op
+WorkloadActual   3: 256 op, 849541700.00 ns, 3.3185 ms/op
+WorkloadActual   4: 256 op, 866135800.00 ns, 3.3833 ms/op
+WorkloadActual   5: 256 op, 848654200.00 ns, 3.3151 ms/op
+WorkloadActual   6: 256 op, 842138100.00 ns, 3.2896 ms/op
+WorkloadActual   7: 256 op, 855287600.00 ns, 3.3410 ms/op
+WorkloadActual   8: 256 op, 851701300.00 ns, 3.3270 ms/op
+WorkloadActual   9: 256 op, 843463700.00 ns, 3.2948 ms/op
+WorkloadActual  10: 256 op, 857202700.00 ns, 3.3484 ms/op
+WorkloadActual  11: 256 op, 845901800.00 ns, 3.3043 ms/op
+WorkloadActual  12: 256 op, 845513500.00 ns, 3.3028 ms/op
+WorkloadActual  13: 256 op, 850953900.00 ns, 3.3240 ms/op
+WorkloadActual  14: 256 op, 852751500.00 ns, 3.3311 ms/op
+WorkloadActual  15: 256 op, 849966900.00 ns, 3.3202 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 256 op, 849199000.00 ns, 3.3172 ms/op
+WorkloadResult   2: 256 op, 849541700.00 ns, 3.3185 ms/op
+WorkloadResult   3: 256 op, 848654200.00 ns, 3.3151 ms/op
+WorkloadResult   4: 256 op, 842138100.00 ns, 3.2896 ms/op
+WorkloadResult   5: 256 op, 855287600.00 ns, 3.3410 ms/op
+WorkloadResult   6: 256 op, 851701300.00 ns, 3.3270 ms/op
+WorkloadResult   7: 256 op, 843463700.00 ns, 3.2948 ms/op
+WorkloadResult   8: 256 op, 857202700.00 ns, 3.3484 ms/op
+WorkloadResult   9: 256 op, 845901800.00 ns, 3.3043 ms/op
+WorkloadResult  10: 256 op, 845513500.00 ns, 3.3028 ms/op
+WorkloadResult  11: 256 op, 850953900.00 ns, 3.3240 ms/op
+WorkloadResult  12: 256 op, 852751500.00 ns, 3.3311 ms/op
+WorkloadResult  13: 256 op, 849966900.00 ns, 3.3202 ms/op
+// GC:  7 0 0 89670224 256
+// Threading:  72955 2 256
+// Exceptions:  0,08203125
+
+// AfterAll
+// Benchmark Process 19332 has exited with code 0.
+
+Mean = 3.318 ms, StdErr = 0.005 ms (0.14%), N = 13, StdDev = 0.017 ms
+Min = 3.290 ms, Q1 = 3.304 ms, Median = 3.319 ms, Q3 = 3.327 ms, Max = 3.348 ms
+IQR = 0.023 ms, LowerFence = 3.270 ms, UpperFence = 3.361 ms
+ConfidenceInterval = [3.297 ms; 3.339 ms] (CI 99.9%), Margin = 0.021 ms (0.62% of Mean)
+Skewness = 0.03, Kurtosis = 1.97, MValue = 2
+
+// ** Remained 7 (58,3%) benchmark(s) to run. Estimated finish 2025-05-02 12:05 (0h 2m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Hoge prestaties)
+// **************************
+// Benchmark: PriceBenchmark.'GraphQL CalculatePrice': DefaultJob [ConcurrentRequests=100]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet 009cfb65-9378-4f41-ad25-637724afbda2.dll --anonymousPipes 1472 1320 --benchmarkName "Webshop.Backend.Benchmarks.PriceBenchmark.GraphQL_CalculatePrice(ConcurrentRequests: 100)" --job Default --benchmarkId 5 in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+OverheadJitting  1: 1 op, 236400.00 ns, 236.4000 us/op
+WorkloadJitting  1: 1 op, 164748000.00 ns, 164.7480 ms/op
+
+WorkloadPilot    1: 2 op, 20055700.00 ns, 10.0279 ms/op
+WorkloadPilot    2: 3 op, 30530700.00 ns, 10.1769 ms/op
+WorkloadPilot    3: 4 op, 40445300.00 ns, 10.1113 ms/op
+WorkloadPilot    4: 5 op, 49994200.00 ns, 9.9988 ms/op
+WorkloadPilot    5: 6 op, 58303400.00 ns, 9.7172 ms/op
+WorkloadPilot    6: 7 op, 68911900.00 ns, 9.8446 ms/op
+WorkloadPilot    7: 8 op, 78118600.00 ns, 9.7648 ms/op
+WorkloadPilot    8: 9 op, 100706700.00 ns, 11.1896 ms/op
+WorkloadPilot    9: 10 op, 102600300.00 ns, 10.2600 ms/op
+WorkloadPilot   10: 11 op, 117554500.00 ns, 10.6868 ms/op
+WorkloadPilot   11: 12 op, 122367000.00 ns, 10.1973 ms/op
+WorkloadPilot   12: 13 op, 135499200.00 ns, 10.4230 ms/op
+WorkloadPilot   13: 14 op, 145233200.00 ns, 10.3738 ms/op
+WorkloadPilot   14: 15 op, 137125200.00 ns, 9.1417 ms/op
+WorkloadPilot   15: 16 op, 130673500.00 ns, 8.1671 ms/op
+WorkloadPilot   16: 32 op, 439911900.00 ns, 13.7472 ms/op
+WorkloadPilot   17: 64 op, 440713600.00 ns, 6.8862 ms/op
+WorkloadPilot   18: 128 op, 881636300.00 ns, 6.8878 ms/op
+
+WorkloadWarmup   1: 128 op, 699182300.00 ns, 5.4624 ms/op
+WorkloadWarmup   2: 128 op, 687478000.00 ns, 5.3709 ms/op
+WorkloadWarmup   3: 128 op, 665799900.00 ns, 5.2016 ms/op
+WorkloadWarmup   4: 128 op, 666390300.00 ns, 5.2062 ms/op
+WorkloadWarmup   5: 128 op, 661686200.00 ns, 5.1694 ms/op
+WorkloadWarmup   6: 128 op, 715538300.00 ns, 5.5901 ms/op
+WorkloadWarmup   7: 128 op, 700002600.00 ns, 5.4688 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 128 op, 699421900.00 ns, 5.4642 ms/op
+WorkloadActual   2: 128 op, 727464500.00 ns, 5.6833 ms/op
+WorkloadActual   3: 128 op, 746336600.00 ns, 5.8308 ms/op
+WorkloadActual   4: 128 op, 709676500.00 ns, 5.5443 ms/op
+WorkloadActual   5: 128 op, 708679700.00 ns, 5.5366 ms/op
+WorkloadActual   6: 128 op, 707271000.00 ns, 5.5256 ms/op
+WorkloadActual   7: 128 op, 694527600.00 ns, 5.4260 ms/op
+WorkloadActual   8: 128 op, 699416400.00 ns, 5.4642 ms/op
+WorkloadActual   9: 128 op, 690952100.00 ns, 5.3981 ms/op
+WorkloadActual  10: 128 op, 700820700.00 ns, 5.4752 ms/op
+WorkloadActual  11: 128 op, 688906500.00 ns, 5.3821 ms/op
+WorkloadActual  12: 128 op, 695867200.00 ns, 5.4365 ms/op
+WorkloadActual  13: 128 op, 660160600.00 ns, 5.1575 ms/op
+WorkloadActual  14: 128 op, 638207500.00 ns, 4.9860 ms/op
+WorkloadActual  15: 128 op, 636177800.00 ns, 4.9701 ms/op
+WorkloadActual  16: 128 op, 641268500.00 ns, 5.0099 ms/op
+WorkloadActual  17: 128 op, 676678900.00 ns, 5.2866 ms/op
+WorkloadActual  18: 128 op, 641592500.00 ns, 5.0124 ms/op
+WorkloadActual  19: 128 op, 654650400.00 ns, 5.1145 ms/op
+WorkloadActual  20: 128 op, 642947000.00 ns, 5.0230 ms/op
+WorkloadActual  21: 128 op, 637152000.00 ns, 4.9778 ms/op
+WorkloadActual  22: 128 op, 648634000.00 ns, 5.0675 ms/op
+WorkloadActual  23: 128 op, 642703800.00 ns, 5.0211 ms/op
+WorkloadActual  24: 128 op, 638801600.00 ns, 4.9906 ms/op
+WorkloadActual  25: 128 op, 644000300.00 ns, 5.0313 ms/op
+WorkloadActual  26: 128 op, 643470500.00 ns, 5.0271 ms/op
+WorkloadActual  27: 128 op, 650350800.00 ns, 5.0809 ms/op
+WorkloadActual  28: 128 op, 643686600.00 ns, 5.0288 ms/op
+WorkloadActual  29: 128 op, 647066900.00 ns, 5.0552 ms/op
+WorkloadActual  30: 128 op, 651523800.00 ns, 5.0900 ms/op
+WorkloadActual  31: 128 op, 635755100.00 ns, 4.9668 ms/op
+WorkloadActual  32: 128 op, 641913700.00 ns, 5.0150 ms/op
+WorkloadActual  33: 128 op, 715892300.00 ns, 5.5929 ms/op
+WorkloadActual  34: 128 op, 645693100.00 ns, 5.0445 ms/op
+WorkloadActual  35: 128 op, 641864200.00 ns, 5.0146 ms/op
+WorkloadActual  36: 128 op, 671147500.00 ns, 5.2433 ms/op
+WorkloadActual  37: 128 op, 637779900.00 ns, 4.9827 ms/op
+WorkloadActual  38: 128 op, 638044600.00 ns, 4.9847 ms/op
+WorkloadActual  39: 128 op, 642935300.00 ns, 5.0229 ms/op
+WorkloadActual  40: 128 op, 652382500.00 ns, 5.0967 ms/op
+WorkloadActual  41: 128 op, 627983000.00 ns, 4.9061 ms/op
+WorkloadActual  42: 128 op, 640140600.00 ns, 5.0011 ms/op
+WorkloadActual  43: 128 op, 669490400.00 ns, 5.2304 ms/op
+WorkloadActual  44: 128 op, 651844200.00 ns, 5.0925 ms/op
+WorkloadActual  45: 128 op, 664060500.00 ns, 5.1880 ms/op
+WorkloadActual  46: 128 op, 667059100.00 ns, 5.2114 ms/op
+WorkloadActual  47: 128 op, 664955600.00 ns, 5.1950 ms/op
+WorkloadActual  48: 128 op, 678834100.00 ns, 5.3034 ms/op
+WorkloadActual  49: 128 op, 678560900.00 ns, 5.3013 ms/op
+WorkloadActual  50: 128 op, 654869800.00 ns, 5.1162 ms/op
+WorkloadActual  51: 128 op, 658071000.00 ns, 5.1412 ms/op
+WorkloadActual  52: 128 op, 632266000.00 ns, 4.9396 ms/op
+WorkloadActual  53: 128 op, 636833500.00 ns, 4.9753 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 128 op, 699421900.00 ns, 5.4642 ms/op
+WorkloadResult   2: 128 op, 727464500.00 ns, 5.6833 ms/op
+WorkloadResult   3: 128 op, 709676500.00 ns, 5.5443 ms/op
+WorkloadResult   4: 128 op, 708679700.00 ns, 5.5366 ms/op
+WorkloadResult   5: 128 op, 707271000.00 ns, 5.5256 ms/op
+WorkloadResult   6: 128 op, 694527600.00 ns, 5.4260 ms/op
+WorkloadResult   7: 128 op, 699416400.00 ns, 5.4642 ms/op
+WorkloadResult   8: 128 op, 690952100.00 ns, 5.3981 ms/op
+WorkloadResult   9: 128 op, 700820700.00 ns, 5.4752 ms/op
+WorkloadResult  10: 128 op, 688906500.00 ns, 5.3821 ms/op
+WorkloadResult  11: 128 op, 695867200.00 ns, 5.4365 ms/op
+WorkloadResult  12: 128 op, 660160600.00 ns, 5.1575 ms/op
+WorkloadResult  13: 128 op, 638207500.00 ns, 4.9860 ms/op
+WorkloadResult  14: 128 op, 636177800.00 ns, 4.9701 ms/op
+WorkloadResult  15: 128 op, 641268500.00 ns, 5.0099 ms/op
+WorkloadResult  16: 128 op, 676678900.00 ns, 5.2866 ms/op
+WorkloadResult  17: 128 op, 641592500.00 ns, 5.0124 ms/op
+WorkloadResult  18: 128 op, 654650400.00 ns, 5.1145 ms/op
+WorkloadResult  19: 128 op, 642947000.00 ns, 5.0230 ms/op
+WorkloadResult  20: 128 op, 637152000.00 ns, 4.9778 ms/op
+WorkloadResult  21: 128 op, 648634000.00 ns, 5.0675 ms/op
+WorkloadResult  22: 128 op, 642703800.00 ns, 5.0211 ms/op
+WorkloadResult  23: 128 op, 638801600.00 ns, 4.9906 ms/op
+WorkloadResult  24: 128 op, 644000300.00 ns, 5.0313 ms/op
+WorkloadResult  25: 128 op, 643470500.00 ns, 5.0271 ms/op
+WorkloadResult  26: 128 op, 650350800.00 ns, 5.0809 ms/op
+WorkloadResult  27: 128 op, 643686600.00 ns, 5.0288 ms/op
+WorkloadResult  28: 128 op, 647066900.00 ns, 5.0552 ms/op
+WorkloadResult  29: 128 op, 651523800.00 ns, 5.0900 ms/op
+WorkloadResult  30: 128 op, 635755100.00 ns, 4.9668 ms/op
+WorkloadResult  31: 128 op, 641913700.00 ns, 5.0150 ms/op
+WorkloadResult  32: 128 op, 715892300.00 ns, 5.5929 ms/op
+WorkloadResult  33: 128 op, 645693100.00 ns, 5.0445 ms/op
+WorkloadResult  34: 128 op, 641864200.00 ns, 5.0146 ms/op
+WorkloadResult  35: 128 op, 671147500.00 ns, 5.2433 ms/op
+WorkloadResult  36: 128 op, 637779900.00 ns, 4.9827 ms/op
+WorkloadResult  37: 128 op, 638044600.00 ns, 4.9847 ms/op
+WorkloadResult  38: 128 op, 642935300.00 ns, 5.0229 ms/op
+WorkloadResult  39: 128 op, 652382500.00 ns, 5.0967 ms/op
+WorkloadResult  40: 128 op, 627983000.00 ns, 4.9061 ms/op
+WorkloadResult  41: 128 op, 640140600.00 ns, 5.0011 ms/op
+WorkloadResult  42: 128 op, 669490400.00 ns, 5.2304 ms/op
+WorkloadResult  43: 128 op, 651844200.00 ns, 5.0925 ms/op
+WorkloadResult  44: 128 op, 664060500.00 ns, 5.1880 ms/op
+WorkloadResult  45: 128 op, 667059100.00 ns, 5.2114 ms/op
+WorkloadResult  46: 128 op, 664955600.00 ns, 5.1950 ms/op
+WorkloadResult  47: 128 op, 678834100.00 ns, 5.3034 ms/op
+WorkloadResult  48: 128 op, 678560900.00 ns, 5.3013 ms/op
+WorkloadResult  49: 128 op, 654869800.00 ns, 5.1162 ms/op
+WorkloadResult  50: 128 op, 658071000.00 ns, 5.1412 ms/op
+WorkloadResult  51: 128 op, 632266000.00 ns, 4.9396 ms/op
+WorkloadResult  52: 128 op, 636833500.00 ns, 4.9753 ms/op
+// GC:  4 1 0 51078144 128
+// Threading:  35245 0 128
+
+// AfterAll
+// Benchmark Process 43076 has exited with code 0.
+
+Mean = 5.170 ms, StdErr = 0.028 ms (0.55%), N = 52, StdDev = 0.205 ms
+Min = 4.906 ms, Q1 = 5.014 ms, Median = 5.091 ms, Q3 = 5.302 ms, Max = 5.683 ms
+IQR = 0.288 ms, LowerFence = 4.582 ms, UpperFence = 5.733 ms
+ConfidenceInterval = [5.071 ms; 5.269 ms] (CI 99.9%), Margin = 0.099 ms (1.92% of Mean)
+Skewness = 0.83, Kurtosis = 2.39, MValue = 2.23
+
+// ** Remained 6 (50,0%) benchmark(s) to run. Estimated finish 2025-05-02 12:06 (0h 2m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Hoge prestaties)
+// **************************
+// Benchmark: PriceBenchmark.'SignalR CalculatePrice': DefaultJob [ConcurrentRequests=100]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet 009cfb65-9378-4f41-ad25-637724afbda2.dll --anonymousPipes 2516 1484 --benchmarkName "Webshop.Backend.Benchmarks.PriceBenchmark.SignalR_CalculatePrice(ConcurrentRequests: 100)" --job Default --benchmarkId 6 in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+OverheadJitting  1: 1 op, 236200.00 ns, 236.2000 us/op
+WorkloadJitting  1: 1 op, 646889400.00 ns, 646.8894 ms/op
+
+OverheadJitting  2: 1 op, 1000.00 ns, 1.0000 us/op
+WorkloadJitting  2: 1 op, 574501900.00 ns, 574.5019 ms/op
+
+WorkloadWarmup   1: 1 op, 589668700.00 ns, 589.6687 ms/op
+WorkloadWarmup   2: 1 op, 605524700.00 ns, 605.5247 ms/op
+WorkloadWarmup   3: 1 op, 572326100.00 ns, 572.3261 ms/op
+WorkloadWarmup   4: 1 op, 594209300.00 ns, 594.2093 ms/op
+WorkloadWarmup   5: 1 op, 585023100.00 ns, 585.0231 ms/op
+WorkloadWarmup   6: 1 op, 595696300.00 ns, 595.6963 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 1 op, 585200700.00 ns, 585.2007 ms/op
+WorkloadActual   2: 1 op, 568820800.00 ns, 568.8208 ms/op
+WorkloadActual   3: 1 op, 567331600.00 ns, 567.3316 ms/op
+WorkloadActual   4: 1 op, 590792000.00 ns, 590.7920 ms/op
+WorkloadActual   5: 1 op, 604151800.00 ns, 604.1518 ms/op
+WorkloadActual   6: 1 op, 600748100.00 ns, 600.7481 ms/op
+WorkloadActual   7: 1 op, 591085800.00 ns, 591.0858 ms/op
+WorkloadActual   8: 1 op, 598521500.00 ns, 598.5215 ms/op
+WorkloadActual   9: 1 op, 574208100.00 ns, 574.2081 ms/op
+WorkloadActual  10: 1 op, 585775000.00 ns, 585.7750 ms/op
+WorkloadActual  11: 1 op, 584905800.00 ns, 584.9058 ms/op
+WorkloadActual  12: 1 op, 599009000.00 ns, 599.0090 ms/op
+WorkloadActual  13: 1 op, 590107700.00 ns, 590.1077 ms/op
+WorkloadActual  14: 1 op, 589113800.00 ns, 589.1138 ms/op
+WorkloadActual  15: 1 op, 605194800.00 ns, 605.1948 ms/op
+WorkloadActual  16: 1 op, 602234900.00 ns, 602.2349 ms/op
+WorkloadActual  17: 1 op, 596915600.00 ns, 596.9156 ms/op
+
+// AfterActualRun
+WorkloadResult   1: 1 op, 585200700.00 ns, 585.2007 ms/op
+WorkloadResult   2: 1 op, 568820800.00 ns, 568.8208 ms/op
+WorkloadResult   3: 1 op, 567331600.00 ns, 567.3316 ms/op
+WorkloadResult   4: 1 op, 590792000.00 ns, 590.7920 ms/op
+WorkloadResult   5: 1 op, 604151800.00 ns, 604.1518 ms/op
+WorkloadResult   6: 1 op, 600748100.00 ns, 600.7481 ms/op
+WorkloadResult   7: 1 op, 591085800.00 ns, 591.0858 ms/op
+WorkloadResult   8: 1 op, 598521500.00 ns, 598.5215 ms/op
+WorkloadResult   9: 1 op, 574208100.00 ns, 574.2081 ms/op
+WorkloadResult  10: 1 op, 585775000.00 ns, 585.7750 ms/op
+WorkloadResult  11: 1 op, 584905800.00 ns, 584.9058 ms/op
+WorkloadResult  12: 1 op, 599009000.00 ns, 599.0090 ms/op
+WorkloadResult  13: 1 op, 590107700.00 ns, 590.1077 ms/op
+WorkloadResult  14: 1 op, 589113800.00 ns, 589.1138 ms/op
+WorkloadResult  15: 1 op, 605194800.00 ns, 605.1948 ms/op
+WorkloadResult  16: 1 op, 602234900.00 ns, 602.2349 ms/op
+WorkloadResult  17: 1 op, 596915600.00 ns, 596.9156 ms/op
+// GC:  0 0 0 347040 1
+// Threading:  506 0 1
+// Exceptions:  100
+
+// AfterAll
+// Benchmark Process 20508 has exited with code 0.
+
+Mean = 590.242 ms, StdErr = 2.830 ms (0.48%), N = 17, StdDev = 11.668 ms
+Min = 567.332 ms, Q1 = 585.201 ms, Median = 590.792 ms, Q3 = 599.009 ms, Max = 605.195 ms
+IQR = 13.808 ms, LowerFence = 564.488 ms, UpperFence = 619.721 ms
+ConfidenceInterval = [578.880 ms; 601.604 ms] (CI 99.9%), Margin = 11.362 ms (1.92% of Mean)
+Skewness = -0.59, Kurtosis = 2.18, MValue = 2
+
+// ** Remained 5 (41,7%) benchmark(s) to run. Estimated finish 2025-05-02 12:06 (0h 1m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Hoge prestaties)
+// **************************
+// Benchmark: PriceBenchmark.'WebSocket CalculatePrice': DefaultJob [ConcurrentRequests=100]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet 009cfb65-9378-4f41-ad25-637724afbda2.dll --anonymousPipes 1320 2428 --benchmarkName "Webshop.Backend.Benchmarks.PriceBenchmark.WebSocket_CalculatePrice(ConcurrentRequests: 100)" --job Default --benchmarkId 7 in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+OverheadJitting  1: 1 op, 229100.00 ns, 229.1000 us/op
+WorkloadJitting  1: 1 op, 240739900.00 ns, 240.7399 ms/op
+
+WorkloadPilot    1: 2 op, 341949100.00 ns, 170.9746 ms/op
+WorkloadPilot    2: 3 op, 520503500.00 ns, 173.5012 ms/op
+
+WorkloadWarmup   1: 3 op, 909997500.00 ns, 303.3325 ms/op
+WorkloadWarmup   2: 3 op, 929236300.00 ns, 309.7454 ms/op
+WorkloadWarmup   3: 3 op, 939143300.00 ns, 313.0478 ms/op
+WorkloadWarmup   4: 3 op, 968021700.00 ns, 322.6739 ms/op
+WorkloadWarmup   5: 3 op, 938425100.00 ns, 312.8084 ms/op
+WorkloadWarmup   6: 3 op, 912460200.00 ns, 304.1534 ms/op
+WorkloadWarmup   7: 3 op, 992228500.00 ns, 330.7428 ms/op
+WorkloadWarmup   8: 3 op, 940264700.00 ns, 313.4216 ms/op
+
+// BeforeActualRun
+WorkloadActual   1: 3 op, 931615200.00 ns, 310.5384 ms/op
+WorkloadActual   2: 3 op, 877816700.00 ns, 292.6056 ms/op
+WorkloadActual   3: 3 op, 867483000.00 ns, 289.1610 ms/op
+WorkloadActual   4: 3 op, 839993300.00 ns, 279.9978 ms/op
+WorkloadActual   5: 3 op, 929131800.00 ns, 309.7106 ms/op
+WorkloadActual   6: 3 op, 824313700.00 ns, 274.7712 ms/op
+WorkloadActual   7: 3 op, 871498800.00 ns, 290.4996 ms/op
+WorkloadActual   8: 3 op, 938518700.00 ns, 312.8396 ms/op
+WorkloadActual   9: 3 op, 872384800.00 ns, 290.7949 ms/op
+WorkloadActual  10: 3 op, 864660000.00 ns, 288.2200 ms/op
+WorkloadActual  11: 3 op, 930693300.00 ns, 310.2311 ms/op
+WorkloadActual  12: 3 op, 889065900.00 ns, 296.3553 ms/op
+WorkloadActual  13: 3 op, 888671300.00 ns, 296.2238 ms/op
+WorkloadActual  14: 3 op, 892738200.00 ns, 297.5794 ms/op
+WorkloadActual  15: 3 op, 917104400.00 ns, 305.7015 ms/op
+WorkloadActual  16: 3 op, 888770700.00 ns, 296.2569 ms/op
+WorkloadActual  17: 3 op, 921612200.00 ns, 307.2041 ms/op
+WorkloadActual  18: 3 op, 834987400.00 ns, 278.3291 ms/op
+WorkloadActual  19: 3 op, 946965600.00 ns, 315.6552 ms/op
+WorkloadActual  20: 3 op, 933704600.00 ns, 311.2349 ms/op
+WorkloadActual  21: 3 op, 962870900.00 ns, 320.9570 ms/op
+WorkloadActual  22: 3 op, 933234300.00 ns, 311.0781 ms/op
+WorkloadActual  23: 3 op, 972414800.00 ns, 324.1383 ms/op
+WorkloadActual  24: 3 op, 1046423900.00 ns, 348.8080 ms/op
+WorkloadActual  25: 3 op, 920380200.00 ns, 306.7934 ms/op
+WorkloadActual  26: 3 op, 1077174200.00 ns, 359.0581 ms/op
+WorkloadActual  27: 3 op, 1018045500.00 ns, 339.3485 ms/op
+WorkloadActual  28: 3 op, 953373000.00 ns, 317.7910 ms/op
+WorkloadActual  29: 3 op, 933986400.00 ns, 311.3288 ms/op
+WorkloadActual  30: 3 op, 890366700.00 ns, 296.7889 ms/op
+WorkloadActual  31: 3 op, 936677000.00 ns, 312.2257 ms/op
+WorkloadActual  32: 3 op, 873691100.00 ns, 291.2304 ms/op
+WorkloadActual  33: 3 op, 996362800.00 ns, 332.1209 ms/op
+WorkloadActual  34: 3 op, 912179300.00 ns, 304.0598 ms/op
+WorkloadActual  35: 3 op, 923499800.00 ns, 307.8333 ms/op
+WorkloadActual  36: 3 op, 906143600.00 ns, 302.0479 ms/op
+WorkloadActual  37: 3 op, 929749800.00 ns, 309.9166 ms/op
+WorkloadActual  38: 3 op, 909971300.00 ns, 303.3238 ms/op
+WorkloadActual  39: 3 op, 925050500.00 ns, 308.3502 ms/op
+WorkloadActual  40: 3 op, 929942300.00 ns, 309.9808 ms/op
+WorkloadActual  41: 3 op, 932304800.00 ns, 310.7683 ms/op
+WorkloadActual  42: 3 op, 908641400.00 ns, 302.8805 ms/op
+WorkloadActual  43: 3 op, 911335300.00 ns, 303.7784 ms/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Net.WebSockets.WebSocketException (0x80004005): Unable to connect to the remote server
+ ---> System.Net.Http.HttpRequestException: Elk socketadres (protocol/netwerkadres/poort) kan normaal slechts één keer worden gebruikt. (localhost:5139)
+ ---> System.Net.Sockets.SocketException (10048): Elk socketadres (protocol/netwerkadres/poort) kan normaal slechts één keer worden gebruikt.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.WebSockets.WebSocketHandle.ConnectAsync(Uri uri, HttpMessageInvoker invoker, CancellationToken cancellationToken, ClientWebSocketOptions options)
+   at System.Net.WebSockets.WebSocketHandle.ConnectAsync(Uri uri, HttpMessageInvoker invoker, CancellationToken cancellationToken, ClientWebSocketOptions options)
+   at System.Net.WebSockets.ClientWebSocket.ConnectAsyncCore(Uri uri, HttpMessageInvoker invoker, CancellationToken cancellationToken)
+   at Webshop.Backend.Benchmarks.PriceBenchmark.SendWebSocketRequest() in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\PriceBenchmark.cs:line 147
+   at Webshop.Backend.Benchmarks.PriceBenchmark.WebSocket_CalculatePrice() in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\PriceBenchmark.cs:line 138
+   at BenchmarkDotNet.Autogenerated.Runnable_7.<.ctor>b__3_4() in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\009cfb65-9378-4f41-ad25-637724afbda2.notcs:line 1541
+   at BenchmarkDotNet.Autogenerated.Runnable_7.WorkloadActionNoUnroll(Int64 invokeCount) in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\009cfb65-9378-4f41-ad25-637724afbda2.notcs:line 1655
+   at BenchmarkDotNet.Engines.Engine.Measure(Action`1 action, Int64 invokeCount)
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineStage.RunIteration(IterationMode mode, IterationStage stage, Int32 index, Int64 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineActualStage.RunAuto(Int64 invokeCount, IterationMode iterationMode, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineActualStage.Run(Int64 invokeCount, IterationMode iterationMode, Boolean runAuto, Int32 unrollFactor, Boolean forceSpecific)
+   at BenchmarkDotNet.Engines.EngineActualStage.RunWorkload(Int64 invokeCount, Int32 unrollFactor, Boolean forceSpecific)
+   at BenchmarkDotNet.Engines.Engine.Run()
+   at BenchmarkDotNet.Autogenerated.Runnable_7.Run(IHost host, String benchmarkName) in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\009cfb65-9378-4f41-ad25-637724afbda2.notcs:line 1522
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\009cfb65-9378-4f41-ad25-637724afbda2.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 17300 has exited with code -1.
+
+// ** Remained 4 (33,3%) benchmark(s) to run. Estimated finish 2025-05-02 12:06 (0h 1m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Hoge prestaties)
+// **************************
+// Benchmark: PriceBenchmark.'REST CalculatePrice': DefaultJob [ConcurrentRequests=200]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet 009cfb65-9378-4f41-ad25-637724afbda2.dll --anonymousPipes 2420 2424 --benchmarkName "Webshop.Backend.Benchmarks.PriceBenchmark.Rest_CalculatePrice(ConcurrentRequests: 200)" --job Default --benchmarkId 8 in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Net.Http.HttpRequestException: Elk socketadres (protocol/netwerkadres/poort) kan normaal slechts één keer worden gebruikt. (localhost:5139)
+ ---> System.Net.Sockets.SocketException (10048): Elk socketadres (protocol/netwerkadres/poort) kan normaal slechts één keer worden gebruikt.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync(Uri url, HttpClient httpClient, ILogger logger, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.GetNegotiationResponseAsync(Uri uri, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.SelectAndStartTransport(TransferFormat transferFormat, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.StartAsyncCore(TransferFormat transferFormat, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.StartAsync(TransferFormat transferFormat, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnectionFactory.ConnectAsync(EndPoint endPoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnectionFactory.ConnectAsync(EndPoint endPoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SignalR.Client.HubConnection.StartAsyncCore(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SignalR.Client.HubConnection.StartAsyncInner(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SignalR.Client.HubConnection.StartAsync(CancellationToken cancellationToken)
+   at Webshop.Backend.Benchmarks.PriceBenchmark.Setup() in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\PriceBenchmark.cs:line 47
+   at BenchmarkDotNet.Helpers.AwaitHelper.GetResult(Task task)
+   at BenchmarkDotNet.Autogenerated.Runnable_8.<.ctor>b__3_0() in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\009cfb65-9378-4f41-ad25-637724afbda2.notcs:line 1728
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_8.Run(IHost host, String benchmarkName) in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\009cfb65-9378-4f41-ad25-637724afbda2.notcs:line 1712
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\009cfb65-9378-4f41-ad25-637724afbda2.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 34820 has exited with code -1.
+
+// ** Remained 3 (25,0%) benchmark(s) to run. Estimated finish 2025-05-02 12:06 (0h 1m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Hoge prestaties)
+// **************************
+// Benchmark: PriceBenchmark.'GraphQL CalculatePrice': DefaultJob [ConcurrentRequests=200]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet 009cfb65-9378-4f41-ad25-637724afbda2.dll --anonymousPipes 896 2512 --benchmarkName "Webshop.Backend.Benchmarks.PriceBenchmark.GraphQL_CalculatePrice(ConcurrentRequests: 200)" --job Default --benchmarkId 9 in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Net.Http.HttpRequestException: Elk socketadres (protocol/netwerkadres/poort) kan normaal slechts één keer worden gebruikt. (localhost:5139)
+ ---> System.Net.Sockets.SocketException (10048): Elk socketadres (protocol/netwerkadres/poort) kan normaal slechts één keer worden gebruikt.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync(Uri url, HttpClient httpClient, ILogger logger, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.GetNegotiationResponseAsync(Uri uri, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.SelectAndStartTransport(TransferFormat transferFormat, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.StartAsyncCore(TransferFormat transferFormat, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.StartAsync(TransferFormat transferFormat, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnectionFactory.ConnectAsync(EndPoint endPoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnectionFactory.ConnectAsync(EndPoint endPoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SignalR.Client.HubConnection.StartAsyncCore(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SignalR.Client.HubConnection.StartAsyncInner(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SignalR.Client.HubConnection.StartAsync(CancellationToken cancellationToken)
+   at Webshop.Backend.Benchmarks.PriceBenchmark.Setup() in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\PriceBenchmark.cs:line 47
+   at BenchmarkDotNet.Helpers.AwaitHelper.GetResult(Task task)
+   at BenchmarkDotNet.Autogenerated.Runnable_9.<.ctor>b__3_0() in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\009cfb65-9378-4f41-ad25-637724afbda2.notcs:line 1920
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_9.Run(IHost host, String benchmarkName) in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\009cfb65-9378-4f41-ad25-637724afbda2.notcs:line 1904
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\009cfb65-9378-4f41-ad25-637724afbda2.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 30272 has exited with code -1.
+
+// ** Remained 2 (16,7%) benchmark(s) to run. Estimated finish 2025-05-02 12:05 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Hoge prestaties)
+// **************************
+// Benchmark: PriceBenchmark.'SignalR CalculatePrice': DefaultJob [ConcurrentRequests=200]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet 009cfb65-9378-4f41-ad25-637724afbda2.dll --anonymousPipes 2592 1440 --benchmarkName "Webshop.Backend.Benchmarks.PriceBenchmark.SignalR_CalculatePrice(ConcurrentRequests: 200)" --job Default --benchmarkId 10 in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Net.Http.HttpRequestException: Elk socketadres (protocol/netwerkadres/poort) kan normaal slechts één keer worden gebruikt. (localhost:5139)
+ ---> System.Net.Sockets.SocketException (10048): Elk socketadres (protocol/netwerkadres/poort) kan normaal slechts één keer worden gebruikt.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.Internal.SendUtils.SendMessages(Uri sendUrl, IDuplexPipe application, HttpClient httpClient, ILogger logger, CancellationToken cancellationToken)
+   at System.IO.Pipelines.Pipe.GetReadResult(ReadResult& result)
+   at System.IO.Pipelines.Pipe.GetReadAsyncResult()
+   at System.IO.Pipelines.Pipe.DefaultPipeReader.GetResult(Int16 token)
+   at Microsoft.AspNetCore.SignalR.Client.HubConnection.HandshakeAsync(ConnectionState startingConnectionState, Int32 protocolVersion, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SignalR.Client.HubConnection.StartAsyncCore(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SignalR.Client.HubConnection.StartAsyncCore(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SignalR.Client.HubConnection.StartAsyncInner(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SignalR.Client.HubConnection.StartAsync(CancellationToken cancellationToken)
+   at Webshop.Backend.Benchmarks.PriceBenchmark.Setup() in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\PriceBenchmark.cs:line 47
+   at BenchmarkDotNet.Helpers.AwaitHelper.GetResult(Task task)
+   at BenchmarkDotNet.Autogenerated.Runnable_10.<.ctor>b__3_0() in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\009cfb65-9378-4f41-ad25-637724afbda2.notcs:line 2112
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_10.Run(IHost host, String benchmarkName) in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\009cfb65-9378-4f41-ad25-637724afbda2.notcs:line 2096
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\009cfb65-9378-4f41-ad25-637724afbda2.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 18220 has exited with code -1.
+
+// ** Remained 1 (8,3%) benchmark(s) to run. Estimated finish 2025-05-02 12:05 (0h 0m from now) **
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Hoge prestaties)
+// **************************
+// Benchmark: PriceBenchmark.'WebSocket CalculatePrice': DefaultJob [ConcurrentRequests=200]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet 009cfb65-9378-4f41-ad25-637724afbda2.dll --anonymousPipes 1416 2448 --benchmarkName "Webshop.Backend.Benchmarks.PriceBenchmark.WebSocket_CalculatePrice(ConcurrentRequests: 200)" --job Default --benchmarkId 11 in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT,AvxVnni,SERIALIZE VectorSize=256
+// Job: DefaultJob
+
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Net.Http.HttpRequestException: Elk socketadres (protocol/netwerkadres/poort) kan normaal slechts één keer worden gebruikt. (localhost:5139)
+ ---> System.Net.Sockets.SocketException (10048): Elk socketadres (protocol/netwerkadres/poort) kan normaal slechts één keer worden gebruikt.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.Internal.AccessTokenHttpMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.Internal.LoggingHttpMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.NegotiateAsync(Uri url, HttpClient httpClient, ILogger logger, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.GetNegotiationResponseAsync(Uri uri, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.SelectAndStartTransport(TransferFormat transferFormat, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.StartAsyncCore(TransferFormat transferFormat, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnection.StartAsync(TransferFormat transferFormat, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnectionFactory.ConnectAsync(EndPoint endPoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.Connections.Client.HttpConnectionFactory.ConnectAsync(EndPoint endPoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SignalR.Client.HubConnection.StartAsyncCore(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SignalR.Client.HubConnection.StartAsyncInner(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SignalR.Client.HubConnection.StartAsync(CancellationToken cancellationToken)
+   at Webshop.Backend.Benchmarks.PriceBenchmark.Setup() in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\PriceBenchmark.cs:line 47
+   at BenchmarkDotNet.Helpers.AwaitHelper.GetResult(Task task)
+   at BenchmarkDotNet.Autogenerated.Runnable_11.<.ctor>b__3_0() in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\009cfb65-9378-4f41-ad25-637724afbda2.notcs:line 2304
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_11.Run(IHost host, String benchmarkName) in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\009cfb65-9378-4f41-ad25-637724afbda2.notcs:line 2288
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in C:\HoGent24-25\Bachelorproef\PoC\Bachelorproef\WebshopBachelorproef\Webshop.Backend.Benchmarks\bin\Release\net8.0\009cfb65-9378-4f41-ad25-637724afbda2\009cfb65-9378-4f41-ad25-637724afbda2.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 30472 has exited with code -1.
+
+// ** Remained 0 (0,0%) benchmark(s) to run. Estimated finish 2025-05-02 12:05 (0h 0m from now) **
+Successfully reverted power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Hoge prestaties)
+// ***** BenchmarkRunner: Finish  *****
+
+// * Export *
+  BenchmarkDotNet.Artifacts\results\Webshop.Backend.Benchmarks.PriceBenchmark-report.csv
+  BenchmarkDotNet.Artifacts\results\Webshop.Backend.Benchmarks.PriceBenchmark-report-github.md
+  BenchmarkDotNet.Artifacts\results\Webshop.Backend.Benchmarks.PriceBenchmark-report.html
+
+// * Detailed results *
+PriceBenchmark.'REST CalculatePrice': DefaultJob [ConcurrentRequests=50]
+Runtime = .NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2; GC = Concurrent Workstation
+Mean = 1.765 ms, StdErr = 0.002 ms (0.13%), N = 13, StdDev = 0.008 ms
+Min = 1.753 ms, Q1 = 1.761 ms, Median = 1.764 ms, Q3 = 1.770 ms, Max = 1.784 ms
+IQR = 0.009 ms, LowerFence = 1.748 ms, UpperFence = 1.783 ms
+ConfidenceInterval = [1.755 ms; 1.775 ms] (CI 99.9%), Margin = 0.010 ms (0.56% of Mean)
+Skewness = 0.66, Kurtosis = 2.69, MValue = 2
+-------------------- Histogram --------------------
+[1.749 ms ; 1.788 ms) | @@@@@@@@@@@@@
+---------------------------------------------------
+
+PriceBenchmark.'GraphQL CalculatePrice': DefaultJob [ConcurrentRequests=50]
+Runtime = .NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2; GC = Concurrent Workstation
+Mean = 2.599 ms, StdErr = 0.014 ms (0.53%), N = 28, StdDev = 0.074 ms
+Min = 2.467 ms, Q1 = 2.536 ms, Median = 2.590 ms, Q3 = 2.661 ms, Max = 2.720 ms
+IQR = 0.126 ms, LowerFence = 2.348 ms, UpperFence = 2.850 ms
+ConfidenceInterval = [2.548 ms; 2.651 ms] (CI 99.9%), Margin = 0.051 ms (1.97% of Mean)
+Skewness = 0.02, Kurtosis = 1.61, MValue = 2
+-------------------- Histogram --------------------
+[2.445 ms ; 2.515 ms) | @@
+[2.515 ms ; 2.621 ms) | @@@@@@@@@@@@@
+[2.621 ms ; 2.685 ms) | @@@@@@@@@@
+[2.685 ms ; 2.751 ms) | @@@
+---------------------------------------------------
+
+PriceBenchmark.'SignalR CalculatePrice': DefaultJob [ConcurrentRequests=50]
+Runtime = .NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2; GC = Concurrent Workstation
+Mean = 278.656 ms, StdErr = 1.442 ms (0.52%), N = 24, StdDev = 7.065 ms
+Min = 266.078 ms, Q1 = 274.307 ms, Median = 278.418 ms, Q3 = 284.368 ms, Max = 289.292 ms
+IQR = 10.061 ms, LowerFence = 259.215 ms, UpperFence = 299.460 ms
+ConfidenceInterval = [273.222 ms; 284.089 ms] (CI 99.9%), Margin = 5.433 ms (1.95% of Mean)
+Skewness = -0.27, Kurtosis = 1.89, MValue = 2
+-------------------- Histogram --------------------
+[265.026 ms ; 271.456 ms) | @@@@@
+[271.456 ms ; 279.582 ms) | @@@@@@@@@
+[279.582 ms ; 289.589 ms) | @@@@@@@@@@
+---------------------------------------------------
+
+PriceBenchmark.'WebSocket CalculatePrice': DefaultJob [ConcurrentRequests=50]
+Runtime = .NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2; GC = Concurrent Workstation
+Mean = 146.350 ms, StdErr = 0.805 ms (0.55%), N = 36, StdDev = 4.831 ms
+Min = 135.007 ms, Q1 = 143.726 ms, Median = 146.518 ms, Q3 = 148.766 ms, Max = 155.766 ms
+IQR = 5.040 ms, LowerFence = 136.166 ms, UpperFence = 156.326 ms
+ConfidenceInterval = [143.458 ms; 149.241 ms] (CI 99.9%), Margin = 2.891 ms (1.98% of Mean)
+Skewness = -0.19, Kurtosis = 2.93, MValue = 2.4
+-------------------- Histogram --------------------
+[133.532 ms ; 137.373 ms) | @@
+[137.373 ms ; 142.369 ms) | @@@@
+[142.369 ms ; 147.274 ms) | @@@@@@@@@@@@@@@@@
+[147.274 ms ; 151.928 ms) | @@@@@@@
+[151.928 ms ; 155.768 ms) | @@@@@@
+---------------------------------------------------
+
+PriceBenchmark.'REST CalculatePrice': DefaultJob [ConcurrentRequests=100]
+Runtime = .NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2; GC = Concurrent Workstation
+Mean = 3.318 ms, StdErr = 0.005 ms (0.14%), N = 13, StdDev = 0.017 ms
+Min = 3.290 ms, Q1 = 3.304 ms, Median = 3.319 ms, Q3 = 3.327 ms, Max = 3.348 ms
+IQR = 0.023 ms, LowerFence = 3.270 ms, UpperFence = 3.361 ms
+ConfidenceInterval = [3.297 ms; 3.339 ms] (CI 99.9%), Margin = 0.021 ms (0.62% of Mean)
+Skewness = 0.03, Kurtosis = 1.97, MValue = 2
+-------------------- Histogram --------------------
+[3.280 ms ; 3.358 ms) | @@@@@@@@@@@@@
+---------------------------------------------------
+
+PriceBenchmark.'GraphQL CalculatePrice': DefaultJob [ConcurrentRequests=100]
+Runtime = .NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2; GC = Concurrent Workstation
+Mean = 5.170 ms, StdErr = 0.028 ms (0.55%), N = 52, StdDev = 0.205 ms
+Min = 4.906 ms, Q1 = 5.014 ms, Median = 5.091 ms, Q3 = 5.302 ms, Max = 5.683 ms
+IQR = 0.288 ms, LowerFence = 4.582 ms, UpperFence = 5.733 ms
+ConfidenceInterval = [5.071 ms; 5.269 ms] (CI 99.9%), Margin = 0.099 ms (1.92% of Mean)
+Skewness = 0.83, Kurtosis = 2.39, MValue = 2.23
+-------------------- Histogram --------------------
+[4.834 ms ; 4.960 ms) | @@
+[4.960 ms ; 5.104 ms) | @@@@@@@@@@@@@@@@@@@@@@@@@@
+[5.104 ms ; 5.251 ms) | @@@@@@@@@
+[5.251 ms ; 5.413 ms) | @@@@@
+[5.413 ms ; 5.557 ms) | @@@@@@@@
+[5.557 ms ; 5.710 ms) | @@
+---------------------------------------------------
+
+PriceBenchmark.'SignalR CalculatePrice': DefaultJob [ConcurrentRequests=100]
+Runtime = .NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2; GC = Concurrent Workstation
+Mean = 590.242 ms, StdErr = 2.830 ms (0.48%), N = 17, StdDev = 11.668 ms
+Min = 567.332 ms, Q1 = 585.201 ms, Median = 590.792 ms, Q3 = 599.009 ms, Max = 605.195 ms
+IQR = 13.808 ms, LowerFence = 564.488 ms, UpperFence = 619.721 ms
+ConfidenceInterval = [578.880 ms; 601.604 ms] (CI 99.9%), Margin = 11.362 ms (1.92% of Mean)
+Skewness = -0.59, Kurtosis = 2.18, MValue = 2
+-------------------- Histogram --------------------
+[561.376 ms ; 574.036 ms) | @@
+[574.036 ms ; 585.947 ms) | @@@@
+[585.947 ms ; 611.151 ms) | @@@@@@@@@@@
+---------------------------------------------------
+
+PriceBenchmark.'WebSocket CalculatePrice': DefaultJob [ConcurrentRequests=100]
+Runtime = .NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2; GC = Concurrent Workstation
+There are not any results runs
+
+PriceBenchmark.'REST CalculatePrice': DefaultJob [ConcurrentRequests=200]
+Runtime = .NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2; GC = Concurrent Workstation
+There are not any results runs
+
+PriceBenchmark.'GraphQL CalculatePrice': DefaultJob [ConcurrentRequests=200]
+Runtime = .NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2; GC = Concurrent Workstation
+There are not any results runs
+
+PriceBenchmark.'SignalR CalculatePrice': DefaultJob [ConcurrentRequests=200]
+Runtime = .NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2; GC = Concurrent Workstation
+There are not any results runs
+
+PriceBenchmark.'WebSocket CalculatePrice': DefaultJob [ConcurrentRequests=200]
+Runtime = .NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2; GC = Concurrent Workstation
+There are not any results runs
+
+// * Summary *
+
+BenchmarkDotNet v0.14.0, Windows 11 (10.0.26100.3775)
+12th Gen Intel Core i7-12700H, 1 CPU, 20 logical and 14 physical cores
+.NET SDK 8.0.400
+  [Host]     : .NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2
+  DefaultJob : .NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2
+
+
+| Method                     | ConcurrentRequests | Mean       | Error      | StdDev     | Median     | Gen0    | Gen1   | Allocated  |
+|--------------------------- |------------------- |-----------:|-----------:|-----------:|-----------:|--------:|-------:|-----------:|
+| 'REST CalculatePrice'      | 50                 |   1.765 ms |  0.0099 ms |  0.0083 ms |   1.764 ms | 11.7188 |      - |  171.12 KB |
+| 'GraphQL CalculatePrice'   | 50                 |   2.599 ms |  0.0513 ms |  0.0735 ms |   2.590 ms | 15.6250 |      - |  195.08 KB |
+| 'SignalR CalculatePrice'   | 50                 | 278.656 ms |  5.4334 ms |  7.0650 ms | 278.418 ms |       - |      - |  175.59 KB |
+| 'WebSocket CalculatePrice' | 50                 | 146.350 ms |  2.8915 ms |  4.8310 ms | 146.518 ms |       - |      - | 1210.48 KB |
+| 'REST CalculatePrice'      | 100                |   3.318 ms |  0.0205 ms |  0.0171 ms |   3.319 ms | 27.3438 |      - |  342.06 KB |
+| 'GraphQL CalculatePrice'   | 100                |   5.170 ms |  0.0992 ms |  0.2049 ms |   5.091 ms | 31.2500 | 7.8125 |   389.7 KB |
+| 'SignalR CalculatePrice'   | 100                | 590.242 ms | 11.3619 ms | 11.6678 ms | 590.792 ms |       - |      - |  338.91 KB |
+| 'WebSocket CalculatePrice' | 100                |         NA |         NA |         NA |         NA |      NA |     NA |         NA |
+| 'REST CalculatePrice'      | 200                |         NA |         NA |         NA |         NA |      NA |     NA |         NA |
+| 'GraphQL CalculatePrice'   | 200                |         NA |         NA |         NA |         NA |      NA |     NA |         NA |
+| 'SignalR CalculatePrice'   | 200                |         NA |         NA |         NA |         NA |      NA |     NA |         NA |
+| 'WebSocket CalculatePrice' | 200                |         NA |         NA |         NA |         NA |      NA |     NA |         NA |
+
+Benchmarks with issues:
+  PriceBenchmark.'WebSocket CalculatePrice': DefaultJob [ConcurrentRequests=100]
+  PriceBenchmark.'REST CalculatePrice': DefaultJob [ConcurrentRequests=200]
+  PriceBenchmark.'GraphQL CalculatePrice': DefaultJob [ConcurrentRequests=200]
+  PriceBenchmark.'SignalR CalculatePrice': DefaultJob [ConcurrentRequests=200]
+  PriceBenchmark.'WebSocket CalculatePrice': DefaultJob [ConcurrentRequests=200]
+
+// * Warnings *
+Environment
+  Summary -> Detected error exit code from one of the benchmarks. It might be caused by following antivirus software:
+        - Windows Defender (windowsdefender://)
+        - McAfee (\\?\C:\Program Files\McAfee\WPS\1.28.191.1\mc-fw-host.exe)
+Use InProcessEmitToolchain or InProcessNoEmitToolchain to avoid new process creation.
+
+
+// * Hints *
+Outliers
+  PriceBenchmark.'REST CalculatePrice': Default      -> 2 outliers were removed (1.81 ms, 1.85 ms)
+  PriceBenchmark.'GraphQL CalculatePrice': Default   -> 1 outlier  was  removed (2.96 ms)
+  PriceBenchmark.'WebSocket CalculatePrice': Default -> 2 outliers were removed, 3 outliers were detected (135.01 ms, 159.45 ms, 159.46 ms)
+  PriceBenchmark.'REST CalculatePrice': Default      -> 2 outliers were removed (3.38 ms, 3.41 ms)
+  PriceBenchmark.'GraphQL CalculatePrice': Default   -> 1 outlier  was  removed (5.83 ms)
+  PriceBenchmark.'WebSocket CalculatePrice': Default -> 3 outliers were removed (339.35 ms..359.06 ms)
+
+// * Legends *
+  ConcurrentRequests : Value of the 'ConcurrentRequests' parameter
+  Mean               : Arithmetic mean of all measurements
+  Error              : Half of 99.9% confidence interval
+  StdDev             : Standard deviation of all measurements
+  Median             : Value separating the higher half of all measurements (50th percentile)
+  Gen0               : GC Generation 0 collects per 1000 operations
+  Gen1               : GC Generation 1 collects per 1000 operations
+  Allocated          : Allocated memory per single operation (managed only, inclusive, 1KB = 1024B)
+  1 ms               : 1 Millisecond (0.001 sec)
+
+// * Diagnostic Output - MemoryDiagnoser *
+
+
+// ***** BenchmarkRunner: End *****
+Run time: 00:03:34 (214.28 sec), executed benchmarks: 12
+
+Global total time: 00:03:50 (230.6 sec), executed benchmarks: 12
+// * Artifacts cleanup *
+Artifacts cleanup is finished

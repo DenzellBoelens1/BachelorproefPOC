@@ -1,7 +1,8 @@
-﻿// RestStockUpdate.cs
-using System;
+﻿using System;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using NBomber.CSharp;
 using NBomber.Contracts;
@@ -10,7 +11,6 @@ namespace Webshop.Backend.LoadTests
 {
     public static class RestStockUpdate
     {
-        // Hergebruik een statische HttpClient voor connectie-efficiëntie
         private static readonly HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:5139") };
 
         public static ScenarioProps CreateScenario()
@@ -22,6 +22,8 @@ namespace Webshop.Backend.LoadTests
                 int stock = rnd.Next(0, 501);
 
                 var payload = new { ProductID = id, InStock = stock };
+                var reqJson = JsonSerializer.Serialize(payload);
+                var reqBytes = Encoding.UTF8.GetByteCount(reqJson);
 
                 try
                 {
@@ -29,9 +31,8 @@ namespace Webshop.Backend.LoadTests
                     if (!res.IsSuccessStatusCode)
                         return Response.Fail();
 
-                    // Meet de grootte van de response body voor datatransfer
-                    var bytes = await res.Content.ReadAsByteArrayAsync();
-                    return Response.Ok(sizeBytes: bytes.Length);
+                    var resBytes = (await res.Content.ReadAsByteArrayAsync()).Length;
+                    return Response.Ok(sizeBytes: reqBytes + resBytes);
                 }
                 catch
                 {
@@ -39,6 +40,7 @@ namespace Webshop.Backend.LoadTests
                 }
             })
             .WithLoadSimulations(
+                // 100 requests per second, gedurende 1 minuut, met interval van 1s 
                 Simulation.Inject(
                     rate: 100,
                     during: TimeSpan.FromMinutes(1),
