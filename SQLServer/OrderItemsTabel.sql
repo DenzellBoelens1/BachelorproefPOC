@@ -1,0 +1,7 @@
+CREATE TABLE OrderItems (
+    OrderItemID INT PRIMARY KEY IDENTITY(1,1),
+    OrderID INT NOT NULL FOREIGN KEY REFERENCES Orders(OrderID),
+    ProductID INT NOT NULL FOREIGN KEY REFERENCES Products(ProductID),
+    Quantity INT NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL
+);
