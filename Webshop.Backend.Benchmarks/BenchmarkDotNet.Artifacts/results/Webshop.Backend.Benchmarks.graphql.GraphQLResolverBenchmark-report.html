@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Webshop.Backend.Benchmarks.graphql.GraphQLResolverBenchmark-20250506-111121</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.14.0, Windows 11 (10.0.26100.3775)
+12th Gen Intel Core i7-12700H, 1 CPU, 20 logical and 14 physical cores
+.NET SDK 8.0.400
+  [Host]     : .NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2
+  DefaultJob : .NET 8.0.8 (8.0.824.36612), X64 RyuJIT AVX2
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>Method         </th><th>ProductId</th><th>Mean </th><th>Error</th><th>StdDev</th><th>Gen0</th><th>Gen1</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>&#39;Direct Service Call&#39;</td><td>1</td><td>60.74 &mu;s</td><td>1.151 &mu;s</td><td>0.961 &mu;s</td><td>7.3242</td><td>0.7324</td><td>90.4 KB</td>
+</tr><tr><td>&#39;GraphQL HTTP Call&#39;</td><td>1</td><td>2,696.87 &mu;s</td><td>51.181 &mu;s</td><td>60.927 &mu;s</td><td>-</td><td>-</td><td>4.85 KB</td>
+</tr><tr><td>&#39;Direct Service Call&#39;</td><td>10</td><td>60.79 &mu;s</td><td>1.195 &mu;s</td><td>1.173 &mu;s</td><td>7.3242</td><td>0.9766</td><td>90.46 KB</td>
+</tr><tr><td>&#39;GraphQL HTTP Call&#39;</td><td>10</td><td>2,707.43 &mu;s</td><td>53.520 &mu;s</td><td>97.865 &mu;s</td><td>-</td><td>-</td><td>4.81 KB</td>
+</tr><tr><td>&#39;Direct Service Call&#39;</td><td>50</td><td>61.44 &mu;s</td><td>0.530 &mu;s</td><td>0.442 &mu;s</td><td>7.3242</td><td>0.7324</td><td>90.32 KB</td>
+</tr><tr><td>&#39;GraphQL HTTP Call&#39;</td><td>50</td><td>2,730.86 &mu;s</td><td>53.819 &mu;s</td><td>119.259 &mu;s</td><td>-</td><td>-</td><td>4.83 KB</td>
+</tr></tbody></table>
+</body>
+</html>

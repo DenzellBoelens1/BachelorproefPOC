@@ -1,5 +1,5 @@
 test_suite,test_name,scenario,duration,step_name,request_count,ok,failed,rps,min,mean,max,50_percent,75_percent,95_percent,99_percent,std_dev,data_transfer_min_kb,data_transfer_mean_kb,data_transfer_max_kb,data_transfer_all_mb
-nbomber_default_test_suite_name,nbomber_default_test_name,rest_calculate_price,00:01:00,global information,3000,3000,0,50,5.74,7.62,48.58,7.18,7.78,10,12.62,2.3,0.035,0.037,0.038,0.1
-nbomber_default_test_suite_name,nbomber_default_test_name,graphql_calculate_price,00:01:00,global information,3000,3000,0,50,5.65,7.77,64.86,7.31,7.9,10.4,13.48,2.59,0.062,0.064,0.065,0.2
-nbomber_default_test_suite_name,nbomber_default_test_name,signalr_calculate_price,00:01:00,global information,3000,3000,0,50,10.51,14.69,71.16,14.23,15.46,18.66,22.35,3.21,0.004,0.004,0.004,0.0
-nbomber_default_test_suite_name,nbomber_default_test_name,ws_calculate_price,00:01:00,global information,3000,3000,0,50,7.59,11.51,58.3,11.05,12.1,14.55,19.06,2.88,0.035,0.037,0.038,0.1
+nbomber_default_test_suite_name,nbomber_default_test_name,rest_calculate_price,00:01:00,global information,3000,3000,0,50,2.62,4.32,40.23,3.8,4.61,6.95,10.21,2.05,0.035,0.037,0.038,0.1
+nbomber_default_test_suite_name,nbomber_default_test_name,graphql_calculate_price,00:01:00,global information,3000,3000,0,50,2.77,4.48,37.57,3.89,4.74,7.32,10.98,2.37,0.062,0.064,0.065,0.2
+nbomber_default_test_suite_name,nbomber_default_test_name,signalr_calculate_price,00:01:00,global information,3000,3000,0,50,5.05,9.4,41.1,8.57,9.94,14.49,25.63,3.44,0.004,0.004,0.004,0.0
+nbomber_default_test_suite_name,nbomber_default_test_name,ws_calculate_price,00:01:00,global information,2999,2999,0,50,3.47,7.34,39.74,6.76,7.86,11.05,16.2,2.76,0.035,0.037,0.038,0.1

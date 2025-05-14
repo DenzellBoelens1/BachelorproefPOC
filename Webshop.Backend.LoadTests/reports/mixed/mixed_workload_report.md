@@ -4,7 +4,7 @@ test suite: `nbomber_default_test_suite_name`
 
 test name: `nbomber_default_test_name`
 
-session id: `2025-05-05_12.08.14_session_3cc502cb`
+session id: `2025-05-06_09.04.25_session_4353df14`
 
 > scenario stats
 
@@ -28,9 +28,9 @@ load simulations:
 |---|---|
 |name|`global information`|
 |request count|all = `6900`, ok = `6900`, RPS = `76,7`|
-|latency|min = `1,17`, mean = `1,95`, max = `20,12`, StdDev = `0,52`|
-|latency percentile|p50 = `1,85`, p75 = `2,07`, p95 = `2,76`, p99 = `3,58`|
-|data transfer|min = `0,476` KB, mean = `0,479` KB, max = `0,481` KB, all = `3,2` MB|
+|latency|min = `0,72`, mean = `1,46`, max = `5,99`, StdDev = `0,42`|
+|latency percentile|p50 = `1,36`, p75 = `1,63`, p95 = `2,25`, p99 = `2,78`|
+|data transfer|min = `0,475` KB, mean = `0,479` KB, max = `0,481` KB, all = `3,2` MB|
 
 
 > status codes for scenario: `mixed_reads`
@@ -62,8 +62,8 @@ load simulations:
 |---|---|
 |name|`global information`|
 |request count|all = `3000`, ok = `3000`, RPS = `33,3`|
-|latency|min = `1,56`, mean = `3,33`, max = `16,53`, StdDev = `0,99`|
-|latency percentile|p50 = `3,01`, p75 = `3,64`, p95 = `5,08`, p99 = `6,28`|
+|latency|min = `1,14`, mean = `2,29`, max = `16,12`, StdDev = `0,81`|
+|latency percentile|p50 = `2,09`, p75 = `2,54`, p95 = `3,7`, p99 = `4,62`|
 |data transfer|min = `0,045` KB, mean = `0,048` KB, max = `0,051` KB, all = `0,1` MB|
 
 

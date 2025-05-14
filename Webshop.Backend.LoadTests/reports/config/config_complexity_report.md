@@ -4,7 +4,7 @@ test suite: `nbomber_default_test_suite_name`
 
 test name: `nbomber_default_test_name`
 
-session id: `2025-05-02_11.31.71_session_de3ebd1c`
+session id: `2025-05-06_08.59.30_session_a894a8bb`
 
 > scenario stats
 
@@ -26,8 +26,8 @@ load simulations:
 |---|---|
 |name|`global information`|
 |request count|all = `3000`, ok = `3000`, RPS = `50`|
-|latency|min = `5,38`, mean = `8,73`, max = `39,91`, StdDev = `2,61`|
-|latency percentile|p50 = `7,81`, p75 = `10,25`, p95 = `13,11`, p99 = `17,09`|
+|latency|min = `2,62`, mean = `5,18`, max = `20,81`, StdDev = `2,43`|
+|latency percentile|p50 = `4,31`, p75 = `5,95`, p95 = `10,07`, p99 = `14,61`|
 |data transfer|min = `0,743` KB, mean = `0,764` KB, max = `0,777` KB, all = `2,2` MB|
 
 
@@ -58,8 +58,8 @@ load simulations:
 |---|---|
 |name|`global information`|
 |request count|all = `3000`, ok = `3000`, RPS = `50`|
-|latency|min = `5,63`, mean = `8,78`, max = `37,06`, StdDev = `2,87`|
-|latency percentile|p50 = `7,81`, p75 = `10,18`, p95 = `13,32`, p99 = `17,93`|
+|latency|min = `2,59`, mean = `5,19`, max = `23,05`, StdDev = `2,42`|
+|latency percentile|p50 = `4,27`, p75 = `5,96`, p95 = `10,24`, p99 = `13,6`|
 |data transfer|min = `0,743` KB, mean = `0,764` KB, max = `0,777` KB, all = `2,2` MB|
 
 
@@ -90,8 +90,8 @@ load simulations:
 |---|---|
 |name|`global information`|
 |request count|all = `3000`, ok = `3000`, RPS = `50`|
-|latency|min = `5,44`, mean = `8,66`, max = `34,72`, StdDev = `2,57`|
-|latency percentile|p50 = `7,82`, p75 = `10,02`, p95 = `12,86`, p99 = `16,02`|
+|latency|min = `2,61`, mean = `5,22`, max = `26,32`, StdDev = `2,46`|
+|latency percentile|p50 = `4,32`, p75 = `6`, p95 = `10,35`, p99 = `14,16`|
 |data transfer|min = `0,743` KB, mean = `0,764` KB, max = `0,777` KB, all = `2,2` MB|
 
 
@@ -122,8 +122,8 @@ load simulations:
 |---|---|
 |name|`global information`|
 |request count|all = `3000`, ok = `3000`, RPS = `50`|
-|latency|min = `5,78`, mean = `8,89`, max = `41,41`, StdDev = `2,79`|
-|latency percentile|p50 = `8`, p75 = `10,34`, p95 = `13,2`, p99 = `17,61`|
+|latency|min = `2,73`, mean = `5,31`, max = `22,45`, StdDev = `2,49`|
+|latency percentile|p50 = `4,42`, p75 = `6,13`, p95 = `10,42`, p99 = `14,7`|
 |data transfer|min = `0,091` KB, mean = `0,093` KB, max = `0,096` KB, all = `0,3` MB|
 
 
@@ -154,8 +154,8 @@ load simulations:
 |---|---|
 |name|`global information`|
 |request count|all = `3000`, ok = `3000`, RPS = `50`|
-|latency|min = `5,74`, mean = `9,01`, max = `42,56`, StdDev = `2,77`|
-|latency percentile|p50 = `8,09`, p75 = `10,45`, p95 = `13,41`, p99 = `16,75`|
+|latency|min = `2,55`, mean = `5,4`, max = `23,95`, StdDev = `2,52`|
+|latency percentile|p50 = `4,63`, p75 = `6,18`, p95 = `10,65`, p99 = `14,86`|
 |data transfer|min = `3,422` KB, mean = `3,521` KB, max = `3,577` KB, all = `10,3` MB|
 
 
@@ -186,9 +186,9 @@ load simulations:
 |---|---|
 |name|`global information`|
 |request count|all = `3000`, ok = `3000`, RPS = `50`|
-|latency|min = `6,11`, mean = `9,4`, max = `41,72`, StdDev = `2,7`|
-|latency percentile|p50 = `8,53`, p75 = `10,86`, p95 = `13,9`, p99 = `17,71`|
-|data transfer|min = `13,422` KB, mean = `13,815` KB, max = `14,031` KB, all = `40,5` MB|
+|latency|min = `2,81`, mean = `5,61`, max = `24,57`, StdDev = `2,61`|
+|latency percentile|p50 = `4,76`, p75 = `6,44`, p95 = `10,7`, p99 = `15,22`|
+|data transfer|min = `13,422` KB, mean = `13,816` KB, max = `14,031` KB, all = `40,5` MB|
 
 
 > status codes for scenario: `graphql_details_opts20_inclTrue`
@@ -218,8 +218,8 @@ load simulations:
 |---|---|
 |name|`global information`|
 |request count|all = `3000`, ok = `3000`, RPS = `50`|
-|latency|min = `8,06`, mean = `12,54`, max = `39,98`, StdDev = `2,49`|
-|latency percentile|p50 = `12,11`, p75 = `13,45`, p95 = `17,09`, p99 = `20,27`|
+|latency|min = `3,94`, mean = `8,09`, max = `26,88`, StdDev = `2,87`|
+|latency percentile|p50 = `7,22`, p75 = `9,08`, p95 = `13,75`, p99 = `19,15`|
 |data transfer|min = `0,743` KB, mean = `0,764` KB, max = `0,777` KB, all = `2,2` MB|
 
 
@@ -250,8 +250,8 @@ load simulations:
 |---|---|
 |name|`global information`|
 |request count|all = `3000`, ok = `3000`, RPS = `50`|
-|latency|min = `10,79`, mean = `15,65`, max = `46,17`, StdDev = `2,74`|
-|latency percentile|p50 = `15,05`, p75 = `16,42`, p95 = `20,42`, p99 = `24,5`|
+|latency|min = `5,66`, mean = `10,46`, max = `34,56`, StdDev = `3,57`|
+|latency percentile|p50 = `9,3`, p75 = `11,59`, p95 = `18,02`, p99 = `24,13`|
 |data transfer|min = `0,743` KB, mean = `0,764` KB, max = `0,777` KB, all = `2,2` MB|
 
 

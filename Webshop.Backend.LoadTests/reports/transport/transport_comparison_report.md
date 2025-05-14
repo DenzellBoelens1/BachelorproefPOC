@@ -4,7 +4,7 @@ test suite: `nbomber_default_test_suite_name`
 
 test name: `nbomber_default_test_name`
 
-session id: `2025-05-02_12.02.23_session_fbea8474`
+session id: `2025-05-06_09.00.64_session_d56c93b9`
 
 > scenario stats
 
@@ -28,8 +28,8 @@ load simulations:
 |---|---|
 |name|`global information`|
 |request count|all = `5400`, ok = `5400`, RPS = `45`|
-|latency|min = `5,35`, mean = `9,42`, max = `37,3`, StdDev = `3,75`|
-|latency percentile|p50 = `7,61`, p75 = `11,73`, p95 = `17,7`, p99 = `22,96`|
+|latency|min = `2,49`, mean = `4,43`, max = `28,46`, StdDev = `1,99`|
+|latency percentile|p50 = `3,59`, p75 = `5,49`, p95 = `8,26`, p99 = `11,57`|
 |data transfer|min = `0,004` KB, mean = `0,004` KB, max = `0,004` KB, all = `0,0` MB|
 
 
@@ -44,7 +44,7 @@ load simulations:
 
 scenario: `signalr_sse_transport`
 
-  - ok count: `5399`
+  - ok count: `5400`
 
   - fail count: `0`
 
@@ -61,9 +61,9 @@ load simulations:
 |step|ok stats|
 |---|---|
 |name|`global information`|
-|request count|all = `5399`, ok = `5399`, RPS = `45`|
-|latency|min = `5,04`, mean = `9,63`, max = `40,53`, StdDev = `3,94`|
-|latency percentile|p50 = `7,75`, p75 = `11,92`, p95 = `18,13`, p99 = `23,78`|
+|request count|all = `5400`, ok = `5400`, RPS = `45`|
+|latency|min = `2,5`, mean = `4,5`, max = `35,26`, StdDev = `2,07`|
+|latency percentile|p50 = `3,66`, p75 = `5,52`, p95 = `8,33`, p99 = `11,19`|
 |data transfer|min = `0,004` KB, mean = `0,004` KB, max = `0,004` KB, all = `0,0` MB|
 
 
@@ -71,6 +71,6 @@ load simulations:
 
 |status code|count|message|
 |---|---|---|
-|no status|5399||
+|no status|5400||
 
 
